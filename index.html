@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="version" content="0.1.0">
+<title>日吉サイト配色見本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Montserrat:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* 外枠＝中立の生成り色。見本（サイトの模型）だけは本物の色で固定し、テーマで反転させない */
+:root{
+  --bg:#f3f1ee; --surface:#ffffff; --ink:#27231f; --muted:#68615a; --line:#e1ddd7; --chip:#ece8e3; --focus:#1f63d6;
+  --font-jp:"Noto Sans JP",system-ui,"Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;
+  --font-en:"Montserrat","Noto Sans JP",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --pick:#FFA0A7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#1c1a18; --surface:#262320; --ink:#eeeae5; --muted:#a69e96; --line:#3b3632; --chip:#322e2a; --focus:#86aefc; color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#1c1a18; --surface:#262320; --ink:#eeeae5; --muted:#a69e96; --line:#3b3632; --chip:#322e2a; --focus:#86aefc; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-jp);font-size:15px;line-height:1.75}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.mono{font-family:var(--font-mono);font-size:.86em;letter-spacing:.02em}
+h1,h2,h3{text-wrap:balance;line-height:1.35}
+
+/* ---- 冒頭 ---- */
+.intro{padding-block:40px 20px}
+.eyebrow{font-family:var(--font-en);font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--muted)}
+.intro h1{font-size:clamp(26px,4vw,38px);margin:.3em 0 .4em;font-weight:700}
+.intro h1 .dot{display:inline-block;width:.62em;height:.62em;border-radius:50%;background:#FFA0A7;margin-right:.35em;vertical-align:.06em}
+.lead{max-width:68ch;margin:0 0 .6em}
+.notice{display:inline-block;margin-top:6px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-size:13px;color:var(--muted)}
+
+.timeline{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.timeline li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.timeline .when{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);display:block}
+.timeline .sw{display:flex;gap:4px;margin:6px 0 4px}
+.timeline .sw i{width:18px;height:18px;border-radius:4px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.timeline p{margin:0;font-size:13.5px;line-height:1.6}
+@media (max-width:860px){.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.timeline{grid-template-columns:1fr}}
+
+/* ---- 操作 ---- */
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.ctl-row{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:3px}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--muted);padding:5px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tabs button{font:inherit;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px 6px 9px;border-radius:8px;cursor:pointer}
+.tabs button i{width:14px;height:14px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.tabs button[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--pick);font-weight:700}
+.toggle{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+@media (max-width:640px){
+  .controls{padding-block:8px}
+  .ctl-row{gap:6px 12px}
+  .seg button{padding:4px 10px;font-size:12px}
+  .toggle{font-size:12px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-top:8px;padding-bottom:4px;scrollbar-width:thin}
+  .tabs button{flex:none;font-size:12.5px;padding:5px 10px 5px 8px}
+}
+
+/* ---- 色の一覧 ---- */
+.section{padding-block:28px 8px}
+.section > h2{font-size:20px;margin:0 0 4px}
+.section > .sub{margin:0 0 16px;color:var(--muted);font-size:13.5px;max-width:70ch}
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.swatches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.swatches{grid-template-columns:1fr}}
+.swatch{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.swatch .chip{height:84px;display:flex;align-items:flex-end;justify-content:space-between;padding:8px 10px;gap:8px}
+.swatch .chip span{font-size:12px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.swatch .chip span.dark{color:#282828;text-shadow:none}
+.swatch .body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.swatch .name{font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:500;border-radius:4px;padding:1px 6px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.badge.rec{background:#e3f1e6;color:#1f5a2c}
+.badge.fill{background:#fff1d6;color:#7a4b00}
+.badge.late{background:#e6ecf8;color:#24427a}
+:root[data-theme="dark"] .badge.rec{background:#1f3a26;color:#bfe5c8} :root[data-theme="dark"] .badge.fill{background:#3f3115;color:#f3d9a3} :root[data-theme="dark"] .badge.late{background:#1f2b45;color:#c4d4f6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .badge.rec{background:#1f3a26;color:#bfe5c8} :root:not([data-theme="light"]) .badge.fill{background:#3f3115;color:#f3d9a3} :root:not([data-theme="light"]) .badge.late{background:#1f2b45;color:#c4d4f6}}
+.hex{font-family:var(--font-mono);font-size:15px;border:0;background:none;color:var(--ink);padding:0;cursor:pointer;text-align:left;width:max-content}
+.hex:hover{text-decoration:underline}
+.meta{font-size:12.5px;color:var(--muted);line-height:1.55}
+.uses{font-size:13px;line-height:1.6}
+.ratio{font-size:12px;color:var(--muted)}
+.ratio b{font-weight:500;color:var(--ink)}
+.extras{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.extra{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;min-width:0}
+.extra i{width:18px;height:18px;border-radius:4px;display:block;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.extras-title{margin:18px 0 0;font-size:13px;color:var(--muted);font-weight:700}
+
+/* ---- 見本（サイトの模型）：本物の色で固定 ---- */
+.frame{margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.frame-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;background:#eceae7;border-bottom:1px solid #dcd8d2;color:#555}
+.frame-bar .dots{display:flex;gap:5px}.frame-bar .dots i{width:10px;height:10px;border-radius:50%;background:#cfcac3;display:block}
+.frame-bar .url{font-family:var(--font-mono);font-size:12px;background:#fff;border-radius:6px;padding:3px 10px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#444}
+.site{--m-main:#FFA0A7;--m-main2:#F89098;--m-accent:#F02840;--m-deep:#B82834;--m-tint:rgba(255,160,167,.08);--m-line:rgba(255,160,167,.24);--m-outline:rgba(255,160,167,.8);--m-header:rgba(255,160,167,.9);
+  color:#282828;background:#F6F6F6;font-family:var(--font-jp);font-size:15px;line-height:1.8;position:relative;color-scheme:light}
+.site *{box-sizing:border-box}
+.site .s-in{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.s-header{background:var(--m-header);color:#fff}
+.s-header .s-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 18px;padding-block:12px}
+.s-logo{font-weight:700;font-size:15px;letter-spacing:.02em}
+.s-logo small{display:block;font-size:10.5px;font-weight:500;opacity:.92;letter-spacing:.06em;font-family:var(--font-en)}
+.s-nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;font-weight:500}
+.s-hero{background:#fff;padding-block:26px 24px}
+.s-pagetitle{border-bottom:1px solid var(--m-outline);padding-bottom:10px;margin:0 0 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
+.s-pagetitle .en{font-family:var(--font-en);font-weight:700;font-size:12px;letter-spacing:.16em;color:var(--m-main2)}
+.s-pagetitle .text{font-size:clamp(22px,3.4vw,30px);font-weight:700;color:var(--m-main2);line-height:1.3}
+.s-catch{margin:0 0 16px;font-weight:700;font-size:16px}
+.s-cta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.s-cta{grid-template-columns:1fr}}
+.s-cta a{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff;text-decoration:none;border-radius:8px;padding:10px 12px 10px 16px;font-weight:700;min-width:0}
+.s-cta a small{display:block;font-weight:500;font-size:11.5px;opacity:.95}
+.s-cta .web{background:#E81820}.s-cta .line{background:#38A050}.s-cta .tel{background:#E04020}
+.s-cta .ic{width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;flex:none}
+.s-cta .ic svg{width:12px;height:12px}
+.s-main{padding-block:26px 30px}
+.s-sec{background:#fff;border-radius:10px;padding:22px 20px;margin-bottom:18px}
+.s-fronttitle{text-align:center;margin:0 0 16px}
+.s-fronttitle .cap{display:block;font-family:var(--font-en);font-weight:700;font-size:22px;letter-spacing:.08em;color:var(--m-main2)}
+.s-fronttitle .cap::after{content:"";display:block;width:36px;height:3px;background:var(--m-main2);margin:6px auto 4px;border-radius:2px}
+.s-fronttitle .jp{font-size:13px;font-weight:700}
+.s-h2{background:var(--m-main);color:#fff;font-size:18px;font-weight:700;padding:9px 14px;border-radius:4px;margin:0 0 16px}
+.s-h3{border-left:6px solid var(--m-main);padding:2px 0 2px 10px;font-size:16.5px;font-weight:700;margin:20px 0 10px}
+.s-h4{color:var(--m-main2);font-size:15.5px;font-weight:700;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.s-h4::before{content:"";width:14px;height:3px;background:var(--m-main2);border-radius:2px;display:block}
+.s-hline{color:var(--m-main2);font-weight:700;font-size:15.5px;margin:18px 0 10px;display:inline-block}
+.s-hline::after{content:"";display:block;height:2px;background:var(--m-main2);margin-top:3px}
+.s-hnum{display:flex;align-items:center;gap:10px;font-weight:700;margin:16px 0 8px}
+.s-hnum span{color:var(--m-accent);border:1px solid var(--m-accent);border-radius:4px;font-family:var(--font-en);font-size:12px;padding:1px 7px}
+.site p{margin:0 0 10px}
+.site strong{color:var(--m-accent)}
+.site .s-link{color:var(--m-accent);text-decoration:underline;text-underline-offset:3px}
+.s-list{margin:0 0 12px;padding:0;list-style:none}
+.s-list li{position:relative;padding-left:16px;margin-bottom:4px}
+.s-list li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;background:#282828;opacity:.55}
+.s-btn{display:inline-flex;align-items:center;gap:14px;background:#fff;outline:1px solid var(--m-outline);border-radius:999px;padding:8px 8px 8px 20px;color:var(--m-main2);font-weight:700;text-decoration:none;margin:6px 0 4px;max-width:100%}
+.s-btn .ic{width:30px;height:30px;border-radius:50%;background:var(--m-main2);display:grid;place-items:center;flex:none}
+.s-btn .ic svg{width:12px;height:12px}
+.s-box{background:var(--m-tint);border:1px solid var(--m-line);border-radius:8px;padding:14px 16px;margin:12px 0}
+.s-box-label{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:6px}
+.s-box-label::after{content:"";flex:1;height:2px;background:var(--m-main)}
+.s-tablewrap{overflow-x:auto;margin:8px 0 6px}
+.s-table{border-collapse:collapse;width:100%;min-width:520px;background:#fff;font-size:13.5px;text-align:center}
+.s-table th,.s-table td{border:1px solid #DBDBDB;padding:6px 4px}
+.s-table thead th{background:#E8E8E8;font-weight:700}
+.s-table tbody th{background:#E8E8E8;font-weight:500;white-space:nowrap;padding-inline:8px}
+.s-table em{font-style:normal;font-weight:700;color:var(--m-deep)}
+.s-noticebox{border:1px solid #e3e3e3;border-radius:8px;padding:12px 16px}
+.s-noticetitle{color:var(--m-main2);font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.s-noticetitle::after{content:"";flex:1;height:1px;background:var(--m-main2)}
+.s-footer{background:var(--m-main);color:#fff;padding-block:20px;font-size:13px}
+.s-footer .s-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px}
+.s-pagetop{position:absolute;right:max(14px,env(safe-area-inset-right,0px));bottom:84px;width:50px;height:50px;border-radius:10px;background:var(--m-main);color:#fff;display:grid;place-items:center;font-family:var(--font-en);font-weight:700;font-size:12px;line-height:1.2;text-align:center}
+.s-sample{font-size:12px;color:#777;margin:0}
+
+/* 部品名の札 */
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-jp);font-size:11px;font-weight:500;line-height:1.4;color:#3a3a3a;background:#fffbe6;border:1px solid #e6d58a;border-radius:4px;padding:1px 6px;margin:0 0 4px;vertical-align:middle;white-space:nowrap;letter-spacing:0}
+.tag i{width:10px;height:10px;border-radius:2px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.tag code{font-family:var(--font-mono);font-size:10.5px}
+.tagrow{display:block}
+.hide-tags .tag{display:none}
+.s-header .tag,.s-footer .tag{margin:0}
+
+/* ---- 一覧表 ---- */
+.cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.cmp{border-collapse:collapse;width:100%;min-width:860px;font-size:13px}
+.cmp th,.cmp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp thead th{font-size:12.5px;color:var(--muted);font-weight:700;white-space:nowrap}
+.cmp tbody th{white-space:nowrap;font-weight:700}
+.cmp tbody th small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;white-space:normal;max-width:16em}
+.cmp td .c{display:flex;flex-direction:column;gap:4px}
+.cmp td i{width:100%;height:26px;border-radius:5px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.cmp td .mono{font-size:11.5px}
+.cmp td.on{background:var(--chip)}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+
+/* ---- 根拠 ---- */
+.sources{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.sources li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13.5px;min-width:0;overflow-wrap:anywhere}
+.sources .mono{color:var(--muted)}
+footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="intro wrap">
+  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR SAMPLE v0.1.0</div>
+  <h1><span class="dot" aria-hidden="true"></span>日吉駅前こころみクリニック　配色見本</h1>
+  <p class="lead">今年のはじめ、トップページがピンク系だったころの配色と、各科ごとの色分けを、ボタンや見出しなどの部品ごとに並べた見本です。上の切り替えで「トップ」と各科のトップページを見比べられます。</p>
+  <p class="lead">色は、サイトのテーマの中に残っていた<strong>当時のCSS（デザインの指定ファイル）</strong>から取り出しました。どの色がどこから来たかは、各色の札（「当時の記録」「見本用に補った色」）と、ページ下の「根拠」に書いています。</p>
+  <span class="notice">本番サイトは一切変更していません。このページは確認用の見本で、検索にも出ない設定です。</span>
+
+  <ol class="timeline" aria-label="配色の移り変わり">
+    <li><span class="when">2026-02-16</span><span class="sw"><i style="background:#FFA0A7"></i><i style="background:#F89098"></i><i style="background:#F02840"></i></span><p>開院前のトップページ（Web魚拓に1回だけ保存）。部品の名前が下のピンクのCSSと一致</p></li>
+    <li><span class="when">2026-06-23〜29</span><span class="sw"><i style="background:#FFA0A7"></i><i style="background:#F8B62D"></i><i style="background:#81B732"></i><i style="background:#0A65AC"></i><i style="background:#4FBAC9"></i><i style="background:#F29C78"></i></span><p>テーマ内に残る当時のCSSの保存日。メインはピンク、各科の色もここで決まっている</p></li>
+    <li><span class="when">2026-08-06</span><span class="sw"><i style="background:#EFA23E"></i><i style="background:#D97706"></i><i style="background:#C2410C"></i></span><p>ボタンや矢印のアイコンがオレンジに差し替わった日（ファイルの更新日）。この頃からメインがオレンジ系に</p></li>
+    <li><span class="when">2026-09-06</span><span class="sw"><i style="background:#8D303E"></i><i style="background:#805400"></i><i style="background:#47691A"></i><i style="background:#0A65AC"></i><i style="background:#216A75"></i><i style="background:#A5431B"></i><i style="background:#A23A4B"></i></span><p>各科のページに濃い色の科別デザインを一斉に適用（CSS内の記録）。今のサイトはこの系統</p></li>
+  </ol>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="ctl-row">
+      <div class="seg" role="group" aria-label="時期">
+        <button type="button" id="p-then" aria-pressed="true" data-period="then" title="2026年はじめ〜8月5日">当時の色</button>
+        <button type="button" id="p-later" aria-pressed="false" data-period="later" title="トップは2026-08-06〜、各科は2026-09-06〜">その後の色（参考）</button>
+      </div>
+      <label class="toggle"><input type="checkbox" id="show-tags" checked> 見本に部品名と色を表示</label>
+    </div>
+    <div class="tabs" role="tablist" aria-label="ページ" id="tabs"></div>
+  </div>
+</div>
+
+<main>
+  <section class="section wrap" aria-labelledby="pal-title">
+    <h2 id="pal-title"><span id="pal-name">トップページ</span>の色</h2>
+    <p class="sub" id="pal-sub"></p>
+    <div class="swatches" id="swatches"></div>
+    <p class="extras-title" id="extras-title">このページだけの色</p>
+    <div class="extras" id="extras"></div>
+    <p class="extras-title">どのページでも共通の色（当時）</p>
+    <div class="extras" id="fixed"></div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="mock-title">
+    <h2 id="mock-title">部品に当てはめた見本</h2>
+    <p class="sub">部品の形は当時のデザインのまま、色だけを切り替えています。文章・表の中身は配色を見るための見本で、実際の診療時間などではありません。</p>
+    <div class="frame">
+      <div class="frame-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url" id="m-url">hiyoshi-cocoromi-cl.jp/</span></div>
+      <div class="site" id="site">
+        <div class="s-header">
+          <div class="s-in">
+            <div class="s-logo">日吉駅前こころみクリニック<small>COCOROMI CLINIC HIYOSHI</small></div>
+            <nav class="s-nav" aria-label="見本のメニュー"><span>診療案内</span><span>医師紹介</span><span>アクセス</span><span>お知らせ</span></nav>
+          </div>
+          <div class="s-in" style="padding-block:0 8px"><span class="tag" data-role="main" data-label="ヘッダーの帯（メインを90%の濃さで）"></span></div>
+        </div>
+
+        <div class="s-hero">
+          <div class="s-in">
+            <span class="tag tagrow" data-role="main2" data-label="ページ見出しの文字（下線はメイン）"></span>
+            <h3 class="s-pagetitle"><span class="text" id="m-title">日吉駅前こころみクリニック</span><span class="en" id="m-en">COCOROMI CLINIC HIYOSHI</span></h3>
+            <p class="s-catch" id="m-catch">日吉駅直結・平日21時まで・土日祝も診療</p>
+            <span class="tag tagrow" data-fixed="#E81820" data-label="予約ボタン（WEB・LINE・電話はどのページも同じ色）"></span>
+            <div class="s-cta">
+              <a class="web" href="#site" onclick="return false"><span>WEB予約<small>24時間受付</small></span><span class="ic"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="#E81820" stroke-width="2"/></svg></span></a>
+              <a class="line" href="#site" onclick="return false"><span>LINE予約<small>友だち追加で予約</small></span><span class="ic"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="#38A050" stroke-width="2"/></svg></span></a>
+              <a class="tel" href="#site" onclick="return false"><span>電話で予約<small>受付時間内</small></span><span class="ic"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="#E04020" stroke-width="2"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-main">
+          <div class="s-in">
+            <div class="s-sec">
+              <span class="tag tagrow" data-role="main2" data-label="英字の見出しと下線"></span>
+              <h3 class="s-fronttitle"><span class="cap">SERVICE</span><span class="jp">診療のご案内</span></h3>
+
+              <span class="tag tagrow" data-role="main" data-label="h2 見出しの帯"></span>
+              <h4 class="s-h2" id="m-h2">日吉駅前こころみクリニックについて</h4>
+              <p>これは配色を確かめるための見本の文章です。本文は黒に近い色で、<strong>太字はこの色</strong>になります。<a class="s-link" href="#site" onclick="return false">文中のリンク</a>も同じ色です。</p>
+              <span class="tag tagrow" data-role="accent" data-label="本文の太字・文中リンク"></span>
+
+              <span class="tag tagrow" data-role="main" data-label="h3 見出しの左線"></span>
+              <h5 class="s-h3">受診の前に</h5>
+              <ul class="s-list">
+                <li><strong>予約：</strong>WEB・LINE・電話から選べます（見本）</li>
+                <li><strong>持ち物：</strong>保険証またはマイナ保険証（見本）</li>
+              </ul>
+
+              <span class="tag tagrow" data-role="main2" data-label="h4 見出し"></span>
+              <h6 class="s-h4">受診の流れ</h6>
+              <div class="s-hnum"><span>STEP 01</span>WEBで予約する<span class="tag" data-role="accent" data-label="番号つき見出し"></span></div>
+              <div class="s-hnum"><span>STEP 02</span>受付で名前を伝える</div>
+
+              <div><span class="tag tagrow" data-role="main2" data-label="ライン見出し"></span><span class="s-hline">よくあるご質問</span></div>
+
+              <span class="tag tagrow" data-role="tint" data-label="ボックスの背景（メインを8%の濃さで）・ラベル線はメイン"></span>
+              <div class="s-box">
+                <div class="s-box-label">ポイント</div>
+                <p style="margin:0">お知らせや注意書きを囲むボックスです。背景はメインの色をごく薄くしたものです。</p>
+              </div>
+
+              <span class="tag tagrow" data-role="main2" data-label="ボタン（文字と矢印の丸＝メイン2、枠線＝メイン）"></span>
+              <a class="s-btn" href="#site" onclick="return false" id="m-btn">診療時間とアクセス<span class="ic"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="#fff" stroke-width="2"/></svg></span></a>
+            </div>
+
+            <div class="s-sec">
+              <span class="tag tagrow" data-role="main" data-label="h2 見出しの帯"></span>
+              <h4 class="s-h2">診療時間</h4>
+              <span class="tag tagrow" data-role="deep" data-label="診療時間表の強調文字"></span>
+              <div class="s-tablewrap">
+                <table class="s-table">
+                  <thead><tr><th scope="col">時間</th><th scope="col">月</th><th scope="col">火</th><th scope="col">水</th><th scope="col">木</th><th scope="col">金</th><th scope="col">土</th><th scope="col">日・祝</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">午前（見本）</th><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+                    <tr><th scope="row">午後（見本）</th><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td><td><em>○</em></td><td><em>○</em></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="s-sample"><em style="font-style:normal;font-weight:700;color:var(--m-deep)">土日祝も診療</em>のように、表の中の強調はこの色です。表の中身は見本です。</p>
+
+              <div class="s-noticebox" style="margin-top:14px">
+                <span class="tag tagrow" data-role="main2" data-label="お知らせの見出し"></span>
+                <div class="s-noticetitle">お知らせ</div>
+                <p style="margin:0">見本のお知らせ文です。年末年始の診療日などをここに載せます。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s-pagetop" aria-hidden="true">PAGE<br>TOP</div>
+        <div class="s-footer">
+          <div class="s-in">
+            <span>日吉駅前こころみクリニック　神奈川県横浜市港北区日吉2-1-4</span>
+            <span class="tag" data-role="main" data-label="フッター・ページ上部へボタン"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="cmp-title">
+    <h2 id="cmp-title">全ページの色を並べて</h2>
+    <p class="sub">横にトップと各科、縦に色の役割を並べました。上の「時期」の切り替えに合わせて変わります。</p>
+    <div class="cmp-wrap"><table class="cmp" id="cmp"></table></div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="src-title">
+    <h2 id="src-title">根拠（どこから取り出した色か）</h2>
+    <p class="sub">ファイルはどれも日吉サイトのテーマの中にあり、2026-11-25 に読み取りました。日付はサーバーに残っている最終更新日です。</p>
+    <ul class="sources">
+      <li><b>当時のピンク4色と予約ボタン3色・部品の割り当て</b><br><span class="mono">wp-content/themes/hiyoshi/asset_test/css/style.css（2026-06-29）</span><br>色の変数 lightPink #FFA0A7／lightPink-2 #F89098／pink #F02840／darkPink #B82834、予約ボタン red #E81820・vermilion #E04020・LINE #38A050。h2の帯・ボタン・見出しのどれにどの色を使うかもこのファイルの指定どおりです。</li>
+      <li><b>ヘッダー・フッター・メニュー・ホバー色</b><br><span class="mono">wp-content/themes/hiyoshi/asset_test/css/common.css（2026-06-29）</span><br>ヘッダーはピンクの90%・フッターとお問い合わせ帯はピンク、ホバー #E57F80、箇条書きの点 #EF9C94、リンク一覧の矢印 #2A3174。</li>
+      <li><b>各科の色</b><br><span class="mono">wp-content/themes/hiyoshi/asset_test/css/animation.css（2026-06-23）</span><br>「ページ上部へ」ボタンの科別の色：消化器 #FFA0A7・総合内科 #F8B62D・健診 #F29C78・耳鼻科 #81B732・心療内科 #0A65AC・皮膚科 #4FBAC9。発熱外来の色はこのファイルにありません。</li>
+      <li><b>お知らせ一覧の科ラベル</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/style.css（現在のファイル）</span><br>総合内科 #FFAC00・耳鼻科 #81B732・心療内科 #0A65AC・美容 #4FBAC9・健診 #F29C78。</li>
+      <li><b>見本用に補った「強調」「濃い色」</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/common.css（現在のファイル）</span><br>当時のCSSには、各科の文字用の濃い色がありません。後から足された科ラベルの文字色（総合内科 #A06000・耳鼻科 #567921・健診 #BA4D20・皮膚科 #297985・発熱外来 #BC525E／#C9000E）を見本用に当てています。</li>
+      <li><b>その後の色（参考）</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/style.css・main-visuals.css（現在のファイル）</span><br>トップのオレンジは style.css の色の変数（#D97706／#C2410C／#B45309）。各科は main-visuals.css 内の記録「department-design-rollout 20260906」の値。健診は 2026-09-20 にさらに #8E4A49 系へ変更されています。</li>
+      <li><b>今年はじめのトップページ</b><br><span class="mono">Web魚拓 2026-02-16 保存</span><br><a href="https://web.archive.org/web/20260216115017/https://hiyoshi-cocoromi-cl.jp/" target="_blank" rel="noopener">web.archive.org の保存ページ</a>（このサイトの保存はこの1回だけで、CSSは保存されていません。部品の名前が上の当時のCSSと一致することで当時の配色と判断しています）</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="end wrap">見本ページ v0.1.0（2026-11-25 作成）。本番サイトとは別に置いた確認用ページです。色のコードはクリックでコピーできます。</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var DEPTS=[
+    {key:'top',name:'トップページ',short:'トップ',en:'COCOROMI CLINIC HIYOSHI',path:'/',catch:'日吉駅直結・平日21時まで・土日祝も診療',h2:'日吉駅前こころみクリニックについて'},
+    {key:'gastro',name:'消化器内科・内視鏡',short:'消化器内科・内視鏡',en:'GASTROENTEROLOGY',path:'/gastroenterology-endoscopy/',catch:'胃カメラ・大腸カメラのご案内',h2:'消化器内科・内視鏡について'},
+    {key:'general',name:'総合内科',short:'総合内科',en:'GENERAL INTERNAL MEDICINE',path:'/general/',catch:'平日21時まで・土日祝も診療',h2:'総合内科について'},
+    {key:'ent',name:'耳鼻咽喉科',short:'耳鼻咽喉科',en:'OTORHINOLARYNGOLOGY',path:'/ent/',catch:'駅直結・平日・土日も診療',h2:'耳鼻咽喉科について'},
+    {key:'mental',name:'心療内科・精神科',short:'心療内科',en:'PSYCHOSOMATIC MEDICINE',path:'/mental/',catch:'開始時期と受診先のご案内',h2:'心療内科・精神科について'},
+    {key:'derm',name:'皮膚科・美容皮膚科',short:'皮膚科・美容',en:'DERMATOLOGY',path:'/cosmetic_derm/',catch:'美容皮膚科・皮膚科のご案内',h2:'皮膚科・美容皮膚科について'},
+    {key:'checkups',name:'健康診断',short:'健康診断',en:'HEALTH CHECKUP',path:'/checkups/',catch:'健康診断・人間ドック・公費健診',h2:'健康診断について'},
+    {key:'fever',name:'発熱外来',short:'発熱外来',en:'FEVER CLINIC',path:'/fever/',catch:'平日21時まで・土日祝も診療',h2:'発熱外来について'}
+  ];
+  var ROLES=[
+    {id:'main',name:'メイン',uses:'ヘッダーの帯（90%）・h2見出しの帯・h3の左線・ボタンの枠線・ボックスのラベル線・お問い合わせ帯・フッター・「ページ上部へ」ボタン'},
+    {id:'main2',name:'メイン2',uses:'ボタンの文字と矢印の丸・ページ見出し・英字見出しと下線・h4見出し・ライン見出し・お知らせ見出し'},
+    {id:'accent',name:'強調',uses:'本文や箇条書きの太字・文中リンク・番号つき見出し'},
+    {id:'deep',name:'濃い色',uses:'診療時間表の強調文字'}
+  ];
+  var R='rec',F='fill',L='late';
+  function pinkSet(srcMain){
+    return {main:['#FFA0A7',R,srcMain||'当時のCSSの色変数 lightPink'],main2:['#F89098',R,'当時のCSSの色変数 lightPink-2'],accent:['#F02840',R,'当時のCSSの色変数 pink'],deep:['#B82834',R,'当時のCSSの色変数 darkPink']};
+  }
+  function deptSet(main,acc,srcMain,srcAcc){
+    return {main:[main,R,srcMain],main2:[main,F,'当時の記録なし。メインと同じ色を当てた'],accent:[acc,F,srcAcc],deep:[acc,F,'当時の記録なし。強調と同じ色を当てた']};
+  }
+  var P={
+    then:{
+      top:{set:pinkSet(),extras:[['#E57F80','リンクにマウスを乗せたとき'],['#EF9C94','箇条書きの点'],['#2A3174','リンク一覧の矢印']],note:'メインはピンク #FFA0A7。サイト全体の基本の色です。'},
+      gastro:{set:pinkSet('当時のCSS「ページ上部へ」ボタン（消化器）'),extras:[],note:'消化器内科は、トップと同じピンクが科の色でした。'},
+      general:{set:deptSet('#F8B62D','#A06000','当時のCSS「ページ上部へ」ボタン（総合内科）','後から足された科ラベルの文字色'),extras:[['#FFAC00','お知らせ一覧の科ラベル']],note:'総合内科は黄色。お知らせ一覧のラベルだけ少し違う黄色 #FFAC00 でした。'},
+      ent:{set:deptSet('#81B732','#567921','当時のCSS「ページ上部へ」ボタン（耳鼻科）','後から足された科ラベルの文字色'),extras:[['#81B732','お知らせ一覧の科ラベル']],note:'耳鼻咽喉科は黄緑。'},
+      mental:{set:deptSet('#0A65AC','#0A65AC','当時のCSS「ページ上部へ」ボタン（心療内科）','科ラベルの文字色（当時から同じ）'),extras:[['#0A65AC','お知らせ一覧の科ラベル']],note:'心療内科は青。この色は今も変わっていません。'},
+      derm:{set:deptSet('#4FBAC9','#297985','当時のCSS「ページ上部へ」ボタン（皮膚科）','後から足された科ラベルの文字色'),extras:[['#4FBAC9','お知らせ一覧の科ラベル（美容）']],note:'皮膚科・美容皮膚科は水色。'},
+      checkups:{set:deptSet('#F29C78','#BA4D20','当時のCSS「ページ上部へ」ボタン（健診）','後から足された科ラベルの文字色'),extras:[['#F29C78','お知らせ一覧の科ラベル']],note:'健康診断はサーモンピンク（オレンジ寄り）。'},
+      fever:{set:{main:['#BC525E',L,'当時のCSSに発熱外来の色はない。後から足された科ラベルの色を仮に当てた'],main2:['#BC525E',L,'同上'],accent:['#C9000E',L,'後から足された科メニューの色'],deep:['#C9000E',L,'同上']},extras:[],note:'当時のCSSには発熱外来の色がありませんでした。後から足された色を仮に当てています。'}
+    },
+    later:{
+      top:{set:{main:['#D97706',L,'現在のCSSの色変数 lightPink（中身はオレンジ）'],main2:['#D97706',L,'現在のCSSの色変数 lightPink-2'],accent:['#C2410C',L,'現在のCSSの色変数 pink'],deep:['#B45309',L,'現在のCSSの色変数 darkPink']},extras:[['#EFA23E','ボタンや矢印のアイコン（2026-08-06 差し替え）']],note:'変数の名前は「pink」のまま、中身がオレンジに置き換わっています。'},
+      gastro:{set:{main:['#8D303E',L,'2026-09-05 消化器内科のデザインの記録'],main2:['#8D303E',L,'同上'],accent:['#8D303E',L,'同上'],deep:['#5D242B',L,'同上（濃い文字）']},extras:[['#F8EFEE','うすい背景'],['#332C2D','文字']],note:'消化器内科はワインレッド。'},
+      general:{set:{main:['#805400',L,'2026-09-06 科別デザインの記録'],main2:['#805400',L,'同上'],accent:['#805400',L,'同上'],deep:['#5A3B00',L,'同上（濃い色）']},extras:[],note:'総合内科は濃い黄土色。'},
+      ent:{set:{main:['#47691A',L,'2026-09-06 科別デザインの記録'],main2:['#47691A',L,'同上'],accent:['#47691A',L,'同上'],deep:['#365013',L,'同上（濃い色）']},extras:[],note:'耳鼻咽喉科は深緑。'},
+      mental:{set:{main:['#0A65AC',L,'2026-09-06 科別デザインの記録'],main2:['#0A65AC',L,'同上'],accent:['#0A65AC',L,'同上'],deep:['#074F86',L,'同上（濃い色）']},extras:[],note:'心療内科は当時と同じ青。'},
+      derm:{set:{main:['#216A75',L,'2026-09-06 科別デザインの記録'],main2:['#216A75',L,'同上'],accent:['#216A75',L,'同上'],deep:['#18505A',L,'同上（濃い色）']},extras:[],note:'皮膚科・美容皮膚科は深い青緑。'},
+      checkups:{set:{main:['#A5431B',L,'2026-09-06 科別デザインの記録'],main2:['#A5431B',L,'同上'],accent:['#A5431B',L,'同上'],deep:['#763015',L,'同上（濃い色）']},extras:[['#8E4A49','2026-09-20 の健診ページ刷新後のメイン']],note:'健康診断は赤茶。9/20 にさらに #8E4A49 系へ変わっています。'},
+      fever:{set:{main:['#A23A4B',L,'2026-09-06 科別デザインの記録'],main2:['#A23A4B',L,'同上'],accent:['#A23A4B',L,'同上'],deep:['#7B2635',L,'同上（濃い色）']},extras:[],note:'発熱外来はくすんだ赤。'}
+    }
+  };
+  var FIXED=[['#E81820','WEB予約ボタン'],['#38A050','LINE予約ボタン'],['#E04020','電話ボタン'],['#282828','本文の文字'],['#F6F6F6','ページの背景'],['#E8E8E8','表の見出し'],['#DBDBDB','表の罫線'],['#FFFFFF','白']];
+  var BADGE={rec:['rec','当時の記録'],fill:['fill','見本用に補った色'],late:['late','その後の記録']};
+
+  function lum(h){var c=[1,3,5].map(function(i){var v=parseInt(h.slice(i,i+2),16)/255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+  function ratioWhite(h){return 1.05/(lum(h)+0.05)}
+  function rgb(h){return [1,3,5].map(function(i){return parseInt(h.slice(i,i+2),16)})}
+  function rgba(h,a){var c=rgb(h);return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
+  function hexBtn(h){return '<button type="button" class="hex" data-copy="'+h+'" title="クリックでコピー">'+h+'</button>'}
+  function ratioText(h){var r=ratioWhite(h),t=r>=4.5?'白地の本文に使える':(r>=3?'白地では大きな文字向き':'白地の文字には薄い');return '<span class="ratio">白地との差 <b>'+r.toFixed(1)+' : 1</b>（'+t+'）</span>'}
+
+  var state={period:'then',dept:'top'};
+  var tabsEl=document.getElementById('tabs');
+
+  function buildTabs(){
+    tabsEl.innerHTML=DEPTS.map(function(d){
+      return '<button type="button" role="tab" id="tab-'+d.key+'" data-key="'+d.key+'" aria-selected="false"><i data-dot="'+d.key+'"></i>'+esc(d.short)+'</button>';
+    }).join('');
+  }
+
+  function render(){
+    var per=P[state.period],cur=per[state.dept],d=DEPTS.filter(function(x){return x.key===state.dept})[0];
+    var s=cur.set,main=s.main[0];
+    document.documentElement.style.setProperty('--pick',main);
+    // tabs
+    DEPTS.forEach(function(x){
+      var b=document.getElementById('tab-'+x.key);b.setAttribute('aria-selected',x.key===state.dept?'true':'false');
+      b.querySelector('i').style.background=per[x.key].set.main[0];
+    });
+    var act=document.getElementById('tab-'+state.dept);
+    if(tabsEl.scrollWidth>tabsEl.clientWidth){tabsEl.scrollLeft=Math.max(0,act.offsetLeft-tabsEl.offsetLeft-16)}
+    ['then','later'].forEach(function(p){document.getElementById('p-'+p).setAttribute('aria-pressed',p===state.period?'true':'false')});
+    // palette
+    document.getElementById('pal-name').textContent=d.name+(state.period==='later'?'（その後）':'');
+    document.getElementById('pal-sub').textContent=cur.note;
+    document.getElementById('swatches').innerHTML=ROLES.map(function(r){
+      var v=s[r.id],b=BADGE[v[1]],light=ratioWhite(v[0])<2.2;
+      return '<article class="swatch"><div class="chip" style="background:'+v[0]+'"><span class="'+(light?'dark':'')+'">'+esc(r.name)+'</span></div>'+
+        '<div class="body"><div class="name">'+hexBtn(v[0])+'<span class="badge '+b[0]+'">'+b[1]+'</span></div>'+
+        '<div class="meta mono">RGB '+rgb(v[0]).join(', ')+'</div>'+ratioText(v[0])+
+        '<div class="uses">'+esc(r.uses)+'</div><div class="meta">根拠：'+esc(v[2])+'</div></div></article>';
+    }).join('');
+    var ex=cur.extras.slice();
+    ex.unshift([main,'ボックスの背景＝メインを8%の濃さで（'+rgba(main,.08)+'）',true]);
+    document.getElementById('extras').innerHTML=ex.map(function(e){
+      var sw=e[2]?rgba(e[0],.08):e[0];
+      return '<span class="extra"><i style="background:'+sw+'"></i>'+(e[2]?'<span class="mono">'+esc(e[0])+' × 8%</span>':hexBtn(e[0]))+'<span>'+esc(e[1])+'</span></span>';
+    }).join('');
+    // mock
+    var site=document.getElementById('site');
+    site.style.setProperty('--m-main',main);
+    site.style.setProperty('--m-main2',s.main2[0]);
+    site.style.setProperty('--m-accent',s.accent[0]);
+    site.style.setProperty('--m-deep',s.deep[0]);
+    site.style.setProperty('--m-tint',rgba(main,.08));
+    site.style.setProperty('--m-line',rgba(main,.24));
+    site.style.setProperty('--m-outline',rgba(main,.8));
+    site.style.setProperty('--m-header',rgba(main,.9));
+    document.getElementById('m-url').textContent='hiyoshi-cocoromi-cl.jp'+d.path+'（見本）';
+    document.getElementById('m-title').textContent=d.key==='top'?'日吉駅前こころみクリニック':d.name;
+    document.getElementById('m-en').textContent=d.en;
+    document.getElementById('m-catch').textContent=d.catch;
+    document.getElementById('m-h2').textContent=d.h2;
+    document.getElementById('m-btn').firstChild.nodeValue=(d.key==='top'?'診療時間とアクセス':d.name+'の予約について');
+    site.querySelectorAll('.tag').forEach(function(t){
+      var hex,role=t.getAttribute('data-role');
+      if(role==='tint'){hex=main;}else if(role){hex=s[role][0];}else{hex=t.getAttribute('data-fixed');}
+      var sw=role==='tint'?rgba(hex,.24):hex;
+      t.innerHTML='<i style="background:'+sw+'"></i>'+esc(t.getAttribute('data-label'))+' <code>'+hex+(role==='tint'?' ×8%':'')+'</code>';
+    });
+    // fixed
+    document.getElementById('fixed').innerHTML=FIXED.map(function(e){return '<span class="extra"><i style="background:'+e[0]+'"></i>'+hexBtn(e[0])+'<span>'+esc(e[1])+'</span></span>'}).join('');
+    // compare table
+    var head='<thead><tr><th scope="col">役割</th>'+DEPTS.map(function(x){return '<th scope="col">'+esc(x.short)+'</th>'}).join('')+'</tr></thead>';
+    var body='<tbody>'+ROLES.map(function(r){
+      return '<tr><th scope="row">'+esc(r.name)+'<small>'+esc(r.uses.split('・').slice(0,2).join('・'))+' など</small></th>'+DEPTS.map(function(x){
+        var v=per[x.key].set[r.id];return '<td class="'+(x.key===state.dept?'on':'')+'"><div class="c"><i style="background:'+v[0]+'"></i>'+hexBtn(v[0])+'<span class="badge '+BADGE[v[1]][0]+'">'+BADGE[v[1]][1]+'</span></div></td>';
+      }).join('')+'</tr>';
+    }).join('')+'</tbody>';
+    document.getElementById('cmp').innerHTML=head+body;
+  }
+
+  function setDept(k,push){
+    if(!P.then[k])k='top';state.dept=k;render();
+    if(push){try{history.replaceState(null,'','#'+k)}catch(e){location.hash=k}}
+  }
+  buildTabs();
+  tabsEl.addEventListener('click',function(e){var b=e.target.closest('button[data-key]');if(b)setDept(b.getAttribute('data-key'),true)});
+  document.querySelectorAll('[data-period]').forEach(function(b){b.addEventListener('click',function(){state.period=b.getAttribute('data-period');render()})});
+  var tg=document.getElementById('show-tags');
+  tg.addEventListener('change',function(){document.getElementById('site').classList.toggle('hide-tags',!tg.checked)});
+  window.addEventListener('hashchange',function(){setDept(location.hash.slice(1),false)});
+
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},1600)}
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-copy]');if(!b)return;var v=b.getAttribute('data-copy');
+    function fallback(){var r=document.createRange();r.selectNodeContents(b);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);say(v+' を選択しました（Ctrl+C でコピー）')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(function(){say(v+' をコピーしました')},fallback)}else{fallback()}
+  });
+  setDept(location.hash.slice(1)||'top',false);
+})();
+</script>
+</body>
+</html>
