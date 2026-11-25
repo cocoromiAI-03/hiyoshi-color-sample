@@ -1,0 +1,54 @@
+/* 配色見本（2026-06-23〜29 の色）— 色の変数と、見本用の切り替えパネル
+   main=帯・ボタン・アイコンなど面の色 / text=見出しや強調の文字 / fill=濃い面（ヘッダーなど） / dark=ほぼ黒の文字
+   「当時どおり」は当時のCSSのまま（文字にも明るい色）。「文字を読みやすく」は文字と濃い面だけ各科の濃い色にする */
+:root{
+  --jtop-main:#FFA0A7;--jtop-text:#F89098;--jtop-fill:#FFA0A7;--jtop-dark:#B82834;
+  --jgastro-main:#FFA0A7;--jgastro-text:#F89098;--jgastro-fill:#FFA0A7;--jgastro-dark:#B82834;
+  --jgeneral-main:#F8B62D;--jgeneral-text:#FFAC00;--jgeneral-fill:#F8B62D;--jgeneral-dark:#9E6240;
+  --jent-main:#81B732;--jent-text:#81B732;--jent-fill:#81B732;--jent-dark:#0B6E4F;
+  --jmental-main:#0A65AC;--jmental-text:#0A65AC;--jmental-fill:#0A65AC;--jmental-dark:#04052E;
+  --jderm-main:#4FBAC9;--jderm-text:#4FBAC9;--jderm-fill:#4FBAC9;--jderm-dark:#166088;
+  --jcheckups-main:#F29C78;--jcheckups-text:#F29C78;--jcheckups-fill:#F29C78;--jcheckups-dark:#BA4D20;
+  --jfever-main:#E60012;--jfever-text:#E60012;--jfever-fill:#E60012;--jfever-dark:#B4000E;
+  --jt-main:var(--jtop-main);--jt-text:var(--jtop-text);--jt-fill:var(--jtop-fill);--jt-dark:var(--jtop-dark);
+}
+html.jr{
+  --jtop-text:#B82834;--jtop-fill:#B82834;
+  --jgastro-text:#B82834;--jgastro-fill:#B82834;
+  --jgeneral-text:#9E6240;--jgeneral-fill:#9E6240;
+  --jent-text:#0B6E4F;--jent-fill:#0B6E4F;
+  --jmental-text:#0A65AC;--jmental-fill:#0A65AC;
+  --jderm-text:#166088;--jderm-fill:#166088;
+  --jcheckups-text:#BA4D20;--jcheckups-fill:#BA4D20;
+  --jfever-text:#B4000E;--jfever-fill:#B4000E;
+}
+body#gastroenterology-endoscopy{--jt-main:var(--jgastro-main);--jt-text:var(--jgastro-text);--jt-fill:var(--jgastro-fill);--jt-dark:var(--jgastro-dark)}
+body#general{--jt-main:var(--jgeneral-main);--jt-text:var(--jgeneral-text);--jt-fill:var(--jgeneral-fill);--jt-dark:var(--jgeneral-dark)}
+body#ent{--jt-main:var(--jent-main);--jt-text:var(--jent-text);--jt-fill:var(--jent-fill);--jt-dark:var(--jent-dark)}
+body#mental{--jt-main:var(--jmental-main);--jt-text:var(--jmental-text);--jt-fill:var(--jmental-fill);--jt-dark:var(--jmental-dark)}
+body#derm{--jt-main:var(--jderm-main);--jt-text:var(--jderm-text);--jt-fill:var(--jderm-fill);--jt-dark:var(--jderm-dark)}
+body#checkups{--jt-main:var(--jcheckups-main);--jt-text:var(--jcheckups-text);--jt-fill:var(--jcheckups-fill);--jt-dark:var(--jcheckups-dark)}
+body#fever{--jt-main:var(--jfever-main);--jt-text:var(--jfever-text);--jt-fill:var(--jfever-fill);--jt-dark:var(--jfever-dark)}
+
+/* 個別の補正：今のトップでは「総合内科」の枠が共通色（オレンジ）を使っているので、当時の総合内科の黄色に戻す */
+#home-firstview .department.general{--accent:var(--jgeneral-fill)!important;--soft:color-mix(in srgb,var(--jgeneral-main) 18%,#fff)!important;--dept-ink:var(--jgeneral-fill)!important}
+
+/* 見本用パネル（サイトの部品ではない） */
+#jsample{position:fixed;left:max(10px,env(safe-area-inset-left,0px));bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:2147483000;
+  width:min(300px,calc(100vw - 20px));background:#1f1d1b;color:#f4f1ec;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.35);
+  font:13px/1.55 system-ui,"Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;padding:12px 12px 10px;letter-spacing:0}
+#jsample *{box-sizing:border-box;font:inherit;letter-spacing:0}
+#jsample .js-h{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+#jsample .js-t{font-weight:700;font-size:13.5px}
+#jsample .js-t small{display:block;font-weight:400;font-size:11.5px;color:#c9c2b9}
+#jsample .js-x{background:none;border:0;color:#c9c2b9;cursor:pointer;font-size:18px;line-height:1;padding:0 2px}
+#jsample .js-seg{display:flex;gap:4px;margin:8px 0;background:#34302c;border-radius:8px;padding:3px}
+#jsample .js-seg button{flex:1;border:0;border-radius:6px;background:transparent;color:#d9d3cb;padding:5px 4px;cursor:pointer;font-size:12px}
+#jsample .js-seg button[aria-pressed="true"]{background:#f4f1ec;color:#1f1d1b;font-weight:700}
+#jsample select{width:100%;padding:5px 6px;border-radius:6px;border:1px solid #4a4540;background:#2b2825;color:#f4f1ec;font-size:12.5px}
+#jsample .js-f{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:11.5px;color:#c9c2b9}
+#jsample a{color:#f4f1ec;text-decoration:underline}
+#jsample .js-sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#jsample button:focus-visible,#jsample select:focus-visible,#jsample a:focus-visible{outline:2px solid #9cc0ff;outline-offset:2px}
+#jsample.min{width:auto;padding:7px 12px;cursor:pointer}
+#jsample.min .js-body,#jsample.min .js-x{display:none}

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="version" content="0.1.0">
+<meta name="version" content="0.2.0">
 <title>日吉サイト配色見本</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +49,15 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 .timeline p{margin:0;font-size:13.5px;line-height:1.6}
 @media (max-width:860px){.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:460px){.timeline{grid-template-columns:1fr}}
+
+.pagesamples{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.pagesamples h2{font-size:17px;margin:0 0 4px}
+.pagesamples p{margin:0 0 12px;font-size:13.5px;color:var(--muted);max-width:72ch}
+.pagesamples ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pagesamples a{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;background:var(--bg)}
+.pagesamples a:hover{border-color:var(--ink)}
+.pagesamples i{width:14px;height:14px;border-radius:3px;flex:none;display:block}
+@media (max-width:760px){.pagesamples ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---- 操作 ---- */
 .controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px}
@@ -201,11 +210,26 @@ footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
 <body>
 
 <header class="intro wrap">
-  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR SAMPLE v0.1.0</div>
+  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR SAMPLE v0.2.0</div>
   <h1><span class="dot" aria-hidden="true"></span>日吉駅前こころみクリニック　配色見本</h1>
   <p class="lead">今年のはじめ、トップページがピンク系だったころの配色と、各科ごとの色分けを、ボタンや見出しなどの部品ごとに並べた見本です。上の切り替えで「トップ」と各科のトップページを見比べられます。</p>
   <p class="lead">色は、サイトのテーマの中に残っていた<strong>当時のCSS（デザインの指定ファイル）</strong>から取り出しました。どの色がどこから来たかは、各色の札（「当時の記録」「見本用に補った色」）と、ページ下の「根拠」に書いています。</p>
   <span class="notice">本番サイトは一切変更していません。このページは確認用の見本で、検索にも出ない設定です。</span>
+
+  <nav class="pagesamples" aria-labelledby="ps-title">
+    <h2 id="ps-title">今のページを当時の色に戻した見本（8ページ）</h2>
+    <p>今のサイトのページをそのまま複製し、色だけを 2026-06-23〜29 の色に置き換えました。写真・文章・レイアウトは今のままです。左下のパネルで「当時どおり」と「文字を読みやすく」を切り替えられます。</p>
+    <ul>
+      <li><a href="pages/top/"><i style="background:#FFA0A7"></i>トップ</a></li>
+      <li><a href="pages/gastro/"><i style="background:#FFA0A7"></i>消化器内科・内視鏡</a></li>
+      <li><a href="pages/general/"><i style="background:#F8B62D"></i>総合内科</a></li>
+      <li><a href="pages/ent/"><i style="background:#81B732"></i>耳鼻咽喉科</a></li>
+      <li><a href="pages/mental/"><i style="background:#0A65AC"></i>心療内科・精神科</a></li>
+      <li><a href="pages/derm/"><i style="background:#4FBAC9"></i>美容皮膚科</a></li>
+      <li><a href="pages/checkups/"><i style="background:#F29C78"></i>健康診断</a></li>
+      <li><a href="pages/fever/"><i style="background:#E60012"></i>発熱外来</a></li>
+    </ul>
+  </nav>
 
   <ol class="timeline" aria-label="配色の移り変わり">
     <li><span class="when">2026-02-16</span><span class="sw"><i style="background:#FFA0A7"></i><i style="background:#F89098"></i><i style="background:#F02840"></i></span><p>開院前のトップページ（Web魚拓に1回だけ保存）。部品の名前が下のピンクのCSSと一致</p></li>
@@ -351,14 +375,14 @@ footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
       <li><b>ヘッダー・フッター・メニュー・ホバー色</b><br><span class="mono">wp-content/themes/hiyoshi/asset_test/css/common.css（2026-06-29）</span><br>ヘッダーはピンクの90%・フッターとお問い合わせ帯はピンク、ホバー #E57F80、箇条書きの点 #EF9C94、リンク一覧の矢印 #2A3174。</li>
       <li><b>各科の色</b><br><span class="mono">wp-content/themes/hiyoshi/asset_test/css/animation.css（2026-06-23）</span><br>「ページ上部へ」ボタンの科別の色：消化器 #FFA0A7・総合内科 #F8B62D・健診 #F29C78・耳鼻科 #81B732・心療内科 #0A65AC・皮膚科 #4FBAC9。発熱外来の色はこのファイルにありません。</li>
       <li><b>お知らせ一覧の科ラベル</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/style.css（現在のファイル）</span><br>総合内科 #FFAC00・耳鼻科 #81B732・心療内科 #0A65AC・美容 #4FBAC9・健診 #F29C78。</li>
-      <li><b>見本用に補った「強調」「濃い色」</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/common.css（現在のファイル）</span><br>当時のCSSには、各科の文字用の濃い色がありません。後から足された科ラベルの文字色（総合内科 #A06000・耳鼻科 #567921・健診 #BA4D20・皮膚科 #297985・発熱外来 #BC525E／#C9000E）を見本用に当てています。</li>
+      <li><b>各科ページの色（科ごとのデザインファイル）</b><br><span class="mono">wp-content/themes/hiyoshi/assets_gastro・assets_general・assets_ent・assets_mental・assets_derm・assets_checkups/css/common.css（現在のファイル）</span><br>各科ページ専用のファイルに、当時の科の色が変数のまま残っています（総合内科 yellow #F8B62D・yellow-2 #FFAC00・brown #9E6240／耳鼻科 green #81B732・darkGreen #0B6E4F／皮膚科 lightBlue #4FBAC9・darkBlue #166088／心療内科 blue #0A65AC・navy #04052E／健診 orange #F29C78／強調の赤 pink #DE2038）。今の各科ページは、この上に後から別ファイルで濃い色を重ねています。発熱外来は耳鼻科のファイルを使い、<span class="mono">assets_fever/css/style-fever.css</span> で緑を赤 #E60012・#B4000E に差し替えています（作成日の記録なし）。</li>
       <li><b>その後の色（参考）</b><br><span class="mono">wp-content/themes/hiyoshi/asset/css/style.css・main-visuals.css（現在のファイル）</span><br>トップのオレンジは style.css の色の変数（#D97706／#C2410C／#B45309）。各科は main-visuals.css 内の記録「department-design-rollout 20260906」の値。健診は 2026-09-20 にさらに #8E4A49 系へ変更されています。</li>
       <li><b>今年はじめのトップページ</b><br><span class="mono">Web魚拓 2026-02-16 保存</span><br><a href="https://web.archive.org/web/20260216115017/https://hiyoshi-cocoromi-cl.jp/" target="_blank" rel="noopener">web.archive.org の保存ページ</a>（このサイトの保存はこの1回だけで、CSSは保存されていません。部品の名前が上の当時のCSSと一致することで当時の配色と判断しています）</li>
     </ul>
   </section>
 </main>
 
-<footer class="end wrap">見本ページ v0.1.0（2026-11-25 作成）。本番サイトとは別に置いた確認用ページです。色のコードはクリックでコピーできます。</footer>
+<footer class="end wrap">見本ページ v0.2.0（2026-11-25 更新）。本番サイトとは別に置いた確認用ページです。色のコードはクリックでコピーできます。</footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -383,19 +407,16 @@ footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
   function pinkSet(srcMain){
     return {main:['#FFA0A7',R,srcMain||'当時のCSSの色変数 lightPink'],main2:['#F89098',R,'当時のCSSの色変数 lightPink-2'],accent:['#F02840',R,'当時のCSSの色変数 pink'],deep:['#B82834',R,'当時のCSSの色変数 darkPink']};
   }
-  function deptSet(main,acc,srcMain,srcAcc){
-    return {main:[main,R,srcMain],main2:[main,F,'当時の記録なし。メインと同じ色を当てた'],accent:[acc,F,srcAcc],deep:[acc,F,'当時の記録なし。強調と同じ色を当てた']};
-  }
   var P={
     then:{
       top:{set:pinkSet(),extras:[['#E57F80','リンクにマウスを乗せたとき'],['#EF9C94','箇条書きの点'],['#2A3174','リンク一覧の矢印']],note:'メインはピンク #FFA0A7。サイト全体の基本の色です。'},
-      gastro:{set:pinkSet('当時のCSS「ページ上部へ」ボタン（消化器）'),extras:[],note:'消化器内科は、トップと同じピンクが科の色でした。'},
-      general:{set:deptSet('#F8B62D','#A06000','当時のCSS「ページ上部へ」ボタン（総合内科）','後から足された科ラベルの文字色'),extras:[['#FFAC00','お知らせ一覧の科ラベル']],note:'総合内科は黄色。お知らせ一覧のラベルだけ少し違う黄色 #FFAC00 でした。'},
-      ent:{set:deptSet('#81B732','#567921','当時のCSS「ページ上部へ」ボタン（耳鼻科）','後から足された科ラベルの文字色'),extras:[['#81B732','お知らせ一覧の科ラベル']],note:'耳鼻咽喉科は黄緑。'},
-      mental:{set:deptSet('#0A65AC','#0A65AC','当時のCSS「ページ上部へ」ボタン（心療内科）','科ラベルの文字色（当時から同じ）'),extras:[['#0A65AC','お知らせ一覧の科ラベル']],note:'心療内科は青。この色は今も変わっていません。'},
-      derm:{set:deptSet('#4FBAC9','#297985','当時のCSS「ページ上部へ」ボタン（皮膚科）','後から足された科ラベルの文字色'),extras:[['#4FBAC9','お知らせ一覧の科ラベル（美容）']],note:'皮膚科・美容皮膚科は水色。'},
-      checkups:{set:deptSet('#F29C78','#BA4D20','当時のCSS「ページ上部へ」ボタン（健診）','後から足された科ラベルの文字色'),extras:[['#F29C78','お知らせ一覧の科ラベル']],note:'健康診断はサーモンピンク（オレンジ寄り）。'},
-      fever:{set:{main:['#BC525E',L,'当時のCSSに発熱外来の色はない。後から足された科ラベルの色を仮に当てた'],main2:['#BC525E',L,'同上'],accent:['#C9000E',L,'後から足された科メニューの色'],deep:['#C9000E',L,'同上']},extras:[],note:'当時のCSSには発熱外来の色がありませんでした。後から足された色を仮に当てています。'}
+      gastro:{set:{main:['#FFA0A7',R,'消化器内科ファイルの色変数 lightPink'],main2:['#F89098',R,'消化器内科ファイルの色変数 lightPink-2'],accent:['#DE2038',R,'消化器内科ファイルの色変数 pink（各科共通の強調の赤）'],deep:['#B82834',R,'消化器内科ファイルの色変数 darkPink']},extras:[],note:'消化器内科は、トップと同じピンクが科の色でした。強調の赤だけ #DE2038 です。'},
+      general:{set:{main:['#F8B62D',R,'総合内科ファイルの色変数 yellow'],main2:['#FFAC00',R,'総合内科ファイルの色変数 yellow-2'],accent:['#DE2038',R,'総合内科ファイルの色変数 pink（各科共通の強調の赤）'],deep:['#9E6240',R,'総合内科ファイルの色変数 brown']},extras:[['#A86500','後から足された文字用の色（yellow-text-sm）'],['#C27E00','後から足された文字用の色（yellow-text-lg）']],note:'総合内科は黄色。ボタンの文字や見出しはもう少し濃い黄色 #FFAC00 でした。'},
+      ent:{set:{main:['#81B732',R,'耳鼻科ファイルの色変数 green'],main2:['#81B732',R,'同上（メインと同じ色）'],accent:['#DE2038',R,'耳鼻科ファイルの色変数 pink（各科共通の強調の赤）'],deep:['#0B6E4F',R,'耳鼻科ファイルの色変数 darkGreen']},extras:[],note:'耳鼻咽喉科は黄緑。'},
+      mental:{set:{main:['#0A65AC',R,'心療内科ファイルの色変数 blue'],main2:['#0A65AC',R,'同上（メインと同じ色）'],accent:['#F02840',R,'心療内科ファイルの色変数 pink'],deep:['#04052E',R,'心療内科ファイルの色変数 navy']},extras:[],note:'心療内科は青。この色は今も変わっていません。'},
+      derm:{set:{main:['#4FBAC9',R,'皮膚科ファイルの色変数 lightBlue'],main2:['#4FBAC9',R,'同上（メインと同じ色）'],accent:['#DE2038',R,'皮膚科ファイルの色変数 pink（各科共通の強調の赤）'],deep:['#166088',R,'皮膚科ファイルの色変数 darkBlue']},extras:[],note:'皮膚科・美容皮膚科は水色。'},
+      checkups:{set:{main:['#F29C78',R,'健診ファイルの色変数 orange'],main2:['#F29C78',R,'同上（メインと同じ色）'],accent:['#DE2038',R,'健診ファイルの色変数 pink（各科共通の強調の赤）'],deep:['#BA4D20',F,'当時の記録なし。後から足された科ラベルの文字色を当てた']},extras:[['#8E4A49','健診ファイルの色変数 rose（2026-09-20 の刷新で使われた色）']],note:'健康診断はサーモンピンク（オレンジ寄り）。'},
+      fever:{set:{main:['#E60012',L,'発熱外来専用ファイルの色変数（作成日の記録なし）'],main2:['#E60012',L,'同上'],accent:['#DE2038',L,'各科共通の強調の赤'],deep:['#B4000E',L,'発熱外来専用ファイルの色変数（作成日の記録なし）']},extras:[],note:'発熱外来は耳鼻科のデザインを使い、緑を赤 #E60012 に差し替えるファイルがありました。6月の日付つきの記録ではないため「その後の記録」の札にしています。'}
     },
     later:{
       top:{set:{main:['#D97706',L,'現在のCSSの色変数 lightPink（中身はオレンジ）'],main2:['#D97706',L,'現在のCSSの色変数 lightPink-2'],accent:['#C2410C',L,'現在のCSSの色変数 pink'],deep:['#B45309',L,'現在のCSSの色変数 darkPink']},extras:[['#EFA23E','ボタンや矢印のアイコン（2026-08-06 差し替え）']],note:'変数の名前は「pink」のまま、中身がオレンジに置き換わっています。'},
