@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="version" content="0.10.0">
-<title>日吉トップ案1の調整</title>
+<meta name="version" content="0.11.0">
+<title>日吉トップ案1の決定版</title>
 <style>
 :root{--bg:#faf8f6;--card:#fff;--ink:#1f1d1b;--sub:#625b55;--line:#e6e0d9}
 *{box-sizing:border-box}
@@ -32,6 +32,10 @@ code{font:12.5px ui-monospace,Consolas,monospace;color:var(--sub)}
 .hb-info b{font-size:15px}
 .hb-info .go{margin-left:auto;display:inline-block;padding:7px 14px;border-radius:8px;background:#34302F;color:#fff;text-decoration:none;font-weight:700;font-size:14px}
 .hb-info .go:focus-visible{outline:3px solid #6a9bff;outline-offset:2px}
+.tag{display:inline-block;padding:1px 9px;border-radius:999px;font-size:12.5px;font-weight:700;background:#34302F;color:#fff}
+.tag.off{background:#e7e2dc;color:#5a534d}
+.head.off{opacity:.62}
+.head.off .bar{height:40px}
 .cmp{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--sub);margin-top:6px}
 .cmp .bar{height:36px;flex:1;max-width:340px}
 .cmp .bar .nm{font-size:13px}
@@ -43,8 +47,8 @@ a{color:#2457a6}
 </head>
 <body>
 <main>
-<h1>トップページ 案1（ピンク×墨）の調整版</h1>
-<p class="lead">いただいたご意見どおりに案1を調整しました。下の「このヘッダーで見る」を押すと、本物と同じ作りのトップが開きます。左下の小窓でヘッダーの濃淡を3通り切り替えられます。本番サイトは変わっていません。</p>
+<h1>トップページ 案1（ピンク×墨）の調整版・決定</h1>
+<p class="lead">いただいたご意見どおりに案1を調整し、ヘッダー（グロナビ）は「A 横のグラデーション」に決めました。下の「トップを見る」を押すと、本物と同じ作りのトップが開きます。本番サイトは変わっていません。</p>
 
 <section class="box" aria-labelledby="done-h">
 <h2 id="done-h">ご意見と対応</h2>
@@ -52,26 +56,26 @@ a{color:#2457a6}
 <li><b>最初の画面（背景色と文字色）</b>：案1のまま（グレージュの背景・墨の文字・深いローズの「直結0分」・各科の色の札）。「内科の専門外来」の帯までが案1です</li>
 <li><b>「内科の専門外来」より下</b>：もとの6月23〜29日の色に戻しました（お知らせ・選ばれる理由・症状別ガイドのカード・お問い合わせ・フッターなど）</li>
 <li><b>ドクター写真のところ</b>（症状別ガイドの写真の帯）：案1の配色を採用（見出しの箱を墨色に、見出しの下にもとのピンクの短い線）</li>
-<li><b>グロナビ（ヘッダー）</b>：べた塗りをやめ、ピンクに濃淡をつけて文字を白抜きにしました（3通り。下で比べられます）</li>
+<li><b>グロナビ（ヘッダー）</b>：べた塗りをやめ、ピンクに濃淡をつけて文字を白抜きにしました。3通りを比べて <b>A 横のグラデーション</b>に決定</li>
 <li>画面の下に固定された予約ボタン（WEB予約・LINE予約・電話予約）は、最初の画面から見えているので案1のままです。スマホのメニューを開いた画面も案1と同じ墨色です</li>
 </ul>
 </section>
 
 <section class="box" aria-labelledby="head-h">
-<h2 id="head-h">ヘッダーの濃淡（3通り）</h2>
+<h2 id="head-h">ヘッダー（決定：A 横のグラデーション）</h2>
 <p style="margin:0 0 12px;font-size:14.5px">もとのピンク <code>#FFA0A7</code> のままでは白い文字が読みにくい（文字と背景の明るさの差 1.9：1。読みやすさの目安は 4.5：1 以上）ため、同じピンクの系統で濃いトーンにしました。どの場所でも白い文字が 4.6：1 以上です。</p>
 <div class="heads">
 <div class="head">
 <div class="bar ha" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
-<div class="hb-info"><b>A　横のグラデーション</b><span>左がやや明るく、右へ向かって濃く（<code>#BD5170</code>→<code>#9B3B56</code>）</span><a class="go" href="top/?h=a">このヘッダーで見る</a></div>
+<div class="hb-info"><span class="tag">決定</span><b>A　横のグラデーション</b><span>左がやや明るく、右へ向かって濃く（<code>#BD5170</code>→<code>#9B3B56</code>）</span><a class="go" href="top/">トップを見る</a></div>
 </div>
-<div class="head">
+<div class="head off">
 <div class="bar hb" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
-<div class="hb-info"><b>B　電車の帯風（2色）</b><span>濃いピンク <code>#AA415E</code> の帯の下に、もとのピンクの細い帯（3px）</span><a class="go" href="top/?h=b">このヘッダーで見る</a></div>
+<div class="hb-info"><span class="tag off">比べた案</span><b>B　電車の帯風（2色）</b><span>濃いピンク <code>#AA415E</code> の帯の下に、もとのピンクの細い帯（3px）</span></div>
 </div>
-<div class="head">
+<div class="head off">
 <div class="bar hc" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
-<div class="hb-info"><b>C　縦のグラデーション</b><span>上がやや明るく、下へ向かって濃く（<code>#BD5170</code>→<code>#9E3C58</code>）</span><a class="go" href="top/?h=c">このヘッダーで見る</a></div>
+<div class="hb-info"><span class="tag off">比べた案</span><b>C　縦のグラデーション</b><span>上がやや明るく、下へ向かって濃く（<code>#BD5170</code>→<code>#9E3C58</code>）</span></div>
 </div>
 </div>
 <div class="cmp"><span>参考：前の案1（べた塗り・もとのピンク）</span><div class="bar flat" aria-hidden="true"><span class="nm">日吉駅前こころみクリニック</span></div></div>

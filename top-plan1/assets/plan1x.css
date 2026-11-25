@@ -1,4 +1,5 @@
-/* 案1（ピンク×墨）の調整版 v0.10.0 ＝ html.p1x
+/* 案1（ピンク×墨）の調整版 v0.11.0 ＝ html.p1x
+   v0.11.0（2026-11-26）：ヘッダーは A「横のグラデーション」に決定（ご返事「A 横グラデ」）。B・C の指定は外した（v0.10.0 は color-sample-v0.10.0/ に凍結）
    ご意見（2026-11-26）：
    ・案1 の最初の画面（ファーストビュー）の配色がよい（背景色と文字色）
    ・「内科の専門外来」より下は、もとのまま（＝6月23〜29日の色）
@@ -6,9 +7,8 @@
    ・グロナビ（ヘッダー）のピンクの帯は、べた塗りではなくトーンを変えて（グラデーションなど）。文字は白抜き
    → 案1 の色は「ヘッダー・最初の画面（#home-firstview。内科の専門外来の帯まで）・画面下の固定の予約ボタン（#cta）・
      症状別ガイドの写真の帯の見出しの箱」にだけかける。それ以外は 6月の色のまま（この CSS は何もしない）。
-   ・ヘッダー：白い文字が読めるよう、もとのピンク #FFA0A7（白い文字は 1.9:1）を同じ系統の濃いピンクに。濃淡のつけ方を3通り
-       ha＝横のグラデーション（左やや明るい→右濃い）／hb＝濃いピンクの帯＋下にもとのピンクの細い帯（電車の帯のように）／hc＝縦のグラデーション（上やや明るい→下濃い）
-     どの点でも白い文字が 4.5:1 以上（いちばん明るい #BD5170 で 4.6:1）
+   ・ヘッダー：白い文字が読めるよう、もとのピンク #FFA0A7（白い文字は 1.9:1）を同じ系統の濃いピンクに。
+     横のグラデーション（左やや明るい #BD5170 → 右濃い #9B3B56）。どの点でも白い文字が 4.5:1 以上（いちばん明るい #BD5170 で 4.6:1）
    v0.9.0 の3案（top-plans/）は color-sample-v0.9.0/ に凍結 */
 
 html.p1x{
@@ -18,8 +18,6 @@ html.p1x{
   --p-nav-hover:#A83854;
 }
 html.p1x.ha{--p-header-paint:linear-gradient(90deg,#BD5170 0%,#AE4664 55%,#9B3B56 100%)}
-html.p1x.hb{--p-header-paint:linear-gradient(to top,#FFA0A7 0 3px,#AA415E 3px)}
-html.p1x.hc{--p-header-paint:linear-gradient(180deg,#BD5170 0%,#9E3C58 100%)}
 
 /* 案1 の変数（面＝墨／見出し・強調＝深いローズ／濃い面＝墨／うすい背景のもと）を、案1 にする場所の中だけに置く */
 html.p1x :is(#header,.fat-nav,#home-firstview,#cta,#condition-guide .value-hero .title){
@@ -79,5 +77,4 @@ html.p1x:not(#_j) #condition-guide .value-hero .title{background-color:var(--p-d
 html.p1x #condition-guide .value-hero .title h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;margin:12px auto 0;background:var(--p-pink)}
 
 /* 見本用パネル（plan1x.js） */
-#jsample .js-seg{grid-template-columns:1fr 1fr 1fr}
-#jsample .js-seg button .sw2{display:block;height:10px;border-radius:2px;margin:0 auto 4px}
+#jsample .js-bar{height:10px;border-radius:3px;margin:8px 0 2px;background:var(--p-header-paint)}
