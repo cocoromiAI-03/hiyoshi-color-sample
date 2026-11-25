@@ -1,0 +1,141 @@
+/* トップの配色案（各科は 2026-06-23〜29 の色のまま）v0.9.0
+   ご依頼（2026-11-25）：「各科の色は 6月23〜29日の色を使う。これらの色に合うトップの配色案を。
+     最初はメインカラーがピンクだった＝最寄り駅の電車の色と一致していたので生かせるとよい。難しければ別の案でよい。
+     ピンクを全面に出しすぎるとかわいらしすぎるので、男性でも抵抗がない感じに」
+   html.tp.tp1 ＝ 案1「ピンク × 墨（すみ）」：ピンクが主役。ヘッダーとお問い合わせはもとのピンク、文字は墨、見出しは深いローズ
+   html.tp.tp2 ＝ 案2「白 × グラファイト ＋ 各科の色」：白と濃いグレーの土台に、ロゴと各科の色を路線の色のように並べる。ピンクは駅の色として要所だけ
+   html.tp.tp3 ＝ 案3「ネイビー × えんじ」：これまでで好評だった②（v0.3.0）と「各科が映える案」（v0.7.0）がもと。ピンクは控えめ
+   どの案も：診療科の札を各科の 6月の色で塗る・症状別ガイドのカードの上に各科の色の帯。
+   しくみ：サイトの色は sample.css の変数（--jt-*・--jc-*）で決まっているので、案ごとに --p-* を決めて変数に流し込み、
+   大きな面（ヘッダー・最初の画面・お問い合わせなど）だけ個別に上書きする。
+   ヘッダーはサイト側の @layer clinicHeaderDesktop（!important）に勝つため、sample.css で先に宣言した @layer jsample の中で上書きする */
+
+html.tp1{
+  --p-pink:#FFA0A7;--p-ink:#34302F;--p-dark:#34302F;
+  --p-btn:#34302F;--p-head:#A83854;--p-head-deep:#8A2D45;--p-accent:#A83854;
+  --p-bg:#F6F2F0;--p-tint:#BFAFAE;--p-sub:#6E6463;
+  --p-header-bg:#FFA0A7;--p-header-ink:#34302F;--p-header-stripe:none;
+  --p-contact-bg:#FFA0A7;--p-contact-ink:#34302F;
+  --p-cta:#FFA0A7;--p-cta-hover:#F7929A;--p-cta-ink:#34302F;
+  --p-pagetop:#FFA0A7;--p-pagetop-ink:#34302F;
+}
+html.tp2{
+  --p-pink:#FFA0A7;--p-ink:#2B3036;--p-dark:#2B3036;
+  --p-btn:#2B3036;--p-head:#2B3036;--p-head-deep:#1D2126;--p-accent:#2B3036;
+  --p-bg:#F4F5F7;--p-tint:#B4BAC2;--p-sub:#5E6670;
+  --p-header-bg:#FFFFFF;--p-header-ink:#2B3036;
+  --p-line:linear-gradient(90deg,#FFA0A7 0 14.3%,#F8B62D 0 28.6%,#81B732 0 42.9%,#4FBAC9 0 57.1%,#0A65AC 0 71.4%,#F29C78 0 85.7%,#E60012 0);
+  --p-header-stripe:var(--p-line);
+  --p-contact-bg:#F4F5F7;--p-contact-ink:#2B3036;
+  --p-cta:#FFA0A7;--p-cta-hover:#F7929A;--p-cta-ink:#2B3036;
+  --p-pagetop:#2B3036;--p-pagetop-ink:#FFFFFF;
+}
+html.tp3{
+  --p-pink:#FFA0A7;--p-ink:#1E3A66;--p-dark:#1E3A66;
+  --p-btn:#1E3A66;--p-head:#1E3A66;--p-head-deep:#152B4D;--p-accent:#A94A5C;
+  --p-bg:#F3F5F8;--p-tint:#869DB6;--p-sub:#5B6673;
+  --p-header-bg:#1E3A66;--p-header-ink:#FFFFFF;--p-header-stripe:linear-gradient(#FFA0A7,#FFA0A7);
+  --p-contact-bg:#F3F5F8;--p-contact-ink:#1E3A66;
+  --p-cta:#A94A5C;--p-cta-hover:#8E3B4D;--p-cta-ink:#FFFFFF;
+  --p-pagetop:#1E3A66;--p-pagetop-ink:#FFFFFF;
+}
+
+/* 変数の流し込み：面（ボタン・番号・アイコン）＝ --p-btn／見出し・リンク・強調＝ --p-head／濃い面・ほぼ黒の文字＝ --p-dark／うすい背景のもと＝ --p-tint。
+   サイト側が :root に置いた変数（予約ボタンのアイコンなど）にも届くよう html に置く */
+html.tp{
+  --jt-main:var(--p-btn);--jt-text:var(--p-head);--jt-fill:var(--p-dark);--jt-dark:var(--p-dark);--jt-tint:var(--p-tint);
+  --jc-FFA0A7:var(--p-head);--jc-F89098:var(--p-head);--jc-B82834:var(--p-head-deep);--jc-F02840:var(--p-head);
+  --jc-DE2038:var(--p-head);--jc-E81820:var(--p-head);--jc-E04020:var(--p-head);
+  --reservation-primary:var(--p-cta)!important;--reservation-primary-hover:var(--p-cta-hover)!important;--reservation-on-primary:var(--p-cta-ink)!important;
+  --reservation-sticky-primary:var(--p-cta)!important;--reservation-sticky-text:var(--p-cta-ink)!important;
+  --hiyoshi-global-header-bg:var(--p-header-bg)!important;
+  /* トップに出る科の名前（健康診断・美容皮膚などの文字）は読める濃さに（6月の色の中の濃い色）。消化器内科はトップと同じ扱い */
+  --jgastro-text:var(--p-head);--jgastro-fill:var(--p-dark);
+  --jgeneral-text:#9E6240;--jgeneral-fill:#9E6240;--jent-text:#0B6E4F;--jent-fill:#0B6E4F;
+  --jderm-text:#166088;--jderm-fill:#166088;--jcheckups-text:#BA4D20;--jcheckups-fill:#BA4D20;
+}
+
+/* ヘッダー */
+@layer jsample{
+  html.tp #header:not(:has(.div-header-global)),html.tp #header .div-header-global,html.tp #header .nav-header-global{
+    background:var(--p-header-stripe) top/100% 4px no-repeat,var(--p-header-bg)!important;color:var(--p-header-ink)!important;box-shadow:none!important}
+  html.tp #header :is(a,span,p,li,div,strong,small,nav,ul){color:var(--p-header-ink)!important}
+}
+html.tp:not(#_j) header#header{background:var(--p-header-stripe) top/100% 4px no-repeat,var(--p-header-bg)!important}
+html.tp2:not(#_j) header#header{box-shadow:0 1px 0 #E3E6EA!important}
+/* スマホのメニュー：三本線はヘッダーの文字の色、開いた画面は濃い色に白い文字 */
+html.tp:not(#_j) .hamburger:not(.active) .hamburger__icon,
+html.tp:not(#_j) .hamburger:not(.active) .hamburger__icon::before,
+html.tp:not(#_j) .hamburger:not(.active) .hamburger__icon::after{background-color:var(--p-header-ink)!important}
+html.tp:not(#_j) .fat-nav{background-color:var(--p-dark)!important}
+html.tp:not(#_j) .fat-nav :is(li,a,p,span){color:#fff!important;border-color:rgba(255,255,255,.25)!important}
+
+/* 最初の画面：うすい背景＋濃い文字。「直結0分」は案ごとの強調 */
+html.tp:not(#_j) #home-firstview #mainimage,html.tp:not(#_j) #home-firstview #mainimage .hero-photo{background:var(--p-bg)!important}
+html.tp2:not(#_j) #home-firstview #mainimage,html.tp2:not(#_j) #home-firstview #mainimage .hero-photo{background:#fff!important}
+html.tp:not(#_j) #mainimage :is(.hero-heading .corporation,.department-heading span){color:var(--p-sub)!important}
+html.tp:not(#_j) #mainimage :is(#clinic-title,.hero-heading .location,.department-heading h2){color:var(--p-ink)!important}
+html.tp:not(#_j) #mainimage .hero-heading .location span{color:var(--p-accent)!important}
+html.tp:not(#_j) #mainimage .hero-heading .hours{color:var(--p-ink)!important}
+/* 案2：「直結0分」は濃い文字＋ピンクの下線マーカー（駅の色） */
+html.tp2:not(#_j) #mainimage .hero-heading .location span{background:linear-gradient(transparent 62%,var(--p-pink) 62%)!important;padding:0 .08em}
+
+/* 最初の画面の下の段（健康診断・ワクチン・美容皮膚の行、内科の専門外来の帯、症状から探す などの丸いボタン）は、
+   サイト側でクリーム色（#FFFAF4 など）が直書きされていて案の色と合わないので、案の背景色に */
+html.tp1{--p-panel:#FFFFFF}
+html.tp2{--p-panel:#F4F5F7}
+html.tp3{--p-panel:#FFFFFF}
+html.tp:not(#_j) #home-firstview :is(.service-group,.specialty-section){background-color:var(--p-panel)!important}
+html.tp:not(#_j) .ux-quick-links a{background-color:var(--p-bg)!important}
+/* 案2：最初の画面が白なので、科のカードに細い枠 */
+html.tp2:not(#_j):not(#_k) #home-firstview .department{box-shadow:0 0 0 1px #E3E6EA!important}
+
+/* 診療科の札（最初の画面）：各科の 6月の色で塗る。文字は案の濃い色（発熱外来は白） */
+html.tp:not(#_j):not(#_k) #home-firstview .department{--dept-ink:var(--p-ink)!important;--accent:var(--p-ink)!important}
+html.tp:not(#_j):not(#_k) #home-firstview .department.gastro{--soft:#FFA0A7!important}
+html.tp:not(#_j):not(#_k) #home-firstview .department.general{--soft:#F8B62D!important}
+html.tp:not(#_j):not(#_k) #home-firstview .department.ent{--soft:#81B732!important}
+html.tp:not(#_j):not(#_k) #home-firstview .department.fever{--soft:#E60012!important;--dept-ink:#fff!important}
+html.tp:not(#_j):not(#_k) #home-firstview .department .arrow{color:var(--p-ink)!important}
+
+/* お知らせの見出し・症状別ガイドの帯・フッター：濃い色 */
+html.tp:not(#_j) section.info dl{background-color:var(--p-dark)!important}
+html.tp:not(#_j) #condition-guide .title{background-color:var(--p-dark)!important}
+html.tp:not(#_j) :is(footer,#footer){background-color:var(--p-dark)!important}
+/* うすい背景の節 */
+html.tp:not(#_j) #condition-guide,html.tp:not(#_j) .top-faq{background:var(--p-bg)!important}
+
+/* 症状別ガイドのカード：上に、リンク先の科の色の帯（ほかの専門外来は案の濃い色） */
+html.tp:not(#_j) .box--value{border-top:4px solid var(--p-dark)!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/general/"]){border-top-color:#F8B62D!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/ent/"]){border-top-color:#81B732!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/gastro/"]){border-top-color:#FFA0A7!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/derm/"]){border-top-color:#4FBAC9!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/checkups/"]){border-top-color:#F29C78!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/fever/"]){border-top-color:#E60012!important}
+html.tp:not(#_j):not(#_k) .box--value:has(a[href*="2026-06/mental/"]){border-top-color:#0A65AC!important}
+
+/* お問い合わせ */
+html.tp:not(#_j) section.contact{background-color:var(--p-contact-bg)!important}
+html.tp:not(#_j) section.contact .title :is(h2,p){color:var(--p-contact-ink)!important}
+/* WEB予約（お問い合わせ・最初の画面・画面下の固定ボタン） */
+html.tp:not(#_j):not(#_k) section.contact .btn>a[href^="https://wakumy.lyd.inc/"],
+html.tp:not(#_j):not(#_k) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"]{background-color:var(--p-cta)!important;border-color:var(--p-cta)!important;color:var(--p-cta-ink)!important}
+html.tp:not(#_j):not(#_k) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"] *{color:var(--p-cta-ink)!important}
+/* 案1：お問い合わせがピンクの面なので、WEB予約は墨に白い文字にして面と分ける */
+html.tp1:not(#_j):not(#_k):not(#_l) section.contact .btn>a[href^="https://wakumy.lyd.inc/"]{background-color:var(--p-dark)!important;border-color:var(--p-dark)!important;color:#fff!important}
+html.tp1:not(#_j):not(#_k):not(#_l) section.contact .btn>a[href^="https://wakumy.lyd.inc/"] *{color:#fff!important}
+/* ページ上部へ */
+html.tp:not(#_j) #page-top>a{background-color:var(--p-pagetop)!important;color:var(--p-pagetop-ink)!important}
+
+/* 見出しの下の短い線：案1＝もとのピンク／案2＝各科の色を並べた線（路線図のように）／案3＝なし */
+html.tp1 section:is(.Service,.Value,.Step,.top-faq,.Company) .title h2::after,
+html.tp2 section:is(.Service,.Value,.Step,.top-faq,.Company) .title h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;margin:12px auto 0}
+html.tp1 section.f-Service .title h2::after,
+html.tp2 section.f-Service .title h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;margin:10px 0 0}
+html.tp1 section:is(.Service,.Value,.Step,.top-faq,.Company,.f-Service) .title h2::after{background:var(--p-pink)}
+html.tp2 section:is(.Service,.Value,.Step,.top-faq,.Company,.f-Service) .title h2::after{background:var(--p-line);width:84px}
+
+/* 見本用パネル（plans.js）の配色ボタンの色見本 */
+#jsample .js-seg button .sw2{display:inline-block;width:18px;height:8px;border-radius:2px;margin-right:5px;vertical-align:0}
+#jsample .js-seg{grid-template-columns:1fr 1fr}
