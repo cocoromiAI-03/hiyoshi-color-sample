@@ -1,5 +1,6 @@
-/* 最初の画面の背景7パターンの見本：パネル（パターンの切り替え＋ページ移動） v0.16.0（v0.12.0 は5パターン、v0.13.0 で6・7を追加、v0.14.0 で6・7の濃さを変更、v0.15.0 で6をブルーグレー濃いめに、v0.16.0 で発熱外来の赤をおさえた＝html.fvr。パネルは fvr に触らない）
-   パターンは html の fv1〜fv7（と fvL＝明るい背景 1〜3・6 ／ fvD＝暗い背景 4・5・7）で切り替わる。<head> のスクリプトが ?p= か記憶（jFvPat）から最初の値を決める
+/* 最初の画面の背景5パターンの見本：パネル（パターンの切り替え＋ページ移動） v0.17.0（v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
+   v0.16.0 で発熱外来の赤をおさえた＝html.fvr。パネルは fvr に触らない）
+   パターンは html の fv1〜fv5（と fvL＝明るい背景 1〜3 ／ fvD＝暗い背景 4・5）で切り替わる。<head> のスクリプトが ?p= か記憶（jFvPat）から最初の値を決める
    ?shot=1 のときはパネルを出さない（説明ページの縮小画像を撮るため） */
 (function () {
   if (/[?&]shot=1\b/.test(location.search)) return;
@@ -12,22 +13,20 @@
     ['2', 'ベージュ', '#F6F2F0', 'ベージュ（案1の色）'],
     ['3', 'おまかせ', '#FFFFFF', 'おまかせ：白＋各科の濃い色の文字'],
     ['4', 'グレー', '#686D72', 'グレー＋写真の色味をおさえる'],
-    ['5', 'ネイビー', '#253F5C', 'ネイビー（②の色）'],
-    ['6', 'ブルーグレー濃いめ', '#BCC7D2', 'ブルーグレー濃いめ（①より濃く、グレー寄り）'],
-    ['7', 'うすいネイビー', '#5C6F85', 'うすいネイビー（⑤のネイビーより少しうすく）']
+    ['5', 'ネイビー', '#0F2634', 'ネイビー（症状別ガイドの帯の紺）']
   ];
   var h = document.documentElement;
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-  function light(m) { return /^[1236]$/.test(m); }
-  function cur() { for (var i = 1; i <= 7; i++) if (h.classList.contains('fv' + i)) return String(i); return '1'; }
+  function light(m) { return /^[123]$/.test(m); }
+  function cur() { for (var i = 1; i <= 5; i++) if (h.classList.contains('fv' + i)) return String(i); return '1'; }
 
   var box = document.createElement('div');
   box.id = 'jsample';
   box.setAttribute('role', 'region');
   box.setAttribute('aria-label', '配色見本の案内');
   box.innerHTML =
-    '<div class="js-h"><div class="js-t">最初の画面の背景（7パターン）' +
+    '<div class="js-h"><div class="js-t">最初の画面の背景（5パターン）' +
     '<small>6月の色＋ヘッダーはグラデーション・発熱外来は落ち着いた赤（見本です。本番ではありません）</small></div>' +
     '<button type="button" class="js-x" aria-label="小さくする">×</button></div>' +
     '<div class="js-body">' +
@@ -49,7 +48,7 @@
     box.querySelector('.js-name').textContent = m + '. ' + PATS[Number(m) - 1][3];
   }
   function apply(m) {
-    for (var i = 1; i <= 7; i++) h.classList.remove('fv' + i);
+    for (var i = 1; i <= 5; i++) h.classList.remove('fv' + i);
     h.classList.remove('fvL', 'fvD');
     h.classList.add('fv' + m, light(m) ? 'fvL' : 'fvD');
     set('jFvPat', m);
