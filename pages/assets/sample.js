@@ -1,7 +1,8 @@
 /* 見本用パネル：どのページの見本か・配色の切り替え・ページ移動
    v0.3.0: 「新しい配色案」を追加。URL の ?c=june / readable / new で直接開ける
    v0.4.0: 新しい案を「もとのピンクが主役＋ネイビーの差し色」に変更（各科は6月の色・発熱外来だけ落ち着いた赤）
-   v0.5.0: トップだけ「ネイビー基調＋ピンクの差し色（ボタン・アイコン）」に差し替え */
+   v0.5.0: トップだけ「ネイビー基調＋ピンクの差し色（ボタン・アイコン）」に差し替え
+   v0.6.0: トップを②v0.3.0 の色に戻し、もとのピンクの細い線を差し色として追加 */
 (function () {
   var me = document.currentScript;
   var page = (me && me.getAttribute('data-page')) || 'top';
@@ -12,7 +13,7 @@
     ['checkups', '健康診断', '#F29C78', '#F29C78'], ['fever', '発熱外来', '#E60012', '#BF3F48']
   ];
   var MODES = { faithful: 'june', readable: 'readable', b: 'new' };
-  var TITLE = { faithful: '2026年6月の色', readable: '6月の色・文字を読みやすく', b: '新しい配色案（トップはネイビー＋ピンク）' };
+  var TITLE = { faithful: '2026年6月の色', readable: '6月の色・文字を読みやすく', b: '新しい配色案（トップはネイビー基調）' };
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   var h = document.documentElement;
