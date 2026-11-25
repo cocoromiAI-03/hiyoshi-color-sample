@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="version" content="0.12.0">
+<title>日吉 最初の画面の背景5案</title>
+<style>
+:root{--bg:#faf8f6;--card:#fff;--ink:#1f1d1b;--sub:#625b55;--line:#e6e0d9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
+main{max-width:1000px;margin:0 auto;padding:32px 16px 56px}
+h1{font-size:23px;line-height:1.45;margin:0 0 8px}
+.lead{margin:0 0 20px;color:#3b3631;font-size:15px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 20px}
+.box h2{font-size:16.5px;margin:0 0 8px}
+.box ul{margin:0;padding-left:1.2em;font-size:14.5px}
+.box li{margin:4px 0}
+code{font:12.5px ui-monospace,Consolas,monospace;color:var(--sub)}
+a{color:#2457a6}
+a:focus-visible{outline:3px solid #6a9bff;outline-offset:2px}
+/* ヘッダーのグラデーション見本 */
+.heads{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;margin:10px 0 4px}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:8px;height:40px;padding:0 12px;border-radius:8px;color:#fff;font-weight:700;font-size:13.5px}
+.hd small{font:11.5px ui-monospace,Consolas,monospace;opacity:.95;white-space:nowrap}
+/* パターン */
+.pat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 18px}
+.pat-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 6px}
+.pat-h h2{font-size:18px;margin:0}
+.no{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#2b2825;color:#fff;font-weight:700;font-size:15px;flex:none}
+.sw{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sub)}
+.sw i{display:block;width:34px;height:22px;border-radius:5px;border:1px solid rgba(0,0,0,.18)}
+.pat p{margin:4px 0 10px;font-size:14.5px}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 10px}
+.shots a{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;background:#fff}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:8/5}
+.shots span{display:block;padding:3px 8px;font-size:12.5px;color:var(--sub)}
+.links{display:flex;flex-wrap:wrap;gap:6px 8px;font-size:13.5px}
+.links a{display:inline-block;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;text-decoration:none;color:#1f1d1b}
+.links a:hover{border-color:#b9b0a5}
+@media (max-width:640px){.shots{grid-template-columns:1fr}.heads{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>日吉サイト 最初の画面の背景 5パターン</h1>
+<p class="lead">2026年6月23〜29日の色をそのまま使い、変えたのは2か所だけです。<b>① ヘッダー（グロナビ）を6月の色のグラデーションに</b>、<b>② 各ページの最初の画面で写真の後ろにあった「各科の色」をやめ、全科共通の1色に</b>。その共通の色を5通り作りました。画像かページ名を押すと、本物と同じ作りのページが開きます（左下の小窓で5パターンを切り替えられます）。本番サイトは変わっていません。</p>
+
+<section class="box" aria-labelledby="hd-h">
+<h2 id="hd-h">ヘッダー（グロナビ）のグラデーション：5パターン共通</h2>
+<ul>
+<li>左が6月の色そのまま、右へ行くほど同じ色を少し濃く（色の種類は変えず、濃さだけ）。白い文字は6月どおりです</li>
+<li>トップと各科のページ（8ページすべて）に付けました。ヘッダーの下の白い段（診療科名とメニュー）は6月のままです</li>
+</ul>
+<div class="heads">
+<div class="hd" style="background:linear-gradient(90deg,#FFA0A7,#CA7E84)">トップ・消化器内科<small>#FFA0A7→#CA7E84</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#F8B62D,#C59021)">総合内科<small>#F8B62D→#C59021</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#81B732,#659025)">耳鼻咽喉科<small>#81B732→#659025</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#0A65AC,#064E88)">心療内科・精神科<small>#0A65AC→#064E88</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#4FBAC9,#3D939F)">美容皮膚科<small>#4FBAC9→#3D939F</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#F29C78,#C07B5E)">健康診断<small>#F29C78→#C07B5E</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#E60012,#B6000C)">発熱外来<small>#E60012→#B6000C</small></div>
+</div>
+</section>
+
+<section class="pat" aria-labelledby="p1-h">
+<div class="pat-h"><span class="no">1</span><h2 id="p1-h">うすいブルーグレー</h2><span class="sw"><i style="background:#F3F5F8"></i><code>#F3F5F8</code>　文字 <i style="background:#253F5C"></i><code>#253F5C</code></span></div>
+<p>ネイビー案（②）の最初の画面で使っていた色です。文字も②のネイビー。すっきりした、少しひんやりした印象です。</p>
+<div class="shots">
+<a href="top/?p=1"><img src="img/p1-top.jpg" width="800" height="500" loading="lazy" alt="パターン1のトップの最初の画面"><span>トップ</span></a>
+<a href="general/?p=1"><img src="img/p1-general.jpg" width="800" height="500" loading="lazy" alt="パターン1の総合内科の最初の画面"><span>総合内科</span></a>
+<a href="ent/?p=1"><img src="img/p1-ent.jpg" width="800" height="500" loading="lazy" alt="パターン1の耳鼻咽喉科の最初の画面"><span>耳鼻咽喉科</span></a>
+</div>
+<div class="links"><a href="top/?p=1">トップ</a><a href="gastro/?p=1">消化器内科・内視鏡</a><a href="general/?p=1">総合内科</a><a href="ent/?p=1">耳鼻咽喉科</a><a href="mental/?p=1">心療内科・精神科</a><a href="derm/?p=1">美容皮膚科</a><a href="checkups/?p=1">健康診断</a><a href="fever/?p=1">発熱外来</a></div>
+</section>
+
+<section class="pat" aria-labelledby="p2-h">
+<div class="pat-h"><span class="no">2</span><h2 id="p2-h">ベージュ（案1 ピンク×墨の色）</h2><span class="sw"><i style="background:#F6F2F0"></i><code>#F6F2F0</code>　文字 <i style="background:#34302F"></i><code>#34302F</code></span></div>
+<p>案1（ピンク×墨）の最初の画面で使っていたベージュ（グレージュ）です。文字も案1の墨色。あたたかく落ち着いた印象です。</p>
+<div class="shots">
+<a href="top/?p=2"><img src="img/p2-top.jpg" width="800" height="500" loading="lazy" alt="パターン2のトップの最初の画面"><span>トップ</span></a>
+<a href="general/?p=2"><img src="img/p2-general.jpg" width="800" height="500" loading="lazy" alt="パターン2の総合内科の最初の画面"><span>総合内科</span></a>
+<a href="ent/?p=2"><img src="img/p2-ent.jpg" width="800" height="500" loading="lazy" alt="パターン2の耳鼻咽喉科の最初の画面"><span>耳鼻咽喉科</span></a>
+</div>
+<div class="links"><a href="top/?p=2">トップ</a><a href="gastro/?p=2">消化器内科・内視鏡</a><a href="general/?p=2">総合内科</a><a href="ent/?p=2">耳鼻咽喉科</a><a href="mental/?p=2">心療内科・精神科</a><a href="derm/?p=2">美容皮膚科</a><a href="checkups/?p=2">健康診断</a><a href="fever/?p=2">発熱外来</a></div>
+</section>
+
+<section class="pat" aria-labelledby="p3-h">
+<div class="pat-h"><span class="no">3</span><h2 id="p3-h">おまかせ：白＋各科の濃い色の文字</h2><span class="sw"><i style="background:#FFFFFF"></i><code>#FFFFFF</code></span></div>
+<p>背景は全科そろえて白に。そのかわり、見出しなどの文字を<b>各科の6月の濃い色</b>にしました（トップ・消化器 <code>#B82834</code>／総合内科 <code>#9E6240</code>／耳鼻 <code>#0B6E4F</code>／心療 <code>#04052E</code>／皮膚 <code>#166088</code>／健診 <code>#BA4D20</code>／発熱 <code>#B4000E</code>。どれも6月のCSSにある色）。選んだ理由：①背景をそろえても、ヘッダーと文字の色で「どの科のページか」がすぐ分かる ②写真がいちばん明るく、清潔に見える ③ほかの4つが色のついた背景なので、比べる基準になる。</p>
+<div class="shots">
+<a href="top/?p=3"><img src="img/p3-top.jpg" width="800" height="500" loading="lazy" alt="パターン3のトップの最初の画面"><span>トップ</span></a>
+<a href="general/?p=3"><img src="img/p3-general.jpg" width="800" height="500" loading="lazy" alt="パターン3の総合内科の最初の画面"><span>総合内科</span></a>
+<a href="ent/?p=3"><img src="img/p3-ent.jpg" width="800" height="500" loading="lazy" alt="パターン3の耳鼻咽喉科の最初の画面"><span>耳鼻咽喉科</span></a>
+</div>
+<div class="links"><a href="top/?p=3">トップ</a><a href="gastro/?p=3">消化器内科・内視鏡</a><a href="general/?p=3">総合内科</a><a href="ent/?p=3">耳鼻咽喉科</a><a href="mental/?p=3">心療内科・精神科</a><a href="derm/?p=3">美容皮膚科</a><a href="checkups/?p=3">健康診断</a><a href="fever/?p=3">発熱外来</a></div>
+</section>
+
+<section class="pat" aria-labelledby="p4-h">
+<div class="pat-h"><span class="no">4</span><h2 id="p4-h">グレー＋写真の色味をおさえる</h2><span class="sw"><i style="background:#686D72"></i><code>#686D72</code>　文字 白</span></div>
+<p>背景をグレーにし、写真にもグレーのフィルターをかけて色味を約6割おさえました（白黒にはしていません）。全体が落ち着いたグレー調になり、色がついているのはヘッダーとボタンだけになります。文字は6月どおり白。</p>
+<div class="shots">
+<a href="top/?p=4"><img src="img/p4-top.jpg" width="800" height="500" loading="lazy" alt="パターン4のトップの最初の画面"><span>トップ</span></a>
+<a href="general/?p=4"><img src="img/p4-general.jpg" width="800" height="500" loading="lazy" alt="パターン4の総合内科の最初の画面"><span>総合内科</span></a>
+<a href="ent/?p=4"><img src="img/p4-ent.jpg" width="800" height="500" loading="lazy" alt="パターン4の耳鼻咽喉科の最初の画面"><span>耳鼻咽喉科</span></a>
+</div>
+<div class="links"><a href="top/?p=4">トップ</a><a href="gastro/?p=4">消化器内科・内視鏡</a><a href="general/?p=4">総合内科</a><a href="ent/?p=4">耳鼻咽喉科</a><a href="mental/?p=4">心療内科・精神科</a><a href="derm/?p=4">美容皮膚科</a><a href="checkups/?p=4">健康診断</a><a href="fever/?p=4">発熱外来</a></div>
+</section>
+
+<section class="pat" aria-labelledby="p5-h">
+<div class="pat-h"><span class="no">5</span><h2 id="p5-h">ネイビー（②の色）</h2><span class="sw"><i style="background:#253F5C"></i><code>#253F5C</code>　文字 白</span></div>
+<p>ネイビー案（②）のヘッダーとフッターの紺です。文字は6月どおり白。いちばん引きしまった印象で、明るい科の色のヘッダーとの差がはっきり出ます。</p>
+<div class="shots">
+<a href="top/?p=5"><img src="img/p5-top.jpg" width="800" height="500" loading="lazy" alt="パターン5のトップの最初の画面"><span>トップ</span></a>
+<a href="general/?p=5"><img src="img/p5-general.jpg" width="800" height="500" loading="lazy" alt="パターン5の総合内科の最初の画面"><span>総合内科</span></a>
+<a href="ent/?p=5"><img src="img/p5-ent.jpg" width="800" height="500" loading="lazy" alt="パターン5の耳鼻咽喉科の最初の画面"><span>耳鼻咽喉科</span></a>
+</div>
+<div class="links"><a href="top/?p=5">トップ</a><a href="gastro/?p=5">消化器内科・内視鏡</a><a href="general/?p=5">総合内科</a><a href="ent/?p=5">耳鼻咽喉科</a><a href="mental/?p=5">心療内科・精神科</a><a href="derm/?p=5">美容皮膚科</a><a href="checkups/?p=5">健康診断</a><a href="fever/?p=5">発熱外来</a></div>
+</section>
+
+<section class="box" aria-labelledby="note-h">
+<h2 id="note-h">5パターン共通のこと</h2>
+<ul>
+<li><b>変えたのは「ヘッダー」と「最初の画面」だけ</b>です。それより下（お知らせ・選ばれる理由・お問い合わせ・フッターなど）は6月の色のままです</li>
+<li>最初の画面のボタン（WEB予約・LINE予約）、トップの診療科の札、写真の上の名札は6月のままです。ただし明るい背景（1〜3）では、白いWEB予約ボタンが背景に沈むので、その科の6月の色の枠を付けました。トップの札にも細い線を付けています</li>
+<li>心療内科・精神科のページは、最初の画面が「開始時期未定」のお知らせの下にあります（ページの作りがそうなっているため）</li>
+<li>写真の中の色は変わりません（4だけは写真の色味をおさえています）</li>
+</ul>
+</section>
+
+<section class="box" aria-labelledby="chk-h">
+<h2 id="chk-h">確認したこと（2026-11-26）</h2>
+<ul>
+<li>8ページ × 5パターン × パソコン幅（1280px）・スマホ幅（375px）の80通りで、ヘッダーと最初の画面以外は6月の色の見本と全部同じ（差 0）</li>
+<li>同じ80通りで、文字と背景の色の差（読みやすさの基準）を測り、今回の変更で読みにくくなった文字は 0。もとの6月は白い文字が明るい科の色の上にあり読みにくかったところが多く、明るい背景・暗い背景のどちらでも読みやすくなっています</li>
+<li>基準に届かないまま残っているのは、6月のデザインのままの「WEB予約」の文字（白地に明るい科の色）と、トップの診療科の札の文字だけです</li>
+</ul>
+</section>
+
+<p style="font-size:13px;color:var(--sub)">これまでの見本：<a href="../">一覧</a>　／　<a href="../2026-06/">6月の色だけの見本</a>　／　<a href="../top-plan1/">トップ案1の決定版（v0.11.0）</a></p>
+</main>
+</body>
+</html>
