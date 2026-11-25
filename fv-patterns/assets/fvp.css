@@ -1,12 +1,13 @@
-/* 最初の画面の背景7パターン v0.13.0（土台は 2026-06-23〜29 の色＝sample.css。v0.12.0 は5パターン）
+/* 最初の画面の背景7パターン v0.14.0（土台は 2026-06-23〜29 の色＝sample.css。v0.12.0 は5パターン、v0.13.0 で6・7を追加）
    ご依頼（2026-11-26）：「6月のもとの色を採用。基本、新たな色はつくらない。
      各科のページ、トップのグロナビの色はグラデーションをかけて。
      各ページ、ファーストビューの写真の背景の各科の色はとる。かわりに、各科の背景色ではなく全科統一の背景色にする。
      ①うすいブルーグレー ②案1（ピンク×墨）で使ったベージュっぽい色 ③おまかせ ④写真の上からグレーのフィルター
      （全体的にグレーっぽく色味をおさえた感じ） ⑤ネイビー案②」
    追加のご依頼（2026-11-26）：「背景色に、うすいグレー、うすいネイビーも追加して」→ ⑥⑦
-   html.fvp ＝ この見本 ／ html.fv1〜fv7 ＝ パターン ／ html.fvL ＝ 明るい背景（1〜3・6・7：文字を濃い色に） ／ html.fvD ＝ 暗い背景（4・5：文字は6月どおり白）
-   新しく作った色はない：①⑤は②（v0.3.0）、②は案1（v0.9.0）で使った色、③の文字は各科の6月の濃い色、④のグレーはご指定、⑥⑦は④のグレー・⑤のネイビーを白で薄めた色（色相は同じ） */
+   さらに「うすいグレー・うすいネイビーはうすすぎた。グレー、ネイビーよりもう少しうすくした感じ」→ v0.14.0 で⑥⑦の濃さを変更
+   html.fvp ＝ この見本 ／ html.fv1〜fv7 ＝ パターン ／ html.fvL ＝ 明るい背景（1〜3・6：文字を濃い色に） ／ html.fvD ＝ 暗い背景（4・5・7：文字は6月どおり白）
+   新しく作った色はない：①⑤は②（v0.3.0）、②は案1（v0.9.0）で使った色、③の文字は各科の6月の濃い色、④のグレーはご指定、⑥⑦は④のグレー・⑤のネイビーを白で薄めた色（色相は同じ）。⑥の文字は案2のグラファイト */
 
 /* ===== パターンの色 ===== */
 html.fv1{--fv-bg:#F3F5F8;--fv-ink:#253F5C;--fv-line:rgba(37,63,92,.28)}   /* ②の最初の画面の色＋②のネイビーの文字 */
@@ -15,8 +16,9 @@ html.fv3{--fv-bg:#FFFFFF}                                                  /* �
 html.fv3 body{--fv-ink:var(--jt-dark);--fv-line:color-mix(in srgb,var(--jt-dark) 28%,transparent)}
 html.fv4{--fv-bg:#686D72;--fv-ink:#fff}                                    /* グレー（白い文字が 5.2:1）＋写真をグレーに寄せる */
 html.fv5{--fv-bg:#253F5C;--fv-ink:#fff}                                    /* ②のネイビー */
-html.fv6{--fv-bg:#EDEDEE;--fv-ink:#33393F;--fv-line:rgba(51,57,63,.26)}   /* うすいグレー＝④のグレー #686D72 を白で12%に＋②の濃いグレーの文字 */
-html.fv7{--fv-bg:#D3D9DE;--fv-ink:#253F5C;--fv-line:rgba(37,63,92,.30)}   /* うすいネイビー＝⑤のネイビー #253F5C を白で20%に＋ネイビーの文字 */
+html.fv6{--fv-bg:#9EA2A5;--fv-ink:#2B3036;--fv-line:rgba(43,48,54,.32)}   /* うすいグレー＝④のグレー #686D72 を白で36%薄く（明るさ L*66）＋案2のグラファイトの文字 5.2:1。
+                                                                            ④より明るいグレーでは白い文字が 4.5:1 に届かないため、文字を濃い色にした */
+html.fv7{--fv-bg:#5C6F85;--fv-ink:#fff}                                    /* うすいネイビー＝⑤のネイビー #253F5C を白で25%薄く（L*46）＋白い文字 5.2:1 */
 
 /* ===== ヘッダー（グロナビ）：6月の色 → 右へ少し濃く（同じ色の濃淡。色相は変えない） =====
    --jt-fill は sample.css が body に科ごとに置いている6月の面の色（トップ・消化器 #FFA0A7／総合内科 #F8B62D／耳鼻 #81B732／
@@ -45,10 +47,10 @@ html.fvp body section#front-top .gv-photo::after,html.fvp body section.hb-hero .
   --jfever-main:var(--fv-bg);--jfever-fill:var(--fv-bg);
   --dp-deep:var(--fv-bg);--hu-deep:var(--fv-bg);--gd-wine:var(--fv-bg);--department-rollout:var(--fv-bg);--color-rose:var(--fv-bg);--hb-main:var(--fv-bg)}
 
-/* ===== 明るい背景（1〜3・6・7）：白い文字・白い線を濃い色に（④グレーは文字だけ、うすい白を白に＝「タップして発信」など） =====
+/* ===== 明るい背景（1〜3・6）：白い文字・白い線を濃い色に（④グレー・⑦うすいネイビーは文字だけ、うすい白を白に＝「タップして発信」など） =====
    ボタン（WEB予約＝白地に科の色の文字、LINE予約＝緑、心療の「グループ院の受診案内」、皮膚の「WEBで予約する」）・電話の案内の白い箱・写真の上の名札は6月のまま */
-html:is(.fvL,.fv4):not(#_j):not(#_k) body section#front-top .div-section-container :is(h1,h2,h3,p,li,strong,span,small,b,em,a):not(.hero-booking-action,.hero-booking-action *,.mental-guide-button.is-primary,.mental-guide-button.is-primary *,.patient-contact-help,.patient-contact-help *),
-html:is(.fvL,.fv4):not(#_j):not(#_k) body section.hb-hero .hb-hero__copy :is(h1,h2,p,li,strong,span,small,b,em,a):not(.hb-button:not(.hb-button--white),.hb-button:not(.hb-button--white) *,.patient-contact-help,.patient-contact-help *){color:var(--fv-ink)!important;text-shadow:none!important}
+html:is(.fvL,.fv4,.fv7):not(#_j):not(#_k) body section#front-top .div-section-container :is(h1,h2,h3,p,li,strong,span,small,b,em,a):not(.hero-booking-action,.hero-booking-action *,.mental-guide-button.is-primary,.mental-guide-button.is-primary *,.patient-contact-help,.patient-contact-help *),
+html:is(.fvL,.fv4,.fv7):not(#_j):not(#_k) body section.hb-hero .hb-hero__copy :is(h1,h2,p,li,strong,span,small,b,em,a):not(.hb-button:not(.hb-button--white),.hb-button:not(.hb-button--white) *,.patient-contact-help,.patient-contact-help *){color:var(--fv-ink)!important;text-shadow:none!important}
 html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container :is(ul li,.ul-cta-catchline,.fv-hours,.div-cta-button,.mental-hero-schedule,.mental-guide-button.is-secondary,a[href^="tel:"]),
 html.fvL:not(#_j):not(#_k) body section.hb-hero .hb-hero__copy :is(.hb-opening,.hb-feature-pair,.hb-button--white){border-color:var(--fv-line)!important}
 html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container :is(.mental-guide-button.is-secondary,a[href^="tel:"]){background-color:transparent!important}
@@ -63,8 +65,8 @@ html.fvL:not(#_j):not(#_k) body #mainimage :is(#clinic-title,.hero-heading .corp
 
 /* ===== 暗い背景（4・5）：文字は6月どおり白。トップのうすいピンクの小さな文字だけ白に寄せる ===== */
 html.fvD:not(#_j):not(#_k) body #mainimage :is(.hero-heading .corporation,.department-heading span){color:#fff!important}
-/* ④グレー：電話番号のうすい白の丸枠の中は白い文字が 4.2:1 になるので、枠の中の塗りを外す（5.2:1） */
-html.fv4:not(#_j):not(#_k) body section#front-top .div-section-container a[href^="tel:"]{background-color:transparent!important}
+/* ④グレー・⑦うすいネイビー：電話番号のうすい白の丸枠の中は白い文字が 4.5:1 を割るので、枠の中の塗りを外す（5.2:1） */
+html:is(.fv4,.fv7):not(#_j):not(#_k) body section#front-top .div-section-container a[href^="tel:"]{background-color:transparent!important}
 
 /* ===== ④ 写真の上からグレーのフィルター：写真の色味をおさえる（白黒にはしない） ===== */
 html.fv4 body :is(#front-top,section.hb-hero,#mainimage) :is(.gv-photo,.fv-photo,.ent-gv-photo,.cv-photo,.hb-doctor-visual,.hero-photo) img,
