@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="version" content="0.6.0">
+<meta name="version" content="0.7.0">
 <title>日吉サイト新配色案</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,9 @@
   --font-jp:"Noto Sans JP",system-ui,"Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;
   --font-en:"Montserrat","Noto Sans JP",system-ui,sans-serif;
   --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-  /* 新しい配色案の色（見本の中で使う。テーマで変えない） */
-  --pink:#FFA0A7; --rose:#A94A5C; --mark:#FFE1E4; --pale:#F3F5F8; --navy:#253F5C; --bluegray:#41607F; --text:#282828;
+  /* 見本の中で使う色（テーマで変えない） */
+  --pink:#FFA0A7; --rose:#A94A5C; --pale:#F3F5F8; --navy:#253F5C; --navy2:#1E3A66; --bluegray:#41607F; --text:#282828;
+  --c-general:#F8B62D; --c-ent:#81B732; --c-fever:#BF3F48;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){--bg:#1a1c1f; --surface:#23262a; --ink:#eceef1; --muted:#a2a9b1; --line:#383d43; --chip:#2e3237; --focus:#86aefc; color-scheme:dark}
@@ -36,8 +37,6 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 .intro{padding-block:40px 12px}
 .eyebrow{font-family:var(--font-en);font-weight:700;font-size:12px;letter-spacing:.18em;color:var(--muted)}
 .intro h1{font-size:clamp(26px,4vw,38px);margin:.3em 0 .45em;font-weight:700}
-.intro h1 .dots{display:inline-flex;gap:.18em;margin-right:.4em;vertical-align:.05em}
-.intro h1 .dots i{width:.58em;height:.58em;border-radius:50%;display:block}
 .lead{max-width:70ch;margin:0 0 .7em}
 .notice{display:inline-block;margin-top:4px;padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-size:13px;color:var(--muted)}
 
@@ -45,6 +44,17 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 .section>h2{font-size:21px;margin:0 0 6px}
 .section>.sub{margin:0 0 16px;color:var(--muted);font-size:14px;max-width:72ch}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+
+/* 2つのトップ案 */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.plan{display:flex;flex-direction:column;gap:10px}
+.plan h3{margin:0;font-size:17px;display:flex;align-items:center;gap:10px}
+.plan h3 .sw{display:inline-flex;height:16px;border-radius:3px;overflow:hidden;flex:none}
+.plan h3 .sw i{width:14px;height:16px;display:block}
+.plan p{margin:0;font-size:14px}
+.plan .open{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:8px;background:var(--ink);color:var(--bg);text-decoration:none;font-weight:700;font-size:14px;align-self:flex-start}
+.plan .tag{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:999px;background:var(--chip);color:var(--muted);font-weight:500}
+@media (max-width:760px){.plans{grid-template-columns:1fr}}
 
 /* 8ページへのリンク */
 .go ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
@@ -55,107 +65,59 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 .go .compare a{display:inline;padding:0;border:0;background:none;min-height:0;font-weight:500;font-size:inherit;text-decoration:underline;color:var(--ink)}
 @media (max-width:760px){.go ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* 考え方 */
-.ideas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.ideas .card h3{font-size:16px;margin:4px 0 6px;display:flex;align-items:center;gap:8px}
-.ideas .card h3 i{width:14px;height:14px;border-radius:50%;display:block;flex:none}
-.ideas .card p{margin:0;font-size:14px}
-@media (max-width:820px){.ideas{grid-template-columns:1fr}}
+/* 見立て */
+.opinion ol{margin:0;padding-left:1.4em;font-size:14.5px}
+.opinion li{margin:.35em 0}
+.tone{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.tone .row{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
+.tone .row span{width:46px;height:30px;border-radius:5px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.tone h4{margin:0;font-size:13.5px}
+.tone p{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){.tone{grid-template-columns:1fr}}
 
-/* 色の役割 */
-.roles{width:100%;border-collapse:collapse;font-size:14px}
-.roles th,.roles td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.roles thead th{font-size:12.5px;color:var(--muted);font-weight:500}
-.roles .sw{display:flex;align-items:center;gap:10px;min-width:170px}
-.roles .chip{width:64px;height:36px;border-radius:6px;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.roles .name{font-weight:700;display:block;line-height:1.4}
-.roles .code{display:block;color:var(--muted)}
-.ratio{font-family:var(--font-mono);font-size:12.5px}
-.ok{color:#1d6b3a}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ok{color:#7ad19a}}
-:root[data-theme="dark"] .ok{color:#7ad19a}
+/* 表 */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl thead th{font-size:12.5px;color:var(--muted);font-weight:500}
+.tbl tbody th{font-weight:700;white-space:nowrap}
+.tbl td.now{font-weight:700}
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 @media (max-width:640px){
-  .roles thead{display:none}
-  .roles,.roles tbody,.roles tr,.roles td{display:block;width:100%}
-  .roles tr{border-bottom:1px solid var(--line);padding:8px 0}
-  .roles td{border:0;padding:4px 0}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
+  .tbl tr{border-bottom:1px solid var(--line);padding:8px 0}
+  .tbl th,.tbl td{border:0;padding:2px 0}
+  .tbl td[data-l]::before{content:attr(data-l) "：";color:var(--muted)}
 }
+.chip{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.ratio{font-family:var(--font-mono);font-size:12.5px}
 
-/* 前の案との違い */
-.diff{width:100%;border-collapse:collapse;font-size:14px}
-.diff th,.diff td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-.diff thead th{font-size:12.5px;color:var(--muted);font-weight:500}
-.diff tbody th{font-weight:700;white-space:nowrap}
-.diff td.now{font-weight:700}
-@media (max-width:640px){
-  .diff thead{display:none}
-  .diff,.diff tbody,.diff tr,.diff th,.diff td{display:block;width:100%}
-  .diff tr{border-bottom:1px solid var(--line);padding:8px 0}
-  .diff th,.diff td{border:0;padding:2px 0}
-  .diff td:nth-of-type(1)::before{content:"トップの色：";color:var(--muted)}
-  .diff td:nth-of-type(2)::before{content:"ご意見：";color:var(--muted)}
-}
-
-/* 各科 */
-.depts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.dept{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0;display:flex;align-items:center;gap:12px}
-.dept .c{width:56px;height:40px;border-radius:6px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-.dept h3{font-size:14.5px;margin:0;line-height:1.4}
-.dept p{margin:2px 0 0;font-size:12.5px;color:var(--muted);line-height:1.5}
-@media (max-width:820px){.depts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.depts{grid-template-columns:1fr}}
-.fever{margin-top:12px;border-color:#BF3F48}
-.fever .pair{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;max-width:520px}
-.fever .big{border-radius:8px;padding:12px 8px;text-align:center;color:#fff;font-weight:700;font-size:14px;line-height:1.35}
-.fever .big small{display:block;font-family:var(--font-mono);font-weight:500;font-size:11.5px;opacity:.95}
-.fever .arrow{color:var(--muted)}
-.fever h3{font-size:16px;margin:0 0 10px}
-.fever p{margin:10px 0 0;font-size:14px;max-width:72ch}
-.alts{display:flex;flex-wrap:wrap;gap:8px 16px;margin:10px 0 0;padding:0;list-style:none;font-size:13px;color:var(--muted)}
-.alts li{display:flex;align-items:center;gap:8px}
-.alts i{width:26px;height:18px;border-radius:4px;display:block;flex:none}
-
-/* 部品の見本（サイトの模型）。本物の色で固定 */
+/* 部品の見本（各科が映える案）。本物の色で固定 */
 .mock{border-radius:12px;overflow:hidden;border:1px solid #d5dbe2;background:#fff;color:var(--text);font-family:var(--font-jp)}
-.m-head{background:var(--navy);color:#fff;box-shadow:inset 0 3px 0 var(--pink);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;flex-wrap:wrap}
+.m-head{background:var(--navy2);color:#fff;box-shadow:inset 0 3px 0 var(--pink);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;flex-wrap:wrap}
 .m-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
 .m-logo i{width:18px;height:18px;border-radius:50% 50% 50% 0;background:linear-gradient(135deg,#FFE1E4 0 50%,#81B7C9 50%);display:block;transform:rotate(-45deg)}
 .m-nav{display:flex;gap:14px;font-size:12.5px;flex-wrap:wrap;font-weight:500}
-.m-hero{background:var(--pale);color:var(--navy);padding:22px 18px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+.m-hero{background:var(--pale);color:var(--navy2);padding:22px 18px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
 .m-hero .corp{font-size:12px;margin:0;color:#5B6673}
 .m-hero .clinic{font-size:19px;font-weight:700;margin:2px 0 6px}
 .m-hero .loc{font-size:26px;font-weight:700;margin:0;line-height:1.3}
 .m-hero .loc b{color:var(--rose)}
 .m-hero .hours{font-size:13px;margin:6px 0 0;font-weight:500;color:#33393F}
 .m-depts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.m-dep{background:#fff;border:1px solid #e3e8ee;border-radius:8px;padding:10px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
-.m-dep b{display:inline-block;padding:2px 8px;border-radius:4px;font-size:13px}
+.m-dep{background:#fff;border:1px solid #e3e8ee;border-radius:8px;padding:10px}
+.m-dep b{display:inline-block;padding:2px 8px;border-radius:4px;font-size:13px;color:var(--navy2)}
 .m-dep span{display:block;font-size:11px;color:#606863;margin-top:4px}
-.m-card{border-radius:8px;background:#fff;box-shadow:inset 0 3px 0 var(--pink),0 0 0 1px #e3e8ee;padding:14px 14px 12px}
-.m-body{padding:22px 18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.m-icons{display:flex;gap:8px;margin:0 0 12px}
-.m-icons i{width:34px;height:34px;border-radius:50%;background:var(--bluegray);color:#fff;font-style:normal;font-weight:700;font-size:13px;display:grid;place-items:center;font-family:var(--font-en)}
-.m-h2{font-size:18px;font-weight:700;color:var(--rose);margin:0}
-.m-h2::after{content:"";display:block;width:36px;height:3px;border-radius:2px;background:var(--pink);margin:8px 0 6px}
-.m-en{font-family:var(--font-en);font-size:11px;letter-spacing:.12em;color:var(--bluegray);margin:0 0 10px}
-.m-text{font-size:13.5px;margin:0 0 12px}
-.m-text strong{color:var(--rose)}
-.m-btns{display:flex;gap:8px;flex-wrap:wrap}
-.m-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 18px;border-radius:999px;font-weight:700;font-size:13.5px;border:2px solid transparent}
+.m-body{padding:22px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.m-card{border:1px solid #d5dce5;border-top-width:4px;border-radius:8px;background:#fff;padding:12px 10px;text-align:center}
+.m-card h5{margin:0 0 8px;font-size:14px;color:var(--navy2)}
+.m-card span{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:6px;background:var(--navy2);color:#fff;font-size:12px;font-weight:700}
+.m-cta{display:flex;gap:8px;justify-content:center;padding:0 18px 18px;flex-wrap:wrap}
+.m-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 20px;border-radius:999px;font-weight:700;font-size:13.5px}
 .m-btn.web{background:var(--rose);color:#fff}
 .m-btn.line{background:#087A36;color:#fff}
-.m-btn.more{border-radius:6px;background:var(--bluegray);color:#fff}
-.m-news{display:grid;grid-template-columns:auto 1fr;border-radius:10px;overflow:hidden;border:1px solid #e6e9ee}
-.m-news h4{margin:0;background:var(--navy);color:#fff;box-shadow:inset 0 3px 0 var(--pink);font-size:14px;padding:14px 16px;display:grid;place-items:center;text-align:center;line-height:1.3}
-.m-news h4 small{display:block;font-family:var(--font-en);font-size:10px;font-weight:500;letter-spacing:.1em;opacity:.85}
-.m-news ul{list-style:none;margin:0;padding:8px 14px;font-size:12.5px}
-.m-news li{padding:6px 0;border-bottom:1px solid #eef0f3}
-.m-news li:last-child{border-bottom:0}
-.m-contact{background:var(--pale);color:var(--navy);padding:16px 18px;text-align:center;font-weight:700}
-.m-contact span{display:inline-block;margin-top:6px;background:#fff;border-radius:8px;padding:6px 16px;font-size:18px;font-family:var(--font-en)}
-.m-foot{background:var(--navy);color:#fff;box-shadow:inset 0 3px 0 var(--pink);padding:12px 18px;font-size:12px;text-align:center}
-@media (max-width:720px){.m-hero,.m-body{grid-template-columns:1fr}}
+.m-foot{background:var(--navy2);color:#fff;padding:12px 18px;font-size:12px;text-align:center}
+@media (max-width:720px){.m-hero{grid-template-columns:1fr}.m-body{grid-template-columns:1fr 1fr}}
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 0;padding:0;list-style:none;font-size:12.5px;color:var(--muted)}
 .legend li{display:flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:3px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
@@ -168,63 +130,66 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 <body>
 
 <header class="intro wrap">
-  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR PROPOSAL v0.6.0</div>
-  <h1><span class="dots" aria-hidden="true"><i style="background:#253F5C"></i><i style="background:#FFA0A7"></i></span>新しい配色案　トップはネイビー基調（②）＋ピンクの細い線</h1>
-  <p class="lead">トップは、②の案（ネイビー基調・「直結0分」がえんじ色）にそのまま戻しました。そのうえで、②からあった<strong>ヘッダーの上の細いピンクの線</strong>と同じ線を、<strong>差し色としてページ全体のアクセントに</strong>入れています。</p>
-  <p class="lead">トップ以外の科は③の案のまま、6月の色です。<strong>発熱外来だけ</strong>、派手すぎる赤を少し落ち着いたトーン（#BF3F48）にしています。</p>
+  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR PROPOSAL v0.7.0</div>
+  <h1>新しい配色案　トップは2案で見比べ</h1>
+  <p class="lead">トップは<strong>「ネイビー案（②）」</strong>と、内科・耳鼻科のきれいな発色を生かすために色合いを整えた<strong>「各科が映える案」</strong>の2つを用意しました。どちらのページでも、左下のパネルのボタンで切り替えて見比べられます。</p>
+  <p class="lead">トップ以外の科はどちらの案も同じで、6月の色です。発熱外来だけ、派手すぎる赤を少し落ち着いたトーン（#BF3F48）にしています。</p>
   <span class="notice">本番サイトは変更していません。確認用の見本で、検索にも出ない設定です。</span>
 </header>
 
 <main>
-  <section class="section wrap go" aria-labelledby="go-title">
-    <h2 id="go-title">実際のページで見る（8ページ）</h2>
-    <p class="sub">写真・文章・配置は今のサイトのまま、色だけを新しい案にしています。左下のパネルで「6月の色」と切り替えて見比べられます。</p>
+  <section class="section wrap" aria-labelledby="plans-title">
+    <h2 id="plans-title">トップの2案</h2>
+    <div class="plans">
+      <div class="card plan">
+        <h3><span class="sw" aria-hidden="true"><i style="background:#253F5C"></i><i style="background:#41607F"></i><i style="background:#A94A5C"></i></span>ネイビー案（②）</h3>
+        <p>②の案そのもの。グレーがかった落ち着いた紺に、ブルーグレーのボタン、えんじ色（ローズ）の「直結0分」・見出し・WEB予約。ヘッダーの上にもとのピンクの細い線。</p>
+        <a class="open" href="../pages/top/?c=new">ネイビー案のトップを開く</a>
+      </div>
+      <div class="card plan">
+        <h3><span class="sw" aria-hidden="true"><i style="background:#1E3A66"></i><i style="background:#F8B62D"></i><i style="background:#81B732"></i></span>各科が映える案 <span class="tag">今回</span></h3>
+        <p>②をもとに、紺を少し澄んだ色にし、色の数を減らして、<strong>内科の黄色・耳鼻科の黄緑などの各科の色をトップでそのまま見せる</strong>案。</p>
+        <a class="open" href="../pages/top/?c=new2">各科が映える案のトップを開く</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap opinion" aria-labelledby="op-title">
+    <h2 id="op-title">見立て：ネイビーと内科・耳鼻科の色は合うか</h2>
     <div class="card">
-      <ul>
-        <li><a href="../pages/top/?c=new"><i style="background:linear-gradient(135deg,#253F5C 55%,#FFA0A7 55%)"></i>トップ</a></li>
-        <li><a href="../pages/gastro/?c=new"><i style="background:#FFA0A7"></i>消化器内科・内視鏡</a></li>
-        <li><a href="../pages/general/?c=new"><i style="background:#F8B62D"></i>総合内科</a></li>
-        <li><a href="../pages/ent/?c=new"><i style="background:#81B732"></i>耳鼻咽喉科</a></li>
-        <li><a href="../pages/mental/?c=new"><i style="background:#0A65AC"></i>心療内科・精神科</a></li>
-        <li><a href="../pages/derm/?c=new"><i style="background:#4FBAC9"></i>美容皮膚科</a></li>
-        <li><a href="../pages/checkups/?c=new"><i style="background:#F29C78"></i>健康診断</a></li>
-        <li><a href="../pages/fever/?c=new"><i style="background:#BF3F48"></i>発熱外来</a></li>
-      </ul>
-      <p class="compare">比べたいとき：<a href="../pages/top/?c=june">6月の色のトップ</a>／<a href="../pages/fever/?c=june">6月の色の発熱外来</a>／<a href="../">6月の色の見本一覧</a></p>
+      <ol>
+        <li><strong>紺そのものは、黄色・黄緑と相性のよい色です。</strong>暗く落ち着いた紺の上だと、明るい黄色や黄緑がいちばん鮮やかに見えます（紺×黄、紺×黄緑は定番の組み合わせ）。</li>
+        <li><strong>合わなく見える原因は、色の種類ではなく「トーン（鮮やかさ）」の違いです。</strong>②のトップは、グレーがかった紺・ブルーグレー・えんじ色と、<b>くすんだ色</b>でまとめています。内科・耳鼻科は<b>澄んだ鮮やかな色</b>なので、並ぶとちぐはぐに見えます。</li>
+        <li>さらに、トップの「診療科から探す」の札は、読みやすさのため文字を濃い茶・深緑にしていたので、<strong>内科・耳鼻科のきれいな色がトップにほとんど出ていませんでした。</strong></li>
+      </ol>
+      <div class="tone" aria-label="トーンの比べ">
+        <div><h4>②のトップの色（くすんだ色）</h4><div class="row" aria-hidden="true"><span style="background:#253F5C"></span><span style="background:#41607F"></span><span style="background:#A94A5C"></span><span style="background:#F3F5F8"></span></div><p>紺 #253F5C・ブルーグレー #41607F・ローズ #A94A5C</p></div>
+        <div><h4>各科の色（澄んだ鮮やかな色）</h4><div class="row" aria-hidden="true"><span style="background:#F8B62D"></span><span style="background:#81B732"></span><span style="background:#FFA0A7"></span><span style="background:#4FBAC9"></span></div><p>総合内科 #F8B62D・耳鼻咽喉科 #81B732・消化器 #FFA0A7・美容皮膚 #4FBAC9</p></div>
+      </div>
     </div>
   </section>
 
-  <section class="section wrap" aria-labelledby="idea-title">
-    <h2 id="idea-title">考え方（トップ）</h2>
-    <div class="ideas">
-      <div class="card"><h3><i style="background:#253F5C"></i>②の案のトップに戻す</h3><p>ヘッダー・フッター・お知らせの見出しはネイビー、最初の画面・よくある質問・お問い合わせはうすいブルーグレー。<strong>ボタンと番号はブルーグレーに白い文字</strong>です。</p></div>
-      <div class="card"><h3><i style="background:#A94A5C"></i>えんじ色（ローズ）は大事な言葉に</h3><p>「直結0分」・見出し・本文の強調・<strong>WEB予約</strong>に、深みのあるピンク（ローズ #A94A5C）を使います。白い文字も読める濃さ（5.5 : 1）です。</p></div>
-      <div class="card"><h3><i style="background:#FFA0A7"></i>もとのピンクは「細い線」で全体に</h3><p>ヘッダーの上の線（②から）と同じ太さ3pxの線を、<strong>お知らせの見出し・症状別ガイドの帯・フッターの上端、見出しの下、「選ばれる理由」「法人紹介」のカードの上端</strong>に入れました。</p></div>
-    </div>
-  </section>
-
-  <section class="section wrap" aria-labelledby="role-title">
-    <h2 id="role-title">色の役割（トップ）</h2>
-    <p class="sub">「読みやすさ」は文字と背景の色の差です。ウェブの読みやすさの国際的な目安（WCAG）では <b>4.5 以上</b>が合格で、数字が大きいほど読みやすくなります。</p>
+  <section class="section wrap" aria-labelledby="chg-title">
+    <h2 id="chg-title">各科が映える案で変えたところ</h2>
+    <p class="sub">②からの変更はトップだけです。「直結0分」とWEB予約のえんじ色、ヘッダーの上のピンクの線は②のまま残しています。</p>
     <div class="card tablewrap">
-      <table class="roles">
-        <thead><tr><th scope="col">色</th><th scope="col">使う場所</th><th scope="col">読みやすさ</th></tr></thead>
+      <table class="tbl">
+        <thead><tr><th scope="col">場所</th><th scope="col">ネイビー案（②）</th><th scope="col">各科が映える案</th></tr></thead>
         <tbody>
-          <tr><td><div class="sw"><span class="chip" style="background:#253F5C;color:#fff">あア</span><span><span class="name">ネイビー（基調）</span><span class="code mono">#253F5C</span></span></div></td><td>ヘッダー・フッター・お知らせの見出しの面／最初の画面の文字</td><td class="ratio ok">白い文字で 10.8 : 1</td></tr>
-          <tr><td><div class="sw"><span class="chip" style="background:#F3F5F8;color:#253F5C">あア</span><span><span class="name">うすいブルーグレー</span><span class="code mono">#F3F5F8</span></span></div></td><td>最初の画面・よくある質問・お問い合わせの背景</td><td class="ratio ok">ネイビーの文字で 9.9 : 1</td></tr>
-          <tr><td><div class="sw"><span class="chip" style="background:#41607F;color:#fff">あア</span><span><span class="name">ブルーグレー</span><span class="code mono">#41607F</span></span></div></td><td>「〇〇の案内」などのボタン・番号の丸・ステップの札・アイコン</td><td class="ratio ok">白い文字で 6.6 : 1</td></tr>
-          <tr><td><div class="sw"><span class="chip" style="background:#A94A5C;color:#fff">あア</span><span><span class="name">ローズ（えんじ色）</span><span class="code mono">#A94A5C</span></span></div></td><td>「直結0分」・見出し・本文の強調・WEB予約ボタン</td><td class="ratio ok">白い文字で 5.5 : 1</td></tr>
-          <tr><td><div class="sw"><span class="chip" style="background:#FFA0A7;color:#253F5C">あア</span><span><span class="name">もとのピンク（差し色）</span><span class="code mono">#FFA0A7</span></span></div></td><td>細い線だけ：ヘッダー・お知らせの見出し・症状別ガイドの帯・フッターの上端、見出しの下、カードの上端</td><td class="ratio">線なので対象外</td></tr>
-          <tr><td><div class="sw"><span class="chip" style="background:#FFFFFF;color:#282828">あア</span><span><span class="name">白・濃いグレー</span><span class="code mono">#FFFFFF／#282828</span></span></div></td><td>背景と本文（今のサイトのまま）</td><td class="ratio ok">14.7 : 1</td></tr>
+          <tr><th scope="row">紺</th><td data-l="②"><span class="chip" style="background:#253F5C"></span>グレーがかった紺 #253F5C</td><td class="now" data-l="映える案"><span class="chip" style="background:#1E3A66"></span>少し澄んだ紺 #1E3A66</td></tr>
+          <tr><th scope="row">ボタン・番号</th><td data-l="②"><span class="chip" style="background:#41607F"></span>ブルーグレーに白い文字</td><td class="now" data-l="映える案"><span class="chip" style="background:#1E3A66"></span>紺に白い文字</td></tr>
+          <tr><th scope="row">見出し・強調</th><td data-l="②"><span class="chip" style="background:#A94A5C"></span>えんじ色（ローズ）</td><td class="now" data-l="映える案"><span class="chip" style="background:#1E3A66"></span>紺（えんじ色は「直結0分」とWEB予約だけ）</td></tr>
+          <tr><th scope="row">診療科の札</th><td data-l="②">うすい色の背景に濃い茶・深緑の文字</td><td class="now" data-l="映える案"><span class="chip" style="background:#F8B62D"></span><span class="chip" style="background:#81B732"></span>各科の色で塗る（文字は紺。発熱外来は白）</td></tr>
+          <tr><th scope="row">症状別ガイドのカード</th><td data-l="②">色の印なし</td><td class="now" data-l="映える案">カードの上にその科の色の帯（ほかの専門外来は紺）</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <section class="section wrap" aria-labelledby="mock-title">
-    <h2 id="mock-title">部品に当てはめると</h2>
-    <p class="sub">トップページの主な部品を縮めて並べた見本です（実際のページは上のリンクから）。</p>
-    <div class="mock" role="img" aria-label="新しい配色案を当てはめた画面の見本。上にピンクの細い線があるネイビーのヘッダー、うすいブルーグレーの最初の画面、えんじ色の直結0分と見出し、ブルーグレーのボタン、ネイビーのお知らせ枠とフッター">
+    <h2 id="mock-title">各科が映える案を部品に当てはめると</h2>
+    <p class="sub">トップページの主な部品を縮めて並べた見本です（実際のページは上のボタンから）。</p>
+    <div class="mock" role="img" aria-label="各科が映える案の見本。澄んだ紺のヘッダー、うすいブルーグレーの最初の画面、えんじ色の直結0分、各科の色で塗った診療科の札、上に各科の色の帯があるカード、紺のボタン、えんじ色のWEB予約">
       <div class="m-head"><span class="m-logo"><i></i>日吉駅前こころみクリニック</span><span class="m-nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>診療科の紹介</span><span>アクセス・時間</span></span></div>
       <div class="m-hero">
         <div>
@@ -234,77 +199,77 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
           <p class="hours">総合内科は平日21時まで・土日祝も診療</p>
         </div>
         <div class="m-depts">
-          <div class="m-dep"><b style="background:#FFE3E5;color:#253F5C">消化器内科</b><span>胃カメラ・大腸カメラ</span></div>
-          <div class="m-dep"><b style="background:#FEF8EC;color:#9E6240">総合内科</b><span>幅広い体の不調</span></div>
-          <div class="m-dep"><b style="background:#EDF5E2;color:#0B6E4F">耳鼻咽喉科</b><span>耳・鼻・のど</span></div>
-          <div class="m-dep"><b style="background:#F9ECED;color:#BF3F48">発熱外来</b><span>発熱・かぜ症状</span></div>
+          <div class="m-dep"><b style="background:#FFA0A7">消化器内科</b><span>胃カメラ・大腸カメラ</span></div>
+          <div class="m-dep"><b style="background:#F8B62D">総合内科</b><span>幅広い体の不調</span></div>
+          <div class="m-dep"><b style="background:#81B732">耳鼻咽喉科</b><span>耳・鼻・のど</span></div>
+          <div class="m-dep"><b style="background:#BF3F48;color:#fff">発熱外来</b><span>発熱・かぜ症状</span></div>
         </div>
       </div>
       <div class="m-body">
-        <div class="m-card">
-          <div class="m-icons" aria-hidden="true"><i>01</i><i>02</i><i>03</i></div>
-          <p class="m-h2">当院が選ばれる3つの理由</p>
-          <p class="m-en">3 REASONS TO CHOOSE US</p>
-          <p class="m-text">日吉駅直結0分。<strong>総合内科は平日21時まで、土日祝も診療</strong>しています。</p>
-          <div class="m-btns"><span class="m-btn more">総合内科の案内</span><span class="m-btn web">WEB予約</span><span class="m-btn line">LINE予約</span></div>
-        </div>
-        <div class="m-news">
-          <h4>お知らせ<small>Information</small></h4>
-          <ul><li>祝日の診療についてのお知らせ</li><li>診療科ごとの対応年齢について</li><li>年末年始の診療時間について</li></ul>
-        </div>
+        <div class="m-card" style="border-top-color:#F8B62D"><h5>総合内科</h5><span>総合内科の案内</span></div>
+        <div class="m-card" style="border-top-color:#BF3F48"><h5>発熱外来</h5><span>発熱外来の案内</span></div>
+        <div class="m-card" style="border-top-color:#FFA0A7"><h5>消化器・内視鏡</h5><span>消化器・内視鏡</span></div>
+        <div class="m-card" style="border-top-color:#81B732"><h5>耳鼻咽喉科</h5><span>耳鼻咽喉科へ</span></div>
       </div>
-      <div class="m-contact">お問い合わせ<br><span>045-330-9428</span></div>
+      <div class="m-cta"><span class="m-btn web">WEB予約</span><span class="m-btn line">LINE予約</span></div>
       <div class="m-foot">© cocoromi Clinic</div>
     </div>
     <ul class="legend" aria-label="色の凡例">
-      <li><i style="background:#253F5C"></i>ネイビー：ヘッダー・お知らせ・フッター</li>
+      <li><i style="background:#1E3A66"></i>紺：ヘッダー・フッター・見出し・ボタン</li>
       <li><i style="background:#F3F5F8"></i>うすいブルーグレー：背景</li>
-      <li><i style="background:#41607F"></i>ブルーグレー：ボタン・番号</li>
-      <li><i style="background:#A94A5C"></i>ローズ：直結0分・見出し・強調・WEB予約</li>
-      <li><i style="background:#FFA0A7"></i>もとのピンク：細い線</li>
+      <li><i style="background:#A94A5C"></i>えんじ色：直結0分・WEB予約</li>
+      <li><i style="background:#F8B62D"></i><i style="background:#81B732"></i>各科の色：診療科の札・カードの帯</li>
       <li><i style="background:#087A36"></i>LINEの緑（LINEの決まりの色なので変えない）</li>
     </ul>
   </section>
 
-  <section class="section wrap" aria-labelledby="dept-title">
-    <h2 id="dept-title">各科の色</h2>
-    <p class="sub">発熱外来以外は<b>6月の色のまま</b>です（「6月の色」と全要素の色が同じことを機械で照合済み）。トップに並ぶ科の名前の札だけは、6月の明るい色の文字だと読めないため、6月の色の中の濃い色（「6月・読みやすく」と同じ色）を使っています。</p>
-    <div class="depts">
-      <div class="dept"><span class="c" style="background:#FFA0A7"></span><div><h3>消化器内科・内視鏡</h3><p class="mono">#FFA0A7（6月のまま）</p></div></div>
-      <div class="dept"><span class="c" style="background:#F8B62D"></span><div><h3>総合内科</h3><p class="mono">#F8B62D（6月のまま）</p></div></div>
-      <div class="dept"><span class="c" style="background:#81B732"></span><div><h3>耳鼻咽喉科</h3><p class="mono">#81B732（6月のまま）</p></div></div>
-      <div class="dept"><span class="c" style="background:#0A65AC"></span><div><h3>心療内科・精神科</h3><p class="mono">#0A65AC（6月のまま）</p></div></div>
-      <div class="dept"><span class="c" style="background:#4FBAC9"></span><div><h3>美容皮膚科</h3><p class="mono">#4FBAC9（6月のまま）</p></div></div>
-      <div class="dept"><span class="c" style="background:#F29C78"></span><div><h3>健康診断</h3><p class="mono">#F29C78（6月のまま）</p></div></div>
-    </div>
-    <div class="card fever">
-      <h3>発熱外来：派手すぎる赤を、少し落ち着いたトーンに</h3>
-      <div class="pair">
-        <span class="big" style="background:#E60012">6月の色<small>#E60012</small><small>白い文字 4.8 : 1</small></span>
-        <span class="arrow" aria-hidden="true">→</span>
-        <span class="big" style="background:#BF3F48">新しい案<small>#BF3F48</small><small>白い文字 5.2 : 1</small></span>
-      </div>
-      <p>赤みと明るさはそのままに、<b>鮮やかさだけを半分</b>にしました。「発熱外来」と一目で分かる赤は残しつつ、目に刺さる強さを抑えています。濃い赤（文字用）も同じ考え方で #B4000E → #903139 にしました。</p>
-      <p>赤い予約ボタンは、6月の色でも暗い赤の文字で読みにくかった（2.9 : 1）ため、今回の赤に合わせて白い文字にしています（5.2 : 1）。</p>
-      <ul class="alts" aria-label="ほかの候補">
-        <li>ほかの候補：</li>
-        <li><i style="background:#C8323C"></i><span>もう少し赤く <span class="mono">#C8323C</span></span></li>
-        <li><i style="background:#A63A43"></i><span>もっと落ち着かせる <span class="mono">#A63A43</span></span></li>
-      </ul>
+  <section class="section wrap" aria-labelledby="read-title">
+    <h2 id="read-title">読みやすさ（各科が映える案）</h2>
+    <p class="sub">文字と背景の色の差です。ウェブの読みやすさの国際的な目安（WCAG）では <b>4.5 以上</b>が合格です。</p>
+    <div class="card tablewrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">組み合わせ</th><th scope="col">読みやすさ</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span class="chip" style="background:#1E3A66"></span>紺の上の白い文字</th><td class="ratio" data-l="比">11.3 : 1</td></tr>
+          <tr><th scope="row"><span class="chip" style="background:#F8B62D"></span>総合内科の札（紺の文字）</th><td class="ratio" data-l="比">6.3 : 1</td></tr>
+          <tr><th scope="row"><span class="chip" style="background:#81B732"></span>耳鼻咽喉科の札（紺の文字）</th><td class="ratio" data-l="比">4.7 : 1</td></tr>
+          <tr><th scope="row"><span class="chip" style="background:#FFA0A7"></span>消化器内科の札（紺の文字）</th><td class="ratio" data-l="比">5.9 : 1</td></tr>
+          <tr><th scope="row"><span class="chip" style="background:#BF3F48"></span>発熱外来の札（白い文字）</th><td class="ratio" data-l="比">5.2 : 1</td></tr>
+          <tr><th scope="row"><span class="chip" style="background:#A94A5C"></span>WEB予約（白い文字）</th><td class="ratio" data-l="比">5.5 : 1</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section class="section wrap" aria-labelledby="diff-title">
-    <h2 id="diff-title">これまでの案（トップ）</h2>
-    <p class="sub">いただいたご意見の流れです。今回は②のトップに戻し、ピンクの細い線を足しました。各科は③から変えていません。</p>
+  <section class="section wrap go" aria-labelledby="go-title">
+    <h2 id="go-title">各科のページ（どちらの案も共通）</h2>
+    <p class="sub">各科のページは6月の色のままです。発熱外来だけ赤を #E60012 から #BF3F48 に落ち着かせています。</p>
+    <div class="card">
+      <ul>
+        <li><a href="../pages/gastro/?c=new2"><i style="background:#FFA0A7"></i>消化器内科・内視鏡</a></li>
+        <li><a href="../pages/general/?c=new2"><i style="background:#F8B62D"></i>総合内科</a></li>
+        <li><a href="../pages/ent/?c=new2"><i style="background:#81B732"></i>耳鼻咽喉科</a></li>
+        <li><a href="../pages/mental/?c=new2"><i style="background:#0A65AC"></i>心療内科・精神科</a></li>
+        <li><a href="../pages/derm/?c=new2"><i style="background:#4FBAC9"></i>美容皮膚科</a></li>
+        <li><a href="../pages/checkups/?c=new2"><i style="background:#F29C78"></i>健康診断</a></li>
+        <li><a href="../pages/fever/?c=new2"><i style="background:#BF3F48"></i>発熱外来</a></li>
+        <li><a href="../pages/top/?c=june"><i style="background:#FFA0A7"></i>6月の色のトップ</a></li>
+      </ul>
+      <p class="compare">6月の色の見本一覧は<a href="../">こちら</a>。</p>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="hist-title">
+    <h2 id="hist-title">これまでの案（トップ）</h2>
     <div class="card tablewrap">
-      <table class="diff">
+      <table class="tbl">
         <thead><tr><th scope="col">案</th><th scope="col">トップの色</th><th scope="col">ご意見</th></tr></thead>
         <tbody>
-          <tr><th scope="row">②（v0.3.0）</th><td>ネイビー基調。直結0分・見出し・WEB予約はローズ。ボタンはブルーグレー。ヘッダーの上にピンクの細い線</td><td>よかった（ただし各科は6月の色に）</td></tr>
-          <tr><th scope="row">③（v0.4.0）</th><td>もとのピンクが主役。ピンクの面にネイビーの文字</td><td>トップは微妙</td></tr>
-          <tr><th scope="row">v0.5.0</th><td>ネイビー基調。ボタン・アイコンをもとのピンクに</td><td>②のほうがよい</td></tr>
-          <tr><th scope="row">今回（v0.6.0）</th><td class="now">②に戻す＋ピンクの細い線を全体のアクセントに</td><td>—</td></tr>
+          <tr><th scope="row">②（v0.3.0）</th><td data-l="トップの色">ネイビー基調。直結0分・見出し・WEB予約はえんじ色。ボタンはブルーグレー。ヘッダーの上にピンクの細い線</td><td data-l="ご意見">よかった（各科は6月の色に）</td></tr>
+          <tr><th scope="row">③（v0.4.0）</th><td data-l="トップの色">もとのピンクが主役。ピンクの面にネイビーの文字</td><td data-l="ご意見">トップは微妙</td></tr>
+          <tr><th scope="row">v0.5.0</th><td data-l="トップの色">ネイビー基調。ボタン・アイコンをもとのピンクに</td><td data-l="ご意見">②のほうがよい</td></tr>
+          <tr><th scope="row">v0.6.0</th><td data-l="トップの色">②に、もとのピンクの細い線を全体に追加</td><td data-l="ご意見">ピンクの線はしっくりこない（②に戻す）</td></tr>
+          <tr><th scope="row">今回（v0.7.0）</th><td class="now" data-l="トップの色">②（ネイビー案）と、各科が映える案の2つで見比べ</td><td data-l="ご意見">—</td></tr>
         </tbody>
       </table>
     </div>
@@ -314,17 +279,17 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
     <h2 id="check-title">確かめたこと・注意</h2>
     <div class="card">
       <ul class="checks">
-        <li>発熱外来以外の6科のページは、「新しい案」と「6月の色」で全要素の色が同じです（機械で照合）。</li>
-        <li>トップは文字と背景の色の差を 329 か所測り、すべて基準（4.5 : 1、大きな文字は 3 : 1）を満たしています。写真の上に白い文字をのせている見出しは、写真の明るさによるため対象外です。</li>
-        <li>発熱外来のページで基準を下回るのは、6月の色のまま残した部分だけです（「受診前に確認したい記事」のピンクの文字、写真の上の白い見出し）。</li>
-        <li>スマホの幅（375px）でも、横にはみ出す部分はありません。トップの色は、②の案と全要素を機械で照合し、違うのは足したピンクの線と各科の札の色（6月の色）だけであることを確かめました。</li>
-        <li>写真・画像の中の色（画像でできたボタンなど）と、LINE予約の緑（LINE の決まりの色）は変わりません。</li>
+        <li>ネイビー案のトップは、②と全要素の色を機械で照合し、違うのは各科の札・院の科名（6月の色）だけであることを確かめました（v0.6.0 で足したピンクの線は外しています）。</li>
+        <li>各科が映える案のトップも、文字と背景の色の差を 329 か所測り、すべて基準（4.5 : 1、大きな文字は 3 : 1）を満たしています。写真の上の白い文字は対象外です。</li>
+        <li>発熱外来以外の6科のページは、どちらの案でも「6月の色」と全要素の色が同じです。</li>
+        <li>スマホの幅（375px）でも、横にはみ出す部分はありません。</li>
+        <li>写真・画像の中の色と、LINE予約の緑（LINE の決まりの色）は変わりません。</li>
         <li>この見本は、今のサイトの色を上から置き換えて作っています。本番に反映するときは、サイトのデザイン指定（CSS）の色を差し替える作業が別に必要です。</li>
       </ul>
     </div>
   </section>
 </main>
 
-<footer class="end wrap">新しい配色案 v0.6.0（2026-11-25）。本番サイトとは別に置いた確認用ページです。</footer>
+<footer class="end wrap">新しい配色案 v0.7.0（2026-11-25）。本番サイトとは別に置いた確認用ページです。</footer>
 </body>
 </html>

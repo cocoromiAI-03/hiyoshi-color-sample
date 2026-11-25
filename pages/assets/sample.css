@@ -1,4 +1,4 @@
-/* 配色見本（2026-06-23〜29 の色）v0.6.0 — 色の変数と、見本用の切り替えパネル
+/* 配色見本（2026-06-23〜29 の色）v0.7.0 — 色の変数と、見本用の切り替えパネル
    main=帯・ボタン・アイコンなど面の色 / text=見出しや強調の文字 / fill=濃い面（ヘッダーなど） / dark=ほぼ黒の文字
    「当時どおり」は当時のCSSのまま（文字にも明るい色）。「文字を読みやすく」は文字と濃い面だけ各科の濃い色にする */
 :root{
@@ -90,11 +90,31 @@ html.jb:not(#_j):not(#_k) body:not([id]) a.a-button-cta-web[href^="https://wakum
 html.jb:not(#_j) body:not([id]) .top-faq{background:var(--b-bg)!important}
 /* フッター：ネイビー */
 html.jb:not(#_j) body:not([id]) :is(footer,#footer){background-color:var(--b-navy)!important}
-/* v0.6.0 で追加：差し色のピンク＝ヘッダーの上の線と同じ「もとのピンクの細い線（3px）」を、ページ全体のアクセントに */
-html.jb:not(#_j) body:not([id]) :is(section.info dl,#condition-guide .title,footer){box-shadow:inset 0 3px 0 var(--b-pink)!important}
-html.jb:not(#_j) body:not([id]) :is(.box--service,.box--company){box-shadow:inset 0 3px 0 var(--b-pink)}
-html.jb body:not([id]) section:is(.Service,.Value,.Step,.top-faq,.Company) .title h2::after{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--b-pink);margin:12px auto 0}
-html.jb body:not([id]) section.f-Service .title h2::after{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--b-pink);margin:10px 0 0}
+/* ===== v0.7.0「各科の色が映える案」＝ html.jb.jb2（トップだけ。各科ページは「ネイビー案」と同じ＝6月の色・発熱外来は #BF3F48） =====
+   ご意見：「内科・耳鼻科の色は発色がよくてきれい。トップのネイビーと合わない？ 内科・耳鼻科の色が生かせるトップの色合いに調整できる？」
+   考え方：紺は黄・黄緑と相性のよい色。②のトップが合わなく見えるのは色の種類ではなく「トーン」の差（②はローズ・ブルーグレー・
+   グレーがかった紺のくすんだ色、内科・耳鼻科は澄んだ鮮やかな色）。さらにトップの科の札は、読みやすさのため文字を濃い茶・深緑にしていて、
+   鮮やかな色がトップに出ていなかった。
+   ・紺を少し澄んだ紺 #1E3A66 に（ヘッダー・フッター・お知らせ・文字）。ボタン・番号も同じ紺に白い文字（ブルーグレーをやめる）
+   ・見出し・強調の文字は紺。ローズは「直結0分」と WEB予約だけ（色の数を減らして、各科の色を目立たせる）
+   ・最初の画面の科の札を、各科の色の塗り＋紺の文字（発熱外来は白）に
+   ・症状別ガイドのカードの上に、その科の色の帯（各科のページがある科。ほかの専門外来は紺） */
+html.jb.jb2{--b-navy:#1E3A66;--b-bluegray:#1E3A66}
+html.jb.jb2:has(>body:not([id])),html.jb.jb2 body:not([id]){--jt-text:var(--b-navy)}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.gastro{--soft:#FFA0A7!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.general{--soft:#F8B62D!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.ent{--soft:#81B732!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.fever{--soft:#BF3F48!important;--dept-ink:#fff!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department .arrow{color:var(--b-navy)!important}
+html.jb.jb2:not(#_j) body:not([id]) .box--value{border-top:4px solid var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../general/"]){border-top-color:#F8B62D!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../ent/"]){border-top-color:#81B732!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../gastro/"]){border-top-color:#FFA0A7!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../derm/"]){border-top-color:#4FBAC9!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../checkups/"]){border-top-color:#F29C78!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../fever/"]){border-top-color:#BF3F48!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../mental/"]){border-top-color:#0A65AC!important}
+
 /* 発熱外来：赤い予約ボタンの文字は、6月の色でも暗い赤の文字（2.9:1）で読みにくかった。落ち着いた赤では白い文字が読める（5.2:1）ので白に。
    最初の画面の電話番号の帯は、少し暗くして白い文字を 4.5:1 以上に */
 html.jb:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action),
@@ -113,7 +133,7 @@ html.jb:not(#_j):not(#_k) body#fever .fv-tel>a{background-color:rgba(0,0,0,.12)!
 #jsample .js-t{font-weight:700;font-size:13.5px}
 #jsample .js-t small{display:block;font-weight:400;font-size:11.5px;color:#c9c2b9}
 #jsample .js-x{background:none;border:0;color:#c9c2b9;cursor:pointer;font-size:18px;line-height:1;padding:0 2px}
-#jsample .js-seg{display:flex;gap:4px;margin:8px 0;background:#34302c;border-radius:8px;padding:3px}
+#jsample .js-seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0;background:#34302c;border-radius:8px;padding:3px}
 #jsample .js-seg button{flex:1;border:0;border-radius:6px;background:transparent;color:#d9d3cb;padding:5px 4px;cursor:pointer;font-size:12px}
 #jsample .js-seg button[aria-pressed="true"]{background:#f4f1ec;color:#1f1d1b;font-weight:700}
 #jsample select{width:100%;padding:5px 6px;border-radius:6px;border:1px solid #4a4540;background:#2b2825;color:#f4f1ec;font-size:12.5px}
