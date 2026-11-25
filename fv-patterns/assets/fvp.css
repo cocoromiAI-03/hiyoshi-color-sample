@@ -1,4 +1,4 @@
-/* 最初の画面の背景7パターン v0.15.0（土台は 2026-06-23〜29 の色＝sample.css。v0.12.0 は5パターン、v0.13.0 で6・7を追加）
+/* 最初の画面の背景7パターン v0.16.0（土台は 2026-06-23〜29 の色＝sample.css。v0.12.0 は5パターン、v0.13.0 で6・7を追加）
    ご依頼（2026-11-26）：「6月のもとの色を採用。基本、新たな色はつくらない。
      各科のページ、トップのグロナビの色はグラデーションをかけて。
      各ページ、ファーストビューの写真の背景の各科の色はとる。かわりに、各科の背景色ではなく全科統一の背景色にする。
@@ -7,6 +7,7 @@
    追加のご依頼（2026-11-26）：「背景色に、うすいグレー、うすいネイビーも追加して」→ ⑥⑦
    さらに「うすいグレー・うすいネイビーはうすすぎた。グレー、ネイビーよりもう少しうすくした感じ」→ v0.14.0 で⑥⑦の濃さを変更
    さらに「薄いグレーをブルーグレーのもう少しこいのにできる？グレーみたいな感じ」→ v0.15.0 で⑥をブルーグレー（濃いめ）に
+   さらに「発熱外来の赤はもう少し色味をおさえて」→ v0.16.0 で発熱外来の赤を落ち着いた赤に（html.fvr・全パターン共通）
    html.fvp ＝ この見本 ／ html.fv1〜fv7 ＝ パターン ／ html.fvL ＝ 明るい背景（1〜3・6：文字を濃い色に） ／ html.fvD ＝ 暗い背景（4・5・7：文字は6月どおり白）
    新しく作った色はない：①⑤は②（v0.3.0）、②は案1（v0.9.0）で使った色、③の文字は各科の6月の濃い色、④のグレーはご指定、⑥は②のブルーグレー #41607F、⑦は⑤のネイビーを白で薄めた色（色相は同じ） */
 
@@ -21,11 +22,30 @@ html.fv6{--fv-bg:#BCC7D2;--fv-ink:#253F5C;--fv-line:rgba(37,63,92,.30)}   /* ブ
                                                                             v0.14.0 の「うすいグレー」#9EA2A5＋#2B3036 は color-sample-v0.14.0/ に凍結 */
 html.fv7{--fv-bg:#5C6F85;--fv-ink:#fff}                                    /* うすいネイビー＝⑤のネイビー #253F5C を白で25%薄く（L*46）＋白い文字 5.2:1 */
 
-/* ===== ヘッダー（グロナビ）：6月の色 → 右へ少し濃く（同じ色の濃淡。色相は変えない） =====
-   --jt-fill は sample.css が body に科ごとに置いている6月の面の色（トップ・消化器 #FFA0A7／総合内科 #F8B62D／耳鼻 #81B732／
-   心療 #0A65AC／皮膚 #4FBAC9／健診 #F29C78／発熱 #E60012）。科ごとの値になるよう body に置く。
+/* ===== 発熱外来の赤（全パターン共通・v0.16.0） =====
+   6月の #E60012 → #BF3F48、濃い赤 #B4000E → #903139（どちらも v0.5.0〜v0.7.0 の「落ち着いた赤」で使った色）。
+   発熱外来のページ全体（ヘッダーのグラデーション・ボタン・見出しなど）とトップの「発熱外来」の札に効く。
+   サイト側は --jfever-*（sample.css）と --jc-E60012・--jc-B4000E（発熱外来の style-fever.css）で赤を決めているので、その変数を置き換える */
+html.fvr{--jfever-main:#BF3F48;--jfever-text:#BF3F48;--jfever-fill:#BF3F48;--jfever-dark:#903139;--jc-E60012:#BF3F48;--jc-B4000E:#903139}
+/* 赤い面の予約ボタン（WEB予約・24時間いつでも など）：暗い赤の文字は 6月でも 2.8:1、落ち着いた赤では 2.4:1 になるので、白い文字に（5.2:1）。
+   v0.5.0〜v0.7.0 の「落ち着いた赤」と同じ扱い。白い面の予約ボタン（最初の画面の WEB予約）はそのまま */
+html.fvr:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action),
+html.fvr:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action) *{color:#fff!important}
+
+/* ===== ヘッダー（グロナビ）：左は6月の色そのまま → 右へ少し濃く。v0.16.0 で右端を「くすまない色」に =====
+   ご意見「各院グロナビのグラデーション、右側がくすんでて、もうすこし発色がいいくすまない色がいい」
+   v0.12.0〜v0.15.0 は右端を「黒を16%混ぜた色」にしていて、黒が混ざるぶん鮮やかさも落ちてくすんでいた。
+   v0.16.0 は右端を、同じ色相のまま「明るさ（OKLCH の L）を 0.10 下げ、鮮やかさ（C）を 1.2倍」にした色（sRGB に入る範囲で）。
+   発熱外来だけは「赤をおさえて」のご依頼どおり、鮮やかさは上げず明るさだけ下げた。古いブラウザでも同じに見えるよう、計算した色を書く。
+   --jt-fill は sample.css が body に科ごとに置いている左端の色。科ごとの値になるよう body に置く。
    ヘッダーの色はサイト側の @layer clinicHeaderDesktop（!important）が決めるので、sample.css で先に宣言した jsample レイヤーの中で上書きする */
-html.fvp body{--fv-head:linear-gradient(90deg,var(--jt-fill) 0%,color-mix(in oklab,var(--jt-fill) 84%,#000) 100%)}
+html.fvp body{--fv-head-r:#E77984;--fv-head:linear-gradient(90deg,var(--jt-fill) 0%,var(--fv-head-r) 100%)}   /* トップ・消化器 #FFA0A7 → #E77984 */
+html.fvp body#general{--fv-head-r:#D49700}    /* #F8B62D → #D49700 */
+html.fvp body#ent{--fv-head-r:#649700}        /* #81B732 → #649700 */
+html.fvp body#mental{--fv-head-r:#004980}     /* #0A65AC → #004980 */
+html.fvp body#derm{--fv-head-r:#009CAC}       /* #4FBAC9 → #009CAC */
+html.fvp body#checkups{--fv-head-r:#DA764B}   /* #F29C78 → #DA764B */
+html.fvp body#fever{--fv-head-r:#9D1B2D}      /* 発熱（落ち着いた赤）#BF3F48 → #9D1B2D */
 @layer jsample{
   html.fvp body #header:not(:has(.div-header-global)),html.fvp body #header .div-header-global{background:var(--fv-head)!important}
 }
