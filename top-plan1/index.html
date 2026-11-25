@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="version" content="0.10.0">
+<title>日吉トップ案1の調整</title>
+<style>
+:root{--bg:#faf8f6;--card:#fff;--ink:#1f1d1b;--sub:#625b55;--line:#e6e0d9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
+main{max-width:960px;margin:0 auto;padding:32px 16px 56px}
+h1{font-size:23px;line-height:1.45;margin:0 0 8px}
+.lead{margin:0 0 20px;color:#3b3631;font-size:15px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 20px}
+.box h2{font-size:16.5px;margin:0 0 8px}
+.box ul{margin:0;padding-left:1.2em;font-size:14.5px}
+.box li{margin:4px 0}
+code{font:12.5px ui-monospace,Consolas,monospace;color:var(--sub)}
+.heads{display:grid;gap:14px}
+.head{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.bar{display:flex;align-items:center;gap:10px;height:52px;padding:0 14px;color:#fff;font-weight:700;overflow:hidden}
+.bar img{width:26px;height:26px;flex:none}
+.bar .nm{font-size:16px;white-space:nowrap}
+.bar .nav{margin-left:auto;display:flex;gap:18px;font-size:13px;white-space:nowrap}
+.ha{background:linear-gradient(90deg,#BD5170 0%,#AE4664 55%,#9B3B56 100%)}
+.hb{background:linear-gradient(to top,#FFA0A7 0 3px,#AA415E 3px)}
+.hc{background:linear-gradient(180deg,#BD5170 0%,#9E3C58 100%)}
+.flat{background:#FFA0A7}
+.hb-info{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px 14px;font-size:14px}
+.hb-info b{font-size:15px}
+.hb-info .go{margin-left:auto;display:inline-block;padding:7px 14px;border-radius:8px;background:#34302F;color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+.hb-info .go:focus-visible{outline:3px solid #6a9bff;outline-offset:2px}
+.cmp{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--sub);margin-top:6px}
+.cmp .bar{height:36px;flex:1;max-width:340px}
+.cmp .bar .nm{font-size:13px}
+.cmp .bar.flat{color:#34302F}
+.cmp{flex-wrap:wrap}
+@media (max-width:640px){.bar .nav{display:none}.hb-info .go{margin-left:0}.cmp .bar{max-width:none;flex-basis:100%}}
+a{color:#2457a6}
+</style>
+</head>
+<body>
+<main>
+<h1>トップページ 案1（ピンク×墨）の調整版</h1>
+<p class="lead">いただいたご意見どおりに案1を調整しました。下の「このヘッダーで見る」を押すと、本物と同じ作りのトップが開きます。左下の小窓でヘッダーの濃淡を3通り切り替えられます。本番サイトは変わっていません。</p>
+
+<section class="box" aria-labelledby="done-h">
+<h2 id="done-h">ご意見と対応</h2>
+<ul>
+<li><b>最初の画面（背景色と文字色）</b>：案1のまま（グレージュの背景・墨の文字・深いローズの「直結0分」・各科の色の札）。「内科の専門外来」の帯までが案1です</li>
+<li><b>「内科の専門外来」より下</b>：もとの6月23〜29日の色に戻しました（お知らせ・選ばれる理由・症状別ガイドのカード・お問い合わせ・フッターなど）</li>
+<li><b>ドクター写真のところ</b>（症状別ガイドの写真の帯）：案1の配色を採用（見出しの箱を墨色に、見出しの下にもとのピンクの短い線）</li>
+<li><b>グロナビ（ヘッダー）</b>：べた塗りをやめ、ピンクに濃淡をつけて文字を白抜きにしました（3通り。下で比べられます）</li>
+<li>画面の下に固定された予約ボタン（WEB予約・LINE予約・電話予約）は、最初の画面から見えているので案1のままです。スマホのメニューを開いた画面も案1と同じ墨色です</li>
+</ul>
+</section>
+
+<section class="box" aria-labelledby="head-h">
+<h2 id="head-h">ヘッダーの濃淡（3通り）</h2>
+<p style="margin:0 0 12px;font-size:14.5px">もとのピンク <code>#FFA0A7</code> のままでは白い文字が読みにくい（文字と背景の明るさの差 1.9：1。読みやすさの目安は 4.5：1 以上）ため、同じピンクの系統で濃いトーンにしました。どの場所でも白い文字が 4.6：1 以上です。</p>
+<div class="heads">
+<div class="head">
+<div class="bar ha" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
+<div class="hb-info"><b>A　横のグラデーション</b><span>左がやや明るく、右へ向かって濃く（<code>#BD5170</code>→<code>#9B3B56</code>）</span><a class="go" href="top/?h=a">このヘッダーで見る</a></div>
+</div>
+<div class="head">
+<div class="bar hb" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
+<div class="hb-info"><b>B　電車の帯風（2色）</b><span>濃いピンク <code>#AA415E</code> の帯の下に、もとのピンクの細い帯（3px）</span><a class="go" href="top/?h=b">このヘッダーで見る</a></div>
+</div>
+<div class="head">
+<div class="bar hc" aria-hidden="true"><img src="assets/img/top__asset_img_logo.svg" alt=""><span class="nm">日吉駅前こころみクリニック</span><span class="nav"><span>ホーム</span><span>当院について</span><span>ドクター</span><span>アクセス・時間</span></span></div>
+<div class="hb-info"><b>C　縦のグラデーション</b><span>上がやや明るく、下へ向かって濃く（<code>#BD5170</code>→<code>#9E3C58</code>）</span><a class="go" href="top/?h=c">このヘッダーで見る</a></div>
+</div>
+</div>
+<div class="cmp"><span>参考：前の案1（べた塗り・もとのピンク）</span><div class="bar flat" aria-hidden="true"><span class="nm">日吉駅前こころみクリニック</span></div></div>
+</section>
+
+<section class="box" aria-labelledby="link-h">
+<h2 id="link-h">比べる</h2>
+<ul>
+<li><a href="../top-plans/top/?p=1">前の案1（全体が案1の色）</a>／<a href="../top-plans/">前の3案の説明</a></li>
+<li><a href="../top-plans/top/?p=june">6月23〜29日の色のトップ</a>／<a href="../2026-06/">6月の色の見本（トップ＋各科7ページ）</a></li>
+</ul>
+</section>
+</main>
+</body>
+</html>
