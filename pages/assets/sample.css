@@ -30,6 +30,90 @@ body#derm{--jt-main:var(--jderm-main);--jt-text:var(--jderm-text);--jt-fill:var(
 body#checkups{--jt-main:var(--jcheckups-main);--jt-text:var(--jcheckups-text);--jt-fill:var(--jcheckups-fill);--jt-dark:var(--jcheckups-dark)}
 body#fever{--jt-main:var(--jfever-main);--jt-text:var(--jfever-text);--jt-fill:var(--jfever-fill);--jt-dark:var(--jfever-dark)}
 
+/* ===== v0.3.0 新しい配色案（ピンク＋ネイビー）＝ html.jb =====
+   ピンク：医院の個性（見出し・強調・予約ボタン）／ネイビー・ブルーグレー：枠・診療内容・重要情報／白：背景／濃いグレー：本文
+   各科の色は落ち着いたトーンに下げ、どれも白い文字が 4.5:1 以上で読める濃さにした */
+html.jb{
+  --b-rose:#A94A5C;--b-rose-deep:#8E3B4D;--b-pink:#FFA0A7;--b-rose-tint:#FBF0F2;
+  --b-navy:#253F5C;--b-bluegray:#41607F;--b-bg:#F3F5F8;--b-line:#DCE3EA;--b-ink:#33393F;
+  --b-general:#8A6620;--b-general-deep:#6B4F18;
+  --b-ent:#467458;--b-ent-deep:#345A43;
+  --b-mental:#585E94;--b-mental-deep:#424774;
+  --b-derm:#367884;--b-derm-deep:#285D67;
+  --b-checkups:#9B5336;--b-checkups-deep:#80432B;
+  --b-fever:#9C4545;--b-fever-deep:#7A3535;
+  --jtop-main:var(--b-bluegray);--jtop-text:var(--b-rose);--jtop-fill:var(--b-navy);--jtop-dark:var(--b-navy);
+  --jgastro-main:var(--b-bluegray);--jgastro-text:var(--b-rose);--jgastro-fill:var(--b-navy);--jgastro-dark:var(--b-navy);
+  --jgeneral-main:var(--b-general);--jgeneral-text:var(--b-general);--jgeneral-fill:var(--b-general);--jgeneral-dark:var(--b-general-deep);
+  --jent-main:var(--b-ent);--jent-text:var(--b-ent);--jent-fill:var(--b-ent);--jent-dark:var(--b-ent-deep);
+  --jmental-main:var(--b-mental);--jmental-text:var(--b-mental);--jmental-fill:var(--b-mental);--jmental-dark:var(--b-mental-deep);
+  --jderm-main:var(--b-derm);--jderm-text:var(--b-derm);--jderm-fill:var(--b-derm);--jderm-dark:var(--b-derm-deep);
+  --jcheckups-main:var(--b-checkups);--jcheckups-text:var(--b-checkups);--jcheckups-fill:var(--b-checkups);--jcheckups-dark:var(--b-checkups-deep);
+  --jfever-main:var(--b-fever);--jfever-text:var(--b-fever);--jfever-fill:var(--b-fever);--jfever-dark:var(--b-fever-deep);
+  /* 当時の色が直書きで残っている箇所 → 新配色案の色 */
+  --jc-FFA0A7:var(--b-rose);--jc-F89098:var(--b-rose);--jc-B82834:var(--b-rose-deep);--jc-F02840:var(--b-rose);
+  --jc-DE2038:var(--b-rose);--jc-E81820:var(--b-rose);--jc-E04020:var(--b-rose);
+  --jc-F8B62D:var(--b-general);--jc-FFAC00:var(--b-general);--jc-9E6240:var(--b-general-deep);
+  --jc-81B732:var(--b-ent);--jc-0B6E4F:var(--b-ent-deep);
+  --jc-0A65AC:var(--b-mental);--jc-04052E:var(--b-mental-deep);
+  --jc-4FBAC9:var(--b-derm);--jc-166088:var(--b-derm-deep);
+  --jc-F29C78:var(--b-checkups);--jc-BA4D20:var(--b-checkups);
+  --jc-E60012:var(--b-fever);--jc-B4000E:var(--b-fever-deep);
+  /* 薄い背景のもとになる色（6月の色と同じ明るさにそろえ、薄い背景が暗くならないようにする） */
+  --jtop-tint:#869DB6;--jgastro-tint:#C1CEDC;--jgeneral-tint:#CEA657;--jent-tint:#58936E;
+  --jmental-tint:#585E93;--jderm-tint:#5CAEBC;--jcheckups-tint:#D8A692;--jfever-tint:#A04646;
+  --jt-tint:var(--jtop-tint);
+}
+html.jb body#gastroenterology-endoscopy{--jt-tint:var(--jgastro-tint)}
+html.jb body#general{--jt-tint:var(--jgeneral-tint)}
+html.jb body#ent{--jt-tint:var(--jent-tint)}
+html.jb body#mental{--jt-tint:var(--jmental-tint)}
+html.jb body#derm{--jt-tint:var(--jderm-tint)}
+html.jb body#checkups{--jt-tint:var(--jcheckups-tint)}
+html.jb body#fever{--jt-tint:var(--jfever-tint)}
+/* 予約ボタン（WEB予約）＝どのページでもピンク・白い文字 ／ ヘッダー＝どのページでもネイビー */
+html.jb,html.jb body{
+  --reservation-primary:var(--b-rose)!important;--reservation-primary-hover:var(--b-rose-deep)!important;--reservation-on-primary:#fff!important;
+  --reservation-sticky-primary:var(--b-rose)!important;--reservation-sticky-text:#fff!important;
+  --hiyoshi-global-header-bg:var(--b-navy)!important;
+}
+/* ヘッダーの色はサイト側の @layer clinicHeaderDesktop（!important）が最優先で決めている。
+   !important どうしは「先に宣言したレイヤー」が勝つので、最初に読み込まれるこのファイルで jsample レイヤーを作って上書きする */
+@layer jsample{
+  html.jb #header:not(:has(.div-header-global)),html.jb #header .div-header-global{
+    background:var(--b-navy)!important;color:#fff!important;box-shadow:inset 0 3px 0 var(--b-pink)!important}
+  html.jb #header .nav-header-global{background:var(--b-navy)!important;color:#fff!important}
+}
+html.jb header#header{background-color:var(--b-navy)!important}
+html.jb:not(#_j):not(#_k) #header :is(.div-header-global,.nav-header-global){background-color:var(--b-navy)!important;color:#fff!important}
+/* 各科ページの「医師紹介」「クリニック・アクセス」の帯＝専門性・重要情報なのでネイビー。中の強調は元のピンク（ネイビー上で 5.6:1） */
+html.jb:not(#_j):not(#_k):not(#_l) :is(#front-doctor,#front-clinic) .div-section-container{background-color:var(--b-navy)!important}
+html.jb:not(#_j):not(#_k):not(#_l) :is(#front-doctor,#front-clinic) .div-section-container .p-text:not(.section-subsection *){color:#fff!important}
+html.jb:not(#_j):not(#_k):not(#_l) :is(#front-doctor,#front-clinic) :is(.p-text>strong,.a-inline):not(.section-subsection *){color:var(--b-pink)!important}
+html.jb:not(#_j):not(#_k):not(#_l) :is(#front-doctor,#front-clinic) .section-subsection :is(.p-text>strong,.a-inline){color:var(--b-rose)!important}
+/* 心療内科ページだけ強調の赤が直書きなので、ピンク（ローズ）にそろえる */
+html.jb:not(#_j) body#mental :is(.p-text>strong,.a-inline){color:var(--b-rose)}
+/* トップの最初の画面：白に近い背景＋ネイビーの文字。「直結0分」だけピンク */
+html.jb #home-firstview #mainimage,html.jb #home-firstview #mainimage .hero-photo{background:var(--b-bg)!important}
+html.jb #mainimage .hero-heading .corporation,html.jb #mainimage .department-heading span{color:#5B6673!important}
+html.jb #mainimage #clinic-title,html.jb #mainimage .hero-heading .location,html.jb #mainimage .department-heading h2{color:var(--b-navy)!important}
+html.jb #mainimage .hero-heading .location span{color:var(--b-rose)!important}
+html.jb #mainimage .hero-heading .hours{color:var(--b-ink)!important}
+/* お問い合わせ：薄いブルーグレーの面＋ネイビーの見出し */
+html.jb section.contact{background-color:var(--b-bg)!important}
+html.jb section.contact .title h2,html.jb section.contact .title p{color:var(--b-navy)!important}
+/* 予約ボタンはサイト側で強い指定（ID つき・!important）が入っているので、:not(#_) で強さを足して上書きする */
+html.jb:not(#_j):not(#_k) section.contact .btn>a[href^="https://wakumy.lyd.inc/"],
+html.jb:not(#_j):not(#_k) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"]{background-color:var(--b-rose)!important;border-color:var(--b-rose)!important;color:#fff!important}
+html.jb:not(#_j):not(#_k) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"] *{color:#fff!important}
+html.jb .top-faq{background:var(--b-bg)!important}
+/* 細かな読みやすさの補正（色の差が 4.5:1 を下回った箇所） */
+html.jb #home-firstview .department.general{--soft:color-mix(in srgb,var(--jgeneral-main) 9%,#fff)!important}
+html.jb :is(.fv-tel-note,.gv-tel-note){color:#fff!important}
+html.jb:not(#_j) :is(.gv-tel,.fv-tel)>a{background-color:rgba(0,0,0,.14)!important}
+/* フッター：ネイビー */
+html.jb footer,html.jb #footer{background-color:var(--b-navy)!important}
+
 /* 個別の補正：今のトップでは「総合内科」の枠が共通色（オレンジ）を使っているので、当時の総合内科の黄色に戻す */
 #home-firstview .department.general{--accent:var(--jgeneral-fill)!important;--soft:color-mix(in srgb,var(--jgeneral-main) 18%,#fff)!important;--dept-ink:var(--jgeneral-fill)!important}
 

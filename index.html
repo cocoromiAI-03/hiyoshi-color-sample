@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="version" content="0.2.0">
+<meta name="version" content="0.3.0">
 <title>日吉サイト配色見本</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +57,13 @@ h1,h2,h3{text-wrap:balance;line-height:1.35}
 .pagesamples a{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;background:var(--bg)}
 .pagesamples a:hover{border-color:var(--ink)}
 .pagesamples i{width:14px;height:14px;border-radius:3px;flex:none;display:block}
+.proposal-link{border-color:#A94A5C;box-shadow:inset 4px 0 0 #253F5C}
+.proposal-link .newtag{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;background:#253F5C;color:#fff;font-family:var(--font-en);font-size:11px;letter-spacing:.06em;vertical-align:2px}
+.pp-go{display:flex;flex-wrap:wrap;gap:8px;margin:0!important}
+.pp-go a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;background:var(--bg);min-height:44px;color:var(--ink)}
+.pp-go a:hover{border-color:var(--ink)}
+.pp-go a.pp-main{background:#A94A5C;border-color:#A94A5C;color:#fff}
+.pp-go i{width:14px;height:14px;border-radius:3px;display:block}
 @media (max-width:760px){.pagesamples ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---- 操作 ---- */
@@ -210,24 +217,30 @@ footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
 <body>
 
 <header class="intro wrap">
-  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR SAMPLE v0.2.0</div>
+  <div class="eyebrow">HIYOSHI COCOROMI CLINIC ・ COLOR SAMPLE v0.3.0</div>
   <h1><span class="dot" aria-hidden="true"></span>日吉駅前こころみクリニック　配色見本</h1>
   <p class="lead">今年のはじめ、トップページがピンク系だったころの配色と、各科ごとの色分けを、ボタンや見出しなどの部品ごとに並べた見本です。上の切り替えで「トップ」と各科のトップページを見比べられます。</p>
   <p class="lead">色は、サイトのテーマの中に残っていた<strong>当時のCSS（デザインの指定ファイル）</strong>から取り出しました。どの色がどこから来たかは、各色の札（「当時の記録」「見本用に補った色」）と、ページ下の「根拠」に書いています。</p>
   <span class="notice">本番サイトは一切変更していません。このページは確認用の見本で、検索にも出ない設定です。</span>
 
+  <nav class="pagesamples proposal-link" aria-labelledby="pp-title">
+    <h2 id="pp-title">新しい配色案（ピンク＋ネイビー）<span class="newtag">v0.3.0</span></h2>
+    <p>「ピンク一色で単調」「男性が受診しづらいのでは」という意見を受けた案です。ピンクは医院の色として残し、ネイビー・ブルーグレーを組み合わせました。発熱外来の赤も落ち着いたトーンにしています。</p>
+    <p class="pp-go"><a class="pp-main" href="proposal/">配色案の説明を見る</a><a href="pages/top/?c=new"><i style="background:#253F5C"></i>トップ（新しい案）</a><a href="pages/fever/?c=new"><i style="background:#9C4545"></i>発熱外来（新しい案）</a></p>
+  </nav>
+
   <nav class="pagesamples" aria-labelledby="ps-title">
     <h2 id="ps-title">今のページを当時の色に戻した見本（8ページ）</h2>
-    <p>今のサイトのページをそのまま複製し、色だけを 2026-06-23〜29 の色に置き換えました。写真・文章・レイアウトは今のままです。左下のパネルで「当時どおり」と「文字を読みやすく」を切り替えられます。</p>
+    <p>今のサイトのページをそのまま複製し、色だけを 2026-06-23〜29 の色に置き換えました。写真・文章・レイアウトは今のままです。左下のパネルで「6月の色」「6月・読みやすく」「新しい案」を切り替えられます。</p>
     <ul>
-      <li><a href="pages/top/"><i style="background:#FFA0A7"></i>トップ</a></li>
-      <li><a href="pages/gastro/"><i style="background:#FFA0A7"></i>消化器内科・内視鏡</a></li>
-      <li><a href="pages/general/"><i style="background:#F8B62D"></i>総合内科</a></li>
-      <li><a href="pages/ent/"><i style="background:#81B732"></i>耳鼻咽喉科</a></li>
-      <li><a href="pages/mental/"><i style="background:#0A65AC"></i>心療内科・精神科</a></li>
-      <li><a href="pages/derm/"><i style="background:#4FBAC9"></i>美容皮膚科</a></li>
-      <li><a href="pages/checkups/"><i style="background:#F29C78"></i>健康診断</a></li>
-      <li><a href="pages/fever/"><i style="background:#E60012"></i>発熱外来</a></li>
+      <li><a href="pages/top/?c=june"><i style="background:#FFA0A7"></i>トップ</a></li>
+      <li><a href="pages/gastro/?c=june"><i style="background:#FFA0A7"></i>消化器内科・内視鏡</a></li>
+      <li><a href="pages/general/?c=june"><i style="background:#F8B62D"></i>総合内科</a></li>
+      <li><a href="pages/ent/?c=june"><i style="background:#81B732"></i>耳鼻咽喉科</a></li>
+      <li><a href="pages/mental/?c=june"><i style="background:#0A65AC"></i>心療内科・精神科</a></li>
+      <li><a href="pages/derm/?c=june"><i style="background:#4FBAC9"></i>美容皮膚科</a></li>
+      <li><a href="pages/checkups/?c=june"><i style="background:#F29C78"></i>健康診断</a></li>
+      <li><a href="pages/fever/?c=june"><i style="background:#E60012"></i>発熱外来</a></li>
     </ul>
   </nav>
 
@@ -382,7 +395,7 @@ footer.end{padding-block:28px 48px;color:var(--muted);font-size:12.5px}
   </section>
 </main>
 
-<footer class="end wrap">見本ページ v0.2.0（2026-11-25 更新）。本番サイトとは別に置いた確認用ページです。色のコードはクリックでコピーできます。</footer>
+<footer class="end wrap">見本ページ v0.3.0（2026-11-25 更新）。本番サイトとは別に置いた確認用ページです。色のコードはクリックでコピーできます。</footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
