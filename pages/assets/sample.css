@@ -1,4 +1,4 @@
-/* 配色見本（2026-06-23〜29 の色）v0.4.0 — 色の変数と、見本用の切り替えパネル
+/* 配色見本（2026-06-23〜29 の色）v0.5.0 — 色の変数と、見本用の切り替えパネル
    main=帯・ボタン・アイコンなど面の色 / text=見出しや強調の文字 / fill=濃い面（ヘッダーなど） / dark=ほぼ黒の文字
    「当時どおり」は当時のCSSのまま（文字にも明るい色）。「文字を読みやすく」は文字と濃い面だけ各科の濃い色にする */
 :root{
@@ -30,63 +30,75 @@ body#derm{--jt-main:var(--jderm-main);--jt-text:var(--jderm-text);--jt-fill:var(
 body#checkups{--jt-main:var(--jcheckups-main);--jt-text:var(--jcheckups-text);--jt-fill:var(--jcheckups-fill);--jt-dark:var(--jcheckups-dark)}
 body#fever{--jt-main:var(--jfever-main);--jt-text:var(--jfever-text);--jt-fill:var(--jfever-fill);--jt-dark:var(--jfever-dark)}
 
-/* ===== v0.4.0 新しい配色案（もとのピンクが主役＋ネイビーの差し色）＝ html.jb =====
-   ご意見（2026-11-25）：最初の見本（6月の色）を基本に。トップはもとのピンクがメインで、ブルーグレー・ネイビーを差し色にして
-   かわいすぎず落ち着いた感じに。トップ以外の科は発熱外来以外は最初の見本どおり。発熱外来の赤は少し落ち着いたトーンに。
-   ・トップ（body に id が無いのはトップだけ）：ピンクの面（ヘッダー・最初の画面・ボタン・お問い合わせ）はそのまま。
-     ピンクの上の白い文字と、ピンクの文字をネイビーに（ピンクの上で 5.6:1）。お知らせの見出し・症状別ガイドの帯・フッターをネイビーに。
-     見出しの下にもとのピンクの短い線、強調の文字にうすいピンクのマーカー
-   ・各科ページ：6月の色のまま。発熱外来だけ #E60012 → #BF3F48（同じ色合いで鮮やかさを半分に）
-   v0.3.0（ローズ＋ネイビーが主役の案）は color-sample-v0.3.0/ に凍結 */
+/* ===== v0.5.0 新しい配色案 ＝ html.jb =====
+   ご意見の流れ（2026-11-25）：v0.3.0（ネイビーが主役）→「最初の見本を基本に、トップはもとのピンクがメイン」で v0.4.0 →
+   「v0.4.0 のトップは微妙。v0.3.0 のネイビー基調のほうがよかった。それをもとに、ボタンやアイコンなどの差し色にピンクを。トップだけ差し替え」
+   ・トップ（body に id が無いのはトップだけ）：v0.3.0 のネイビー基調（ネイビーのヘッダー・フッター・お知らせ・症状別ガイドの帯、
+     うすいブルーグレーの最初の画面・よくある質問・お問い合わせ）。差し色はもとのピンク #FFA0A7 で、ボタン・予約ボタン・番号の丸・
+     ステップの札・ページ上部へ・ヘッダーの上の線・見出しの下の線・強調のマーカーに使う。ピンクの面の上の文字はネイビー（5.6:1）
+   ・各科ページ：v0.4.0 のまま（6月の色。発熱外来だけ #E60012 → #BF3F48）
+   v0.3.0・v0.4.0 は color-sample-v0.3.0/・color-sample-v0.4.0/ に凍結 */
 html.jb{
-  --b-pink:#FFA0A7;--b-pink-mark:#FFE1E4;--b-navy:#253F5C;--b-bluegray:#41607F;
+  --b-pink:#FFA0A7;--b-pink-mark:#FFE1E4;--b-navy:#253F5C;--b-bluegray:#41607F;--b-bg:#F3F5F8;--b-ink:#33393F;
   --b-fever:#BF3F48;--b-fever-deep:#903139;
   --jfever-main:var(--b-fever);--jfever-text:var(--b-fever);--jfever-fill:var(--b-fever);--jfever-dark:var(--b-fever-deep);
   --jc-E60012:var(--b-fever);--jc-B4000E:var(--b-fever-deep);
 }
-/* トップ：ピンクの文字（見出し・強調・リンク・電話番号）をネイビーに／ほぼ黒の文字（予約ボタンの文字など）を濃いネイビーに */
-html.jb body:not([id]){--jt-text:var(--b-navy);--jt-dark:var(--b-navy)}
+/* トップの色の割り当て：面（ボタン・アイコン・線）＝もとのピンク／文字・濃い面＝ネイビー／うすい背景＝ブルーグレー系（v0.3.0 と同じ） */
+html.jb body:not([id]){
+  --jt-main:var(--b-pink);--jt-text:var(--b-navy);--jt-fill:var(--b-navy);--jt-dark:var(--b-navy);--jt-tint:#869DB6;
+}
 /* トップに並ぶ各科の名前（最初の画面の科の札・グループ院の科の札）は、6月の明るい色の文字だと読めない（1.6〜2.2:1）。
-   トップの中だけ「6月・読みやすく」と同じ各科の濃い色にする（消化器内科はトップと同じピンクなのでネイビー） */
+   トップの中だけ「6月・読みやすく」と同じ各科の濃い色にする（消化器内科はトップと同じ色なのでネイビー） */
 html.jb body:not([id]){
   --jgastro-text:var(--b-navy);--jgastro-fill:var(--b-navy);
   --jgeneral-text:#9E6240;--jgeneral-fill:#9E6240;--jent-text:#0B6E4F;--jent-fill:#0B6E4F;
   --jderm-text:#166088;--jderm-fill:#166088;--jcheckups-text:#BA4D20;--jcheckups-fill:#BA4D20;
 }
-/* ヘッダー：ピンクの帯のまま、文字をネイビーに。
-   ヘッダーの文字色はサイト側の @layer clinicHeaderDesktop（!important）が決めている。!important どうしは
+/* ヘッダー：ネイビーの帯＋白い文字、上にもとのピンクの細い線。
+   ヘッダーの色はサイト側の @layer clinicHeaderDesktop（!important）が決めている。!important どうしは
    「先に宣言したレイヤー」が勝つので、最初に読み込まれるこのファイルで jsample レイヤーを作って上書きする */
 @layer jsample{
+  html.jb body:not([id]) #header:not(:has(.div-header-global)),html.jb body:not([id]) #header .div-header-global{
+    background:var(--b-navy)!important;color:#fff!important;box-shadow:inset 0 3px 0 var(--b-pink)!important}
+  html.jb body:not([id]) #header .nav-header-global{background:var(--b-navy)!important}
   html.jb body:not([id]) #header,
-  html.jb body:not([id]) #header :is(.div-header-global,.nav-header-global,a,span,p,li,div,strong,small){color:var(--b-navy)!important}
+  html.jb body:not([id]) #header :is(.div-header-global,.nav-header-global,a,span,p,li,div,strong,small){color:#fff!important}
 }
-/* スマホのメニュー（三本線のボタンと、開いたときのピンクの画面）も文字と線をネイビーに */
-html.jb:not(#_j) body:not([id]) .hamburger__icon::before,
-html.jb:not(#_j) body:not([id]) .hamburger__icon::after,
-html.jb:not(#_j) body:not([id]) .hamburger:not(.active) .hamburger__icon{background-color:var(--b-navy)!important}
-html.jb:not(#_j) body:not([id]) .fat-nav :is(li,a,p,span){color:var(--b-navy)!important;border-color:rgba(37,63,92,.28)!important}
-/* 最初の画面：ピンクの面のまま、文字をネイビーに */
-html.jb:not(#_j) body:not([id]) #mainimage :is(.hero-heading,.department-heading),
-html.jb:not(#_j) body:not([id]) #mainimage :is(.hero-heading,.department-heading) *{color:var(--b-navy)!important}
-/* ピンクの面の上の白い文字（番号・ステップ・ボタン・ページ上部へ）をネイビーに */
+html.jb:not(#_j) body:not([id]) header#header{background-color:var(--b-navy)!important}
+/* スマホのメニュー（開いた画面）もネイビー */
+html.jb:not(#_j) body:not([id]) .fat-nav{background-color:var(--b-navy)!important}
+/* 最初の画面：うすいブルーグレーの面＋ネイビーの文字。「直結0分」にもとのピンクのマーカー */
+html.jb:not(#_j) body:not([id]) #home-firstview #mainimage,html.jb:not(#_j) body:not([id]) #home-firstview #mainimage .hero-photo{background:var(--b-bg)!important}
+html.jb:not(#_j) body:not([id]) #mainimage :is(.hero-heading .corporation,.department-heading span){color:#5B6673!important}
+html.jb:not(#_j) body:not([id]) #mainimage :is(#clinic-title,.hero-heading .location,.hero-heading .location span,.department-heading h2){color:var(--b-navy)!important}
+html.jb:not(#_j) body:not([id]) #mainimage .hero-heading .location span{background:linear-gradient(transparent 66%,var(--b-pink) 66%)}
+html.jb:not(#_j) body:not([id]) #mainimage .hero-heading .hours{color:var(--b-ink)!important}
+/* 差し色のピンク：ボタン・番号の丸・ステップの札・ページ上部へ。面はピンクのまま、上の文字はネイビー */
 html.jb:not(#_j) body:not([id]) :is(.box--service p.icon,section.Step dl dt,.box--value p.btn>a,.box--company p.btn>a,.facility-card p.btn>a,#page-top>a),
 html.jb:not(#_j) body:not([id]) :is(.box--service p.icon,section.Step dl dt,.box--value p.btn>a,.box--company p.btn>a,.facility-card p.btn>a,#page-top>a) *{color:var(--b-navy)!important}
-/* 差し色のネイビー：お知らせの見出し・症状別ガイドの帯・フッター */
+html.jb:not(#_j) body:not([id]) #page-top>a{background-color:var(--b-pink)!important}
+/* 総合内科の札：うすい黄色の背景を少し薄くして、濃い色の文字を 4.5:1 以上に */
+html.jb:not(#_j) body:not([id]) #home-firstview .department.general{--soft:color-mix(in srgb,var(--jgeneral-main) 9%,#fff)!important}
+/* ネイビーの面：お知らせの見出し・症状別ガイドの帯・フッター */
 html.jb:not(#_j) body:not([id]) section.info dl{background-color:var(--b-navy)!important}
 html.jb:not(#_j) body:not([id]) #condition-guide .title{background-color:rgba(37,63,92,.93)!important}
 html.jb:not(#_j) body:not([id]) footer{background-color:var(--b-navy)!important}
+/* うすいブルーグレーの面：よくある質問・お問い合わせ（見出しはネイビー） */
+html.jb:not(#_j) body:not([id]) :is(.top-faq,section.contact){background-color:var(--b-bg)!important}
+html.jb:not(#_j) body:not([id]) section.contact .title :is(h2,p){color:var(--b-navy)!important}
 /* 見出し：ネイビーの文字＋もとのピンクの短い線。英語の小見出しはブルーグレー */
 html.jb:not(#_j) body:not([id]) section:is(.Service,.Step,.top-faq,.f-Service) .title h2{color:var(--b-navy)!important}
 html.jb:not(#_j) body:not([id]) section:is(.Service,.Step,.top-faq,.f-Service) .title p{color:var(--b-bluegray)!important}
 html.jb body:not([id]) section:is(.Service,.Value,.Step,.top-faq,.Company) .title h2::after{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--b-pink);margin:12px auto 0}
 html.jb body:not([id]) section.f-Service .title h2::after{content:"";display:block;width:40px;height:3px;border-radius:2px;background:var(--b-pink);margin:10px 0 0}
+/* 強調の文字：ネイビー＋うすいピンクのマーカー */
+html.jb body:not([id]) main :is(.box--service,.box--company,.top-recruit__copy) :is(p,dd)>strong{background:linear-gradient(transparent 62%,var(--b-pink-mark) 62%)}
 /* 発熱外来：赤い予約ボタンの文字は、6月の色でも暗い赤の文字（2.9:1）で読みにくかった。落ち着いた赤では白い文字が読める（5.2:1）ので白に。
    最初の画面の電話番号の帯は、少し暗くして白い文字を 4.5:1 以上に */
 html.jb:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action),
 html.jb:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action) *{color:#fff!important}
 html.jb:not(#_j):not(#_k) body#fever .fv-tel>a{background-color:rgba(0,0,0,.12)!important}
-/* 強調の文字：ネイビー＋うすいピンクのマーカー */
-html.jb body:not([id]) main :is(.box--service,.box--company,.top-recruit__copy) :is(p,dd)>strong{background:linear-gradient(transparent 62%,var(--b-pink-mark) 62%)}
 
 /* 個別の補正：今のトップでは「総合内科」の枠が共通色（オレンジ）を使っているので、当時の総合内科の黄色に戻す */
 #home-firstview .department.general{--accent:var(--jgeneral-fill)!important;--soft:color-mix(in srgb,var(--jgeneral-main) 18%,#fff)!important;--dept-ink:var(--jgeneral-fill)!important}

@@ -1,17 +1,18 @@
 /* 見本用パネル：どのページの見本か・配色の切り替え・ページ移動
    v0.3.0: 「新しい配色案」を追加。URL の ?c=june / readable / new で直接開ける
-   v0.4.0: 新しい案を「もとのピンクが主役＋ネイビーの差し色」に変更（各科は6月の色・発熱外来だけ落ち着いた赤） */
+   v0.4.0: 新しい案を「もとのピンクが主役＋ネイビーの差し色」に変更（各科は6月の色・発熱外来だけ落ち着いた赤）
+   v0.5.0: トップだけ「ネイビー基調＋ピンクの差し色（ボタン・アイコン）」に差し替え */
 (function () {
   var me = document.currentScript;
   var page = (me && me.getAttribute('data-page')) || 'top';
   var PAGES = [
-    ['top', 'トップ', '#FFA0A7', 'linear-gradient(135deg,#FFA0A7 55%,#253F5C 55%)'], ['gastro', '消化器内科・内視鏡', '#FFA0A7', '#FFA0A7'],
+    ['top', 'トップ', '#FFA0A7', 'linear-gradient(135deg,#253F5C 55%,#FFA0A7 55%)'], ['gastro', '消化器内科・内視鏡', '#FFA0A7', '#FFA0A7'],
     ['general', '総合内科', '#F8B62D', '#F8B62D'], ['ent', '耳鼻咽喉科', '#81B732', '#81B732'],
     ['mental', '心療内科・精神科', '#0A65AC', '#0A65AC'], ['derm', '美容皮膚科', '#4FBAC9', '#4FBAC9'],
     ['checkups', '健康診断', '#F29C78', '#F29C78'], ['fever', '発熱外来', '#E60012', '#BF3F48']
   ];
   var MODES = { faithful: 'june', readable: 'readable', b: 'new' };
-  var TITLE = { faithful: '2026年6月の色', readable: '6月の色・文字を読みやすく', b: '新しい配色案（ピンク＋ネイビーの差し色）' };
+  var TITLE = { faithful: '2026年6月の色', readable: '6月の色・文字を読みやすく', b: '新しい配色案（トップはネイビー＋ピンク）' };
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
   function set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   var h = document.documentElement;
