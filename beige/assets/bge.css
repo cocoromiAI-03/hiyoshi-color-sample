@@ -84,3 +84,16 @@ html.bge:not(#_a):not(#_b) body#fever .section-cta .div-cta-catchline .p-cta-cat
    その変数（ふだんは html の濃いえんじ）を、このボタンの上でだけ白に置き直す */
 html.bge:not(#_a):not(#_b) body#fever #cta :is(.a-button-cta-web,.reservation-sticky-web),
 html.bge:not(#_a):not(#_b) body#fever #cta :is(.a-button-cta-web,.reservation-sticky-web) *{--reservation-sticky-text:#fff!important;color:#fff!important}
+
+/* ===== ワクチンのページのグロナビをページの中の緑に（v0.26.0） =====
+   ご依頼（2026-11-26）：「ワクチンページのグロナビも ページ内の緑にあわせて」
+   ワクチンのページ（vaccination/・build_beige_vaccination.py で本番から複製）の印は html.bgeVac。body に id が無く、トップと同じ扱いの色（総合内科のオレンジ）になっていた。
+   緑はページの中で使われている2色：最初の画面の地 #376B60 → 濃い緑 #246454（本番の CSS にある色）。白い文字は 6.1:1 以上。新しい色は作っていない。
+   スマホのメニュー（開いたときの地）とヘッダーの下の細い線も同じ緑に */
+html.bge.bgeVac body{--fv-head-r:#246454;--fv-head:linear-gradient(90deg,#376B60 0%,#246454 100%)}
+/* ヘッダーの下の細い線はサイト側の @layer clinicHeaderDesktop の中（!important）で決まるので、先に宣言された jsample レイヤーの中で上書き */
+@layer jsample{
+  html.bge.bgeVac body #header{box-shadow:inset 0 -1px 0 0 #376B60!important}
+}
+html.bge.bgeVac:not(#_a):not(#_b) body #site-mobile-navigation.fat-nav,
+html.bge.bgeVac:not(#_a):not(#_b) body .fat-nav{background-color:#376B60!important}
