@@ -46,3 +46,41 @@ html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-inf
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-section-content > .div-probrems{background:color-mix(in srgb,#BFAFAE 28%,#F6F2F0)!important}
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-probrems-section dl.dl-probrems > dt,
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .p-solution-catchline{background:#F6F2F0!important}
+
+/* ===== 消化器内科の診療表の文字を墨に（v0.25.0） =====
+   ご依頼（2026-11-26）：「消化器内科の診療表がかわいらしすぎる。時間等の文字色をトップの「胃カメラ・大腸カメラが」と同じ文字色にして」
+   「胃カメラ・大腸カメラが」（最初の画面の見出し）の色＝ベージュの文字の墨 #34302F（fvp.css の --fv-ink）。
+   表の中の時間の欄（AM・PM・夜と時刻）と、各曜日の ○・— を墨に。表の見出し行（ピンクの地・白い文字）、表の外の見出し「消化器内科の診療時間」、専門外来の案内はそのまま */
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td),
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td) *{color:#34302F!important}
+
+/* ===== 発熱外来のページ（v0.25.0） ===== */
+/* 「発熱外来が選ばれる3つの理由」：緑の帯の前後に見えていた赤（--dp-deep）をベージュに
+   ご依頼「背景緑の前後の赤とのコントラストがきつすぎる。前後の赤の背景は、ベージュにして」。緑の帯はそのまま */
+html.bge:not(#_a):not(#_b) body#fever main #front-reason{background:#F6F2F0!important}
+
+/* 「日吉駅 直結0分 × 毎日 診療」の赤い帯を、「受診前に確認したい記事」の囲みと同じ薄い赤に
+   ご依頼「赤で面積が大きいので目立ちすぎ。「受診前に確認したい記事」の背景色につかってる薄い赤にして」
+   同じ帯がページの下の「発熱・せき・のどの痛み」の予約案内にもあるので、2か所とも（最初の画面の中の同じ部品は除く）。
+   地が薄くなるので、白かった文字は「直結0分」「毎日診療」「×」を発熱外来の赤、下の小さな文は「受診前に確認したい記事」の囲みの文字の色に */
+html.bge:not(#_a):not(#_b) body#fever .section-cta .div-cta-catchline{background-color:var(--reservation-soft,color-mix(in srgb,var(--jt-tint,var(--jt-main)) 12%,#fff))!important}
+html.bge:not(#_a):not(#_b) body#fever .section-cta .div-cta-catchline :is(li,li *,.multiply){color:var(--jfever-main)!important}
+html.bge:not(#_a):not(#_b) body#fever .section-cta .div-cta-catchline .p-cta-catchline{color:#3F3933!important}
+
+/* 「予約優先制 WEBなら24時間受付」の文字を小さく（パソコン幅。スマホ幅は今のまま）
+   ご依頼「このフォントサイズも大きすぎるので、もう少し小さく」。
+   サイト側のスマホ幅の大きさ（3.6rem・5.6rem＝約32px・49px）にそろえた（前は約42px・75px） */
+@media (min-width:769px){
+  html.bge:not(#_a):not(#_b) body#fever .dept-compact-booking .div-cta-title .h-cta-subtitle{font-size:3.6rem!important}
+  html.bge:not(#_a):not(#_b) body#fever .dept-compact-booking .div-cta-title .h-cta-subtitle > strong{font-size:5.6rem!important}
+  /* 右上の小さな札「発熱・かぜ症状は、その日にご相談ください」は大きい文字の右端に付く作りで、文字を小さくすると左に寄って
+     「WEBなら24時間受付」の上端にかかった → 札の下げ幅（サイト側 translateY(2rem)）を 1rem に */
+  html.bge:not(#_a):not(#_b) body#fever .dept-compact-booking .div-cta-title .h-cta-title{transform:translateY(1rem)!important}
+}
+
+/* 画面の下に固定の「WEB予約」（赤いボタン）の文字を白に
+   ご依頼「画面下の web予約ボタン 赤いやつ。文字は白地に」。いまは赤 #BF3F48 の上に濃いえんじ（約 2.4:1）で読みにくい。白なら 5.2:1
+   ボタンの文字色はサイトのスクリプトが要素の style に「color:var(--reservation-sticky-text)!important」と直接書くので、CSS の color では勝てない。
+   その変数（ふだんは html の濃いえんじ）を、このボタンの上でだけ白に置き直す */
+html.bge:not(#_a):not(#_b) body#fever #cta :is(.a-button-cta-web,.reservation-sticky-web),
+html.bge:not(#_a):not(#_b) body#fever #cta :is(.a-button-cta-web,.reservation-sticky-web) *{--reservation-sticky-text:#fff!important;color:#fff!important}

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="version" content="0.24.0">
+<meta name="version" content="0.25.0">
 <title>日吉 ベージュ統一の見本</title>
 <style>
 :root{--bg:#faf8f6;--card:#fff;--ink:#1f1d1b;--sub:#625b55;--line:#e6e0d9}
@@ -38,18 +38,35 @@ a:focus-visible{outline:3px solid #6a9bff;outline-offset:2px}
 <body>
 <main>
 <h1>日吉サイト ベージュで統一した見本（トップは総合内科の色）</h1>
-<p class="lead">「最初の画面の背景5パターン」のうち<b>2 ベージュ</b>を全科に採用し、<b>トップページを総合内科（ベージュ）と同じ色の見え方</b>で作った見本です。画像かページ名を押すと、本物と同じ作りのページが開きます（左下の小窓でページを移動できます）。本番サイトは変わっていません。</p>
+<p class="lead">「最初の画面の背景5パターン」のうち<b>2 ベージュ</b>を全科に採用し、<b>トップページを総合内科（ベージュ）と同じ色の見え方</b>で作った見本です。画像かページ名を押すと、本物と同じ作りのページが開きます（ページの中の診療科のリンクで、この見本の中を移動できます）。本番サイトは変わっていません。</p>
 <a class="go" href="top/">トップページを開く</a>
 
+<section class="box" aria-labelledby="v25-h">
+<h2 id="v25-h">今回（v0.25.0）変えたこと</h2>
+<ul>
+<li><b>画面左下の黒い小窓を外しました</b>（8ページすべて）</li>
+<li><b>消化器内科の診療表</b>：時間の欄（AM・PM・夜と時刻）と、各曜日の ○・— の文字を、最初の画面の「胃カメラ・大腸カメラが」と同じ墨 <code>#34302F</code> にしました。表の見出し行（ピンクの地に白い文字）はそのままです</li>
+<li><b>発熱外来「発熱外来が選ばれる3つの理由」</b>：緑の帯の前後に見えていた赤を、ベージュ <code>#F6F2F0</code> にしました。緑の帯はそのままです</li>
+<li><b>発熱外来「日吉駅 直結0分 × 毎日 診療」の赤い帯</b>：「受診前に確認したい記事」の囲みと同じ薄い赤にしました。地が薄くなったので、「直結0分」「毎日診療」「×」は発熱外来の赤、下の小さな文は濃い茶色の文字です。同じ帯がページの下の予約案内（「今日つらい」をその日にご相談）にもあるので、2か所とも同じにしました</li>
+<li><b>「予約優先制 WEBなら24時間受付」</b>：文字を小さくしました（約42px・75px → 約32px・49px。パソコン幅だけ。スマホ幅はもともと小さいので今のまま）。右上の小さな札が大きい文字にかからないよう、札を少し上げています</li>
+<li><b>画面の下の赤い「WEB予約」ボタン</b>：文字を白にしました（前は赤い地に濃いえんじの文字で読みにくかった）</li>
+</ul>
+<div class="shots">
+<a href="gastro/"><img src="img/gastro-hours.jpg" width="800" height="500" alt="消化器内科の診療表（時間と ○ を墨の文字に）" loading="lazy"><span>消化器：診療表</span></a>
+<a href="fever/"><img src="img/fever-reason.jpg" width="800" height="500" alt="発熱外来が選ばれる3つの理由（前後をベージュに）" loading="lazy"><span>発熱外来：選ばれる3つの理由</span></a>
+<a href="fever/"><img src="img/fever-booking.jpg" width="800" height="500" alt="予約優先制の案内（薄い赤の帯・小さくした文字・白い文字のWEB予約）" loading="lazy"><span>発熱外来：予約の案内と下のWEB予約</span></a>
+</div>
+</section>
+
 <section class="box" aria-labelledby="v24-h">
-<h2 id="v24-h">今回（v0.24.0）変えたこと</h2>
+<h2 id="v24-h">前回（v0.24.0）変えたこと</h2>
 <ul>
 <li><b>グロナビのロゴの後ろに白い丸</b>を敷きました（8ページすべて・スマホも）。ロゴの花びら（黄・緑・青＋そのページの色）がヘッダーの色に溶けて見えなかったためです。ヘッダーの色そのものは変えていません（薄くすると白いクリニック名・メニューが読めなくなるため）。ロゴとクリニック名の位置も変わっていません</li>
 <li><b>トップのロゴの花びら</b>（1枚だけページの色）を、ピンクから総合内科と同じオレンジにしました（ヘッダー・フッターの2か所）。各科のロゴも「花びら＝そのページの色」なので、それにそろえました</li>
 <li><b>消化器内科のページの薄いピンクの地をベージュに</b>しました。「消化器内科の診療時間」「こんなお悩み・症状はありませんか?」と、同じピンクの地を使っていた「検査の流れ」「よくある質問」の4つの帯です（2つだけ変えると、ベージュとピンクの帯が交互に並ぶため）。中の薄いピンクの地（表の曜日の欄・注意書き・症状の見出しなど）もベージュにしました。文字・チェックの印・表の見出し行・線は消化器のピンクのままです</li>
 </ul>
 <div class="shots">
-<a href="gastro/"><img src="img/gastro-hours.jpg" width="800" height="500" alt="消化器内科の診療時間（ベージュの地）" loading="lazy"><span>消化器：診療時間</span></a>
+<a href="gastro/"><img src="img/gastro-hours.jpg" width="800" height="500" alt="消化器内科の診療時間（ベージュの地）" loading="lazy"><span>消化器：診療時間（v0.25.0 の表の文字の色も反映）</span></a>
 <a href="gastro/"><img src="img/gastro-problems.jpg" width="800" height="500" alt="こんなお悩み・症状はありませんか?（ベージュの地）" loading="lazy"><span>消化器：お悩み・症状</span></a>
 </div>
 </section>
