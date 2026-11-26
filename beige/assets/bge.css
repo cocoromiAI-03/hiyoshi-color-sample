@@ -54,6 +54,17 @@ html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .p-so
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td),
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td) *{color:#34302F!important}
 
+/* ===== 消化器内科の3つの見出しを、最初の画面の「消化器内科・内視鏡検査」と同じ赤みの色に（v0.27.0） =====
+   ご依頼（2026-11-26）：「このページの、以下の文字色はページトップの「消化器内科・内視鏡検査」の赤よりの色に変更してください
+     ・消化器内科の診療時間 ・こんなお悩み・症状はありませんか? ・ドクターズ・ファイル掲載記事」
+   「消化器内科・内視鏡検査」（ヘッダーの下の札）の色＝サイトの変数 --hp-ink（消化器のピンク #FFA0A7 を 72% に暗くした #B87378）。同じ変数を使う（新しい色は作らない）。
+   変えるのは見出しの文字だけ。「Problems」の小さな英字と、ほかの見出し（検査の流れ・よくあるご質問など）はそのまま */
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info-title-gastro,
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info-title-gastro > span,
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems h2.h-front-section-title,
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #gastro-media-features-title{color:var(--hp-ink)!important}
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems h2.h-front-section-title > .cap{color:var(--jgastro-main)!important}
+
 /* ===== 発熱外来のページ（v0.25.0） ===== */
 /* 「発熱外来が選ばれる3つの理由」：緑の帯の前後に見えていた赤（--dp-deep）をベージュに
    ご依頼「背景緑の前後の赤とのコントラストがきつすぎる。前後の赤の背景は、ベージュにして」。緑の帯はそのまま */
