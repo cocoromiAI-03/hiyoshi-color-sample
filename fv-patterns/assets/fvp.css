@@ -1,5 +1,5 @@
-/* 最初の画面の背景5パターン v0.19.0（土台は 2026-06-23〜29 の色＝sample.css。v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
-   v0.18.0 で各科ページに残っていたピンクを各科の色に、最初の画面のぼかしを①の数字そのものに、v0.19.0 で最初の画面を①の作り（紺→白→写真）そのものに）
+/* 最初の画面の背景5パターン v0.20.0（土台は 2026-06-23〜29 の色＝sample.css。v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
+   v0.18.0 で各科ページに残っていたピンクを各科の色に、最初の画面のぼかしを①の数字そのものに、v0.19.0 で最初の画面を①の作り（紺→白→写真）そのものに、v0.20.0 でグレーも同じに・文字のにじみを外した）
    ご依頼（2026-11-26）：「6月のもとの色を採用。基本、新たな色はつくらない。
      各科のページ、トップのグロナビの色はグラデーションをかけて。
      各ページ、ファーストビューの写真の背景の各科の色はとる。かわりに、各科の背景色ではなく全科統一の背景色にする。
@@ -92,7 +92,7 @@ html.fvp body section#front-top .gv-photo::after,html.fvp body section.hb-hero .
      linear-gradient(90deg, .92 0%, .80 34%, .20 62%, 0 78%)。見た目は「紺 → 真ん中で白 → 右にドクター」
      （画素で測ると 0% #223744 → 34% #435560 → 50% #8D989F → 55% #A5AEB3 → 60% 以降は壁とドクター）。
    v0.18.0 は紺のぼかしだけを写真の上に重ねていたので、真ん中に写真の中身（看護師の紺の服など）が出て、白くならなかった。
-   v0.19.0（1 ブルーグレー・2 ベージュ・3 白・5 ネイビー）：
+   v0.19.0（1 ブルーグレー・2 ベージュ・3 白・5 ネイビー）、v0.20.0 で 4 グレーも同じに：
    ・各科：①と同じ「背景色のぼかし（.92/.80/.20/0）」の下に「白い地 #F7F7F7」を敷く。白い地は 0〜50% は写真を隠し、
      50%→64% で消えて写真が出てくる（①で白い壁が 58% あたりまで続き、そこからドクターが立っているのと同じ見え方）。
      1枚目の写真が右半分だけの科（総合内科・発熱＝47%から等）は、写真の左端が白い地の下に入るので、写真の端を消す処理（v0.18.0）は外した
@@ -100,8 +100,8 @@ html.fvp body section#front-top .gv-photo::after,html.fvp body section.hb-hero .
      写真の上は同じ位置になるよう写真の中の位置に直した（紺 71.4% → 38.7% で 20% → 64.5% で 0%／白い地 19.3% まで → 41.9% で消える）
    ・トップ：①と同じ「白い地＋背景色のぼかし（.92/.80/.20/0）」を最初の画面ぜんたいに。写真（右 55%〜）の下も白い地にし、
      写真の上にも同じ位置のぼかしを重ねる（写真の左端 35.2% → 15.7% で 20% → 51.2% で 0%）。写真の左端はもとからふんわり消える作り
-   ・グレー（4）だけは v0.18.0 のまま（白い文字なので、真ん中を白くすると文字が読めない）：写真の上に左側を少し濃くしたぼかし
-     （97% → 34% 96% → 62% 20% → 78% 0%）、写真の左端を消す、文字のにじみと札の塗り
+   ・グレー（4）：v0.19.0 までは v0.18.0 の形（白い地なし）だったが、v0.20.0 でネイビーと同じ作りに
+     （ご依頼「グレーだけは前回のまま、とのことだけどネイビーにあわせていいです」）。写真の色味をおさえるフィルターはそのまま
    ・心療：写真の上のもう1枚のぼかし（.gv-photo::after）は外したまま（v0.17.0 から）
    ・スマホ・タブレット（1023px 以下）：写真が上・文字が下の縦並びなので、今のまま
    v0.18.0 の形は color-sample-v0.18.0/、v0.17.0 の形は color-sample-v0.17.0/ に凍結 */
@@ -114,7 +114,7 @@ html.fvp{--fv-white:#F7F7F7}   /* ①の帯の地の色（写真の白い壁も�
     linear-gradient(90deg,var(--fv-white) 0%,var(--fv-white) 50%,color-mix(in srgb,var(--fv-white) 0%,transparent) 64%)!important}
   html.fvp:not(#_j):not(#_k):not(#_l) body section#front-top .gv-photo::after{background:none!important}
   /* 美容皮膚科：写真の外は地に、写真の上は写真の中の位置で */
-  html.fvp:not(.fv4):not(#_j):not(#_k):not(#_l) body section.hb-hero{background:
+  html.fvp:not(#_j):not(#_k):not(#_l) body section.hb-hero{background:
     linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 92%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 80%,transparent) 34%,
       color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%),var(--fv-white)!important}
   html.fvp:not(#_j):not(#_k):not(#_l) body section.hb-hero .hb-doctor-visual::after{background:
@@ -122,39 +122,19 @@ html.fvp{--fv-white:#F7F7F7}   /* ①の帯の地の色（写真の白い壁も�
       color-mix(in srgb,var(--fv-bg) 0%,transparent) 64.5%),
     linear-gradient(90deg,var(--fv-white) 0%,var(--fv-white) 19.3%,color-mix(in srgb,var(--fv-white) 0%,transparent) 41.9%)!important}
   /* トップ：最初の画面ぜんたいを①と同じに（白い地＋ぼかし）。写真の下も白い地、写真の上にも同じ位置のぼかし */
-  html.fvp:not(.fv4):not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage{background:
+  html.fvp:not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage{background:
     linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 92%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 80%,transparent) 34%,
       color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%),var(--fv-white)!important}
-  html.fvp:not(.fv4):not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage .hero-photo{background:var(--fv-white)!important}
-  html.fvp:not(.fv4) body #home-firstview #mainimage .hero-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  html.fvp:not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage .hero-photo{background:var(--fv-white)!important}
+  html.fvp body #home-firstview #mainimage .hero-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:
     linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 35.2%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 20%,transparent) 15.7%,
       color-mix(in srgb,var(--fv-bg) 0%,transparent) 51.2%)}
-
-  /* グレー（4）：v0.18.0 のまま（白い地は敷かない） */
-  html.fv4:not(#_j):not(#_k):not(#_l) body section#front-top::before{background:linear-gradient(90deg,
-    color-mix(in srgb,var(--fv-bg) 97%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 96%,transparent) 34%,
-    color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%)!important}
-  html.fv4:not(#_j):not(#_k):not(#_l) body section.hb-hero .hb-doctor-visual::after{background:linear-gradient(90deg,
-    color-mix(in srgb,var(--fv-bg) 85.1%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 20%,transparent) 38.7%,
-    color-mix(in srgb,var(--fv-bg) 0%,transparent) 64.5%)!important}
-  html.fv4 body section#front-top :is(.gv-slide.g1 img,.fv-slide.f1 img,.gv-slide.g1:not(:has(img)),img.ent-gv-exam-photo),
-  html.fv4 body section.hb-hero .hb-doctor-visual img{
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 20%)!important;mask-image:linear-gradient(90deg,transparent 0,#000 20%)!important}
 }
 
-/* ===== 文字の読みやすさ（パソコン幅だけ）：①が文字を濃い箱に載せているのと同じ考え方 =====
-   ・ネイビー（5）：真ん中が白くなったので、文字の右側（全体の 42〜52%）が白い地に近づく。最初の画面の文字のまわりに紺のうっすらしたにじみ（v0.19.0）
-   ・グレー（4）：文字のにじみ、小さな札（「日医大武蔵小杉病院と連携」など）・電話番号・心療の「よくある質問」の中を背景色で塗る（v0.18.0 から）
-   ・1〜3（明るい背景）：文字の下はもう白い地なので、v0.18.0 で足した札の塗り・白のにじみは外した
-   ボタン（WEB予約・LINE予約など）・トップの診療科の札（白いカード）はもとから塗ってあるので触らない。美容皮膚科の「メニュー・料金」（半透明の白いボタン）だけはネイビー（5）でにじみを付ける */
-@media screen and (min-width:1024px){
-  html:is(.fv4,.fv5):not(#_j):not(#_k):not(#_l) body section#front-top .div-section-container :is(h1,h2,h3,p,li,strong,span,small,b,em,a):not(.hero-booking-action,.hero-booking-action *,.mental-guide-button.is-primary,.mental-guide-button.is-primary *,.patient-contact-help,.patient-contact-help *),
-  html:is(.fv4,.fv5):not(#_j):not(#_k):not(#_l) body section.hb-hero .hb-hero__copy :is(h1,h2,p,li,strong,span,small,b,em,a):not(.hb-button,.hb-button *,.patient-contact-help,.patient-contact-help *),
-  html.fv5:not(#_j):not(#_k):not(#_l) body section.hb-hero .hb-hero__copy :is(.hb-button--white,.hb-button--white *),
-  html.fv5:not(#_j):not(#_k):not(#_l) body #mainimage :is(#clinic-title,.hero-heading .corporation,.hero-heading .location,.hero-heading .location span,.hero-heading .hours,.department-heading h2,.department-heading span){
-    text-shadow:0 0 1px var(--fv-bg),0 0 3px var(--fv-bg),0 0 6px var(--fv-bg),0 0 10px var(--fv-bg)!important}
-  html.fv4:not(#_j):not(#_k):not(#_l) body section#front-top .div-section-container :is(.ul-cta-point>li,.gv-feats>li,.fv-feats>li,a[href^="tel:"],.mental-guide-button.is-secondary){background-color:var(--fv-bg)!important}
-}
+/* ===== 文字の読みやすさの補い（v0.18.0〜v0.19.0 にあったもの）は外した（v0.20.0） =====
+   ご依頼（2026-11-26）：「ネイビーの文字のまわりのにじみ、これいらない。読みづらくてもかまわない。グレーも同様です」
+   外したもの：ネイビー（5）・グレー（4）の文字のまわりのにじみ（text-shadow）、グレーの小さな札・電話番号・心療の「よくある質問」の塗り。
+   ネイビーの文字の影は6月どおり（サイトのもとの指定）に戻る。v0.19.0 の形は color-sample-v0.19.0/ に凍結 */
 
 /* ===== 明るい背景（1〜3）：白い文字・白い線を濃い色に（④グレーは文字だけ、うすい白を白に＝「タップして発信」など） =====
    ボタン（WEB予約＝白地に科の色の文字、LINE予約＝緑、心療の「グループ院の受診案内」、皮膚の「WEBで予約する」）・電話の案内の白い箱・写真の上の名札は6月のまま */
