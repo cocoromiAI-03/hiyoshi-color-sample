@@ -1,5 +1,5 @@
-/* 最初の画面の背景5パターン v0.21.0（土台は 2026-06-23〜29 の色＝sample.css。v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
-   v0.18.0 で各科ページに残っていたピンクを各科の色に、最初の画面のぼかしを①の数字そのものに、v0.19.0 で最初の画面を①の作り（紺→白→写真）そのものに、v0.20.0 でグレーも同じに・文字のにじみを外した、v0.21.0 でトップのグロナビの下の白い線を消した）
+/* 最初の画面の背景5パターン v0.22.0（土台は 2026-06-23〜29 の色＝sample.css。v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
+   v0.18.0 で各科ページに残っていたピンクを各科の色に、最初の画面のぼかしを①の数字そのものに、v0.19.0 で最初の画面を①の作り（紺→白→写真）そのものに、v0.20.0 でグレーも同じに・文字のにじみを外した、v0.21.0 でトップのグロナビの下の白い線を消した、v0.22.0 で各科のグロナビの下の白い段を背景色に）
    ご依頼（2026-11-26）：「6月のもとの色を採用。基本、新たな色はつくらない。
      各科のページ、トップのグロナビの色はグラデーションをかけて。
      各ページ、ファーストビューの写真の背景の各科の色はとる。かわりに、各科の背景色ではなく全科統一の背景色にする。
@@ -139,6 +139,25 @@ html.fvp{--fv-white:#F7F7F7}   /* ①の帯の地の色（写真の白い壁も�
    各科のページはヘッダーの下に白い段（診療科名とメニュー）があり、すき間は無い */
 @media screen and (min-width:1024px){
   html.fvp body #main-content > #home-firstview{margin-top:-2px}
+}
+
+/* ===== 各科：グロナビの下の白い段（診療科名とメニュー）を背景色に（v0.22.0・パソコン幅だけ・全パターン共通） =====
+   ご依頼（2026-11-26）：グロナビの下の白い段も「背景色に合わせる」（背景がグレー、ネイビーのときに白が目立つ）
+   段（#header .div-header-local、高さ 48px）の地を、最初の画面の左端と同じ色（背景色 92%＋白い地 #F7F7F7）に。
+   段の中の白い地（.div-header-local-body・小さなメニュー .nav-header-local とその項目）は透明にして段の色を見せる。
+   ネイビー・グレー（暗い背景＝fvD）では、段の中の文字（診療科名・小さなメニュー）を白に（6月の最初の画面の文字と同じ白）。
+   「診療メニュー」ボタン（科の色の面）と診療科名の枠の線（科の色）はそのまま。
+   総合内科・消化器の小さなメニューは段に並ばず「診療メニュー」を押すと重なって開く四角なので、触らない（透明にすると崩れる）。
+   サイト側は段の白を !important で決めているので、それより強い書き方にしている */
+@media screen and (min-width:1024px){
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local{
+    background:color-mix(in srgb,var(--fv-bg) 92%,var(--fv-white))!important}
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local .div-header-local-body,
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body:not(#general):not(#gastroenterology-endoscopy) #header .div-header-local :is(.nav-header-local,.nav-header-local li){
+    background:transparent!important}
+  html.fvD:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local :is(.h-title,.h-title *),
+  html.fvD:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body:not(#general):not(#gastroenterology-endoscopy) #header .div-header-local :is(.nav-header-local li,.nav-header-local li > a){
+    color:#fff!important}
 }
 
 /* ===== 文字の読みやすさの補い（v0.18.0〜v0.19.0 にあったもの）は外した（v0.20.0） =====
