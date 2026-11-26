@@ -47,12 +47,17 @@ html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-probrems-section dl.dl-probrems > dt,
 html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .p-solution-catchline{background:#F6F2F0!important}
 
-/* ===== 消化器内科の診療表の文字を墨に（v0.25.0） =====
+/* ===== 診療表の文字を墨に（v0.25.0 は消化器だけ → v0.29.0 で全科） =====
    ご依頼（2026-11-26）：「消化器内科の診療表がかわいらしすぎる。時間等の文字色をトップの「胃カメラ・大腸カメラが」と同じ文字色にして」
    「胃カメラ・大腸カメラが」（最初の画面の見出し）の色＝ベージュの文字の墨 #34302F（fvp.css の --fv-ink）。
-   表の中の時間の欄（AM・PM・夜と時刻）と、各曜日の ○・— を墨に。表の見出し行（ピンクの地・白い文字）、表の外の見出し「消化器内科の診療時間」、専門外来の案内はそのまま */
-html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td),
-html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info .department-visit-info__table tbody :is(th,td) *{color:#34302F!important}
+   表の中の時間の欄（AM・PM・夜と時刻）と、各曜日の ○・— を墨に。表の見出し行（ピンクの地・白い文字）、表の外の見出し「消化器内科の診療時間」、専門外来の案内はそのまま
+   v0.29.0 で全科に広げた（ご依頼「各診療科の「診療時間」の時間、記号の文字色は、トップページの日吉駅直結0分 の文字色に合わせてください」）。
+   トップの「日吉駅 直結0分」はベージュの最初の画面の文字の色 --fv-ink（fvp.css の html.fv2 ＝ 墨 #34302F）＝消化器で使っていた色と同じ。
+   診療表があるのは総合内科・消化器・耳鼻・健診・発熱外来の5科（美容皮膚科・心療内科のページには診療表が無い）。
+   前は時間の欄と ○ が各科の色（総合内科のオレンジ・耳鼻の緑・健診のオレンジ・発熱外来の赤）、— が灰色 #767676、□ などが濃い緑がかった墨 #29322C。
+   表の見出し行（各科の色の地・白い文字）、表の下の記号の説明（○ 診療 — 休診…）はそのまま */
+html.bge:not(#_a):not(#_b) body:is(#general,#gastroenterology-endoscopy,#ent,#fever,#checkups,#derm,#mental) #department-visit-info .department-visit-info__table tbody :is(th,td),
+html.bge:not(#_a):not(#_b) body:is(#general,#gastroenterology-endoscopy,#ent,#fever,#checkups,#derm,#mental) #department-visit-info .department-visit-info__table tbody :is(th,td) *{color:var(--fv-ink,#34302F)!important}
 
 /* ===== 消化器内科の3つの見出しを、最初の画面の「消化器内科・内視鏡検査」と同じ赤みの色に（v0.27.0） =====
    ご依頼（2026-11-26）：「このページの、以下の文字色はページトップの「消化器内科・内視鏡検査」の赤よりの色に変更してください
