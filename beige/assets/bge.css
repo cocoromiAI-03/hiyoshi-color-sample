@@ -1,0 +1,13 @@
+/* ベージュで決めた見本 v0.23.0（土台は fv-patterns の v0.22.0 ＝ fvp.css。この見本では html に fv2（ベージュ）を固定し、印として bge を付ける）
+   ご依頼（2026-11-26）：「https://cocoromiai-03.github.io/hiyoshi-color-sample/fv-patterns/general/?p=2 この色見で、トップページを作成して。
+     背景は、全科 ベージュを採用。で別のurl でサンプル作成して」
+   受け止め：総合内科（ベージュ）の色の見え方でトップを作る＝トップの色（6月はピンク）を総合内科の6月の色（オレンジ）に置き換える。
+     ヘッダー（グロナビ）のグラデーションも総合内科と同じ #F8B62D → #D49700。新しい色は作っていない（どれも総合内科の6月の色・v0.16.0 の右端の色）
+   各科のページ（消化器はピンクのまま・耳鼻は緑…）と、トップの中の各科の札の色はそのまま。最初の画面の背景は全科ベージュ（fvp.css の fv2）
+
+   トップの色はサイト全体で :root の --jt-*（= --jtop-*）から作られる。トップの body には id が無い。
+   :root の --jtop-* を総合内科の値に置き換えると、:root で計算される変数（--jt-* とサイト側の変数）も同じ要素の上で総合内科の値になる */
+html.bge{
+  --jtop-main:var(--jgeneral-main);--jtop-text:var(--jgeneral-text);--jtop-fill:var(--jgeneral-fill);--jtop-dark:var(--jgeneral-dark);
+}
+html.bge body:not([id]){--fv-head-r:#D49700}   /* トップのヘッダー右端：総合内科と同じ #F8B62D → #D49700（fvp.css はトップ・消化器 #E77984） */

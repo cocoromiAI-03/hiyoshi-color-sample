@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="version" content="0.23.0">
+<title>日吉 ベージュ統一の見本</title>
+<style>
+:root{--bg:#faf8f6;--card:#fff;--ink:#1f1d1b;--sub:#625b55;--line:#e6e0d9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
+main{max-width:1000px;margin:0 auto;padding:32px 16px 56px}
+h1{font-size:23px;line-height:1.45;margin:0 0 8px}
+.lead{margin:0 0 20px;color:#3b3631;font-size:15px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 20px}
+.box h2{font-size:16.5px;margin:0 0 8px}
+.box ul{margin:0;padding-left:1.2em;font-size:14.5px}
+.box li{margin:4px 0}
+code{font:12.5px ui-monospace,Consolas,monospace;color:var(--sub)}
+a{color:#2457a6}
+a:focus-visible{outline:3px solid #6a9bff;outline-offset:2px}
+.go{display:inline-block;margin:0 0 20px;padding:10px 18px;border-radius:999px;background:linear-gradient(90deg,#F8B62D,#D49700);color:#34302F;font-weight:700;text-decoration:none}
+.heads{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px;margin:10px 0 4px}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:8px;height:40px;padding:0 12px;border-radius:8px;color:#fff;font-weight:700;font-size:13.5px}
+.hd small{font:11.5px ui-monospace,Consolas,monospace;opacity:.95;white-space:nowrap}
+.sw{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sub)}
+.sw i{display:block;width:34px;height:22px;border-radius:5px;border:1px solid rgba(0,0,0,.18)}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0}
+.shots a{display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;background:#fff}
+.shots a:hover{border-color:#b9b0a5}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:8/5}
+.shots span{display:block;padding:4px 10px;font-size:13.5px;font-weight:700}
+.shots .top{grid-column:1/-1}
+@media (max-width:640px){.shots{grid-template-columns:1fr}.heads{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>日吉サイト ベージュで統一した見本（トップは総合内科の色）</h1>
+<p class="lead">「最初の画面の背景5パターン」のうち<b>2 ベージュ</b>を全科に採用し、<b>トップページを総合内科（ベージュ）と同じ色の見え方</b>で作った見本です。画像かページ名を押すと、本物と同じ作りのページが開きます（左下の小窓でページを移動できます）。本番サイトは変わっていません。</p>
+<a class="go" href="top/">トップページを開く</a>
+
+<section class="box" aria-labelledby="chg-h">
+<h2 id="chg-h">5パターンの見本（2 ベージュ）から変えたこと</h2>
+<ul>
+<li><b>トップの色を、6月のピンクから総合内科の6月の色（オレンジ）に</b>しました。ヘッダー（グロナビ）のグラデーション、「直結0分」などの強調の文字、見出し、アイコン、ボタン、下に固定の「WEB予約」、スマホのメニューの地などです</li>
+<li>ヘッダーは総合内科のページと同じ <code>#F8B62D → #D49700</code> です。新しい色は作っていません（どれも総合内科の6月の色）</li>
+<li>トップの中の<b>各科の札</b>（消化器内科＝ピンク、耳鼻咽喉科＝緑、発熱外来＝落ち着いた赤など）は、各科の色のままです</li>
+<li><b>最初の画面の背景は全科ベージュ</b> <span class="sw"><i style="background:#F6F2F0"></i><code>#F6F2F0</code></span>（文字は墨 <code>#34302F</code>）。切り替えはありません</li>
+<li>各科のページ（消化器・総合内科・耳鼻・心療・美容皮膚・健診・発熱）は、5パターンの見本の「2 ベージュ」とまったく同じです</li>
+</ul>
+<div class="heads">
+<div class="hd" style="background:linear-gradient(90deg,#F8B62D,#D49700)">トップ・総合内科<small>#F8B62D→#D49700</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#FFA0A7,#E77984)">消化器内科<small>#FFA0A7→#E77984</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#81B732,#649700)">耳鼻咽喉科<small>#81B732→#649700</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#0A65AC,#004980)">心療内科・精神科<small>#0A65AC→#004980</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#4FBAC9,#009CAC)">美容皮膚科<small>#4FBAC9→#009CAC</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#F29C78,#DA764B)">健康診断<small>#F29C78→#DA764B</small></div>
+<div class="hd" style="background:linear-gradient(90deg,#BF3F48,#9D1B2D)">発熱外来（落ち着いた赤）<small>#BF3F48→#9D1B2D</small></div>
+</div>
+</section>
+
+<section class="box" aria-labelledby="pg-h">
+<h2 id="pg-h">8ページ（パソコン幅 1280px で撮影）</h2>
+<div class="shots">
+<a class="top" href="top/"><img src="img/top.jpg" width="800" height="500" alt="トップページ（総合内科の色・ベージュ）"><span>トップ</span></a>
+<a href="gastro/"><img src="img/gastro.jpg" width="800" height="500" alt="消化器内科・内視鏡" loading="lazy"><span>消化器内科・内視鏡</span></a>
+<a href="general/"><img src="img/general.jpg" width="800" height="500" alt="総合内科" loading="lazy"><span>総合内科</span></a>
+<a href="ent/"><img src="img/ent.jpg" width="800" height="500" alt="耳鼻咽喉科" loading="lazy"><span>耳鼻咽喉科</span></a>
+<a href="mental/"><img src="img/mental.jpg" width="800" height="500" alt="心療内科・精神科" loading="lazy"><span>心療内科・精神科</span></a>
+<a href="derm/"><img src="img/derm.jpg" width="800" height="500" alt="美容皮膚科" loading="lazy"><span>美容皮膚科</span></a>
+<a href="checkups/"><img src="img/checkups.jpg" width="800" height="500" alt="健康診断" loading="lazy"><span>健康診断</span></a>
+<a href="fever/"><img src="img/fever.jpg" width="800" height="500" alt="発熱外来" loading="lazy"><span>発熱外来</span></a>
+</div>
+</section>
+
+<section class="box" aria-labelledby="note-h">
+<h2 id="note-h">ご注意</h2>
+<ul>
+<li>見本です。本番サイト（hiyoshi-cocoromi-cl.jp）は変わっていません。ページの中のリンクの多くは本番に移動します</li>
+<li>トップの見出しなどのオレンジの文字は、6月の色そのまま（総合内科のページと同じ）で、白い地の上では読みやすさの基準を下回ります（ピンクのときも同じでした）</li>
+<li>5パターンを見比べる見本は <a href="../fv-patterns/">こちら</a>（そのまま残しています）</li>
+</ul>
+</section>
+</main>
+</body>
+</html>

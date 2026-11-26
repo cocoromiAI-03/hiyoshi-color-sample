@@ -1,0 +1,201 @@
+/* 最初の画面の背景5パターン v0.22.0（土台は 2026-06-23〜29 の色＝sample.css。v0.13.0〜v0.16.0 は6・7を足した7パターン、v0.17.0 で6・7を外した。
+   v0.18.0 で各科ページに残っていたピンクを各科の色に、最初の画面のぼかしを①の数字そのものに、v0.19.0 で最初の画面を①の作り（紺→白→写真）そのものに、v0.20.0 でグレーも同じに・文字のにじみを外した、v0.21.0 でトップのグロナビの下の白い線を消した、v0.22.0 で各科のグロナビの下の白い段を背景色に）
+   ご依頼（2026-11-26）：「6月のもとの色を採用。基本、新たな色はつくらない。
+     各科のページ、トップのグロナビの色はグラデーションをかけて。
+     各ページ、ファーストビューの写真の背景の各科の色はとる。かわりに、各科の背景色ではなく全科統一の背景色にする。
+     ①うすいブルーグレー ②案1（ピンク×墨）で使ったベージュっぽい色 ③おまかせ ④写真の上からグレーのフィルター
+     （全体的にグレーっぽく色味をおさえた感じ） ⑤ネイビー案②」
+   追加のご依頼（2026-11-26）：「背景色に、うすいグレー、うすいネイビーも追加して」→ ⑥⑦
+   さらに「うすいグレー・うすいネイビーはうすすぎた。グレー、ネイビーよりもう少しうすくした感じ」→ v0.14.0 で⑥⑦の濃さを変更
+   さらに「薄いグレーをブルーグレーのもう少しこいのにできる？グレーみたいな感じ」→ v0.15.0 で⑥をブルーグレー（濃いめ）に
+   さらに「発熱外来の赤はもう少し色味をおさえて」→ v0.16.0 で発熱外来の赤を落ち着いた赤に（html.fvr・全パターン共通）
+   さらに「今あるネイビーは、トップページなかほどの①「その症状、どの専門医が診る？」のところの色と合わせて。そこのグラデーションの割合がいいので、
+     各院トップすべてのグラデーションの度合いを①にあわせて」「6 ブルーグレー濃いめ・7 うすいネイビーはいらない。削除」→ v0.17.0
+   html.fvp ＝ この見本 ／ html.fv1〜fv5 ＝ パターン ／ html.fvL ＝ 明るい背景（1〜3：文字を濃い色に） ／ html.fvD ＝ 暗い背景（4・5：文字は6月どおり白）
+   新しく作った色はない：①⑤は②（v0.3.0）、②は案1（v0.9.0）で使った色、③の文字は各科の6月の濃い色、④のグレーはご指定、⑤のネイビーは v0.17.0 からトップの症状別ガイドの帯（①）の紺 #0F2634 */
+
+/* ===== パターンの色 ===== */
+html.fv1{--fv-bg:#F3F5F8;--fv-ink:#253F5C;--fv-line:rgba(37,63,92,.28)}   /* ②の最初の画面の色＋②のネイビーの文字 */
+html.fv2{--fv-bg:#F6F2F0;--fv-ink:#34302F;--fv-line:rgba(52,48,47,.26)}   /* 案1の最初の画面の色（グレージュ）＋案1の墨の文字 */
+html.fv3{--fv-bg:#FFFFFF}                                                  /* おまかせ：白＋文字は各科の6月の濃い色（下で科ごとに） */
+html.fv3 body{--fv-ink:var(--jt-dark);--fv-line:color-mix(in srgb,var(--jt-dark) 28%,transparent)}
+html.fv4{--fv-bg:#686D72;--fv-ink:#fff}                                    /* グレー（白い文字が 5.2:1）＋写真をグレーに寄せる */
+html.fv5{--fv-bg:#0F2634;--fv-ink:#fff}                                    /* ネイビー＝トップの症状別ガイドの帯（①）の紺 rgb(15,38,52)（v0.16.0 までは②の #253F5C）。白い文字 15:1 */
+
+/* ===== 各科ページに残っていたピンクを各科の色に（全パターン共通・v0.18.0） =====
+   ご依頼（2026-11-26）：「各科 ページなかほど、こんなお悩み・症状はありませんか? ピンクがのこってる。各科の色にして」
+   原因：sample.css は科の色（--jt-*）を body に置き、html（:root）にはトップのピンクを置いている。サイト側の CSS は
+   :root で「--color-yellow-text-lg:var(--jt-fill)」「--reservation-sticky-primary:var(--jt-main)」のように科の色から変数を作るので、
+   その変数は :root の時点でトップのピンクとして計算済みになり、科のページでもピンクのまま残っていた。
+   残っていた所：総合内科の見出し（お悩み・流れ・よくある質問・連携）・ボタン・予約の案内の強調、
+   全科の下に固定された「WEB予約」ボタン、「関連する案内」の見出しと矢印、地域の案内の索引、最初の画面の WEB予約の小さな印。
+   直し方：科のページでは html にも科の色を置く（トップと同じ :has の書き方。sample.css の html.jb と同じ考え方）。新しい色は作っていない */
+html.fvp:has(>body#gastroenterology-endoscopy){--jt-main:var(--jgastro-main);--jt-text:var(--jgastro-text);--jt-fill:var(--jgastro-fill);--jt-dark:var(--jgastro-dark)}
+html.fvp:has(>body#general){--jt-main:var(--jgeneral-main);--jt-text:var(--jgeneral-text);--jt-fill:var(--jgeneral-fill);--jt-dark:var(--jgeneral-dark)}
+html.fvp:has(>body#ent){--jt-main:var(--jent-main);--jt-text:var(--jent-text);--jt-fill:var(--jent-fill);--jt-dark:var(--jent-dark)}
+html.fvp:has(>body#mental){--jt-main:var(--jmental-main);--jt-text:var(--jmental-text);--jt-fill:var(--jmental-fill);--jt-dark:var(--jmental-dark)}
+html.fvp:has(>body#derm){--jt-main:var(--jderm-main);--jt-text:var(--jderm-text);--jt-fill:var(--jderm-fill);--jt-dark:var(--jderm-dark)}
+html.fvp:has(>body#checkups){--jt-main:var(--jcheckups-main);--jt-text:var(--jcheckups-text);--jt-fill:var(--jcheckups-fill);--jt-dark:var(--jcheckups-dark)}
+html.fvp:has(>body#fever){--jt-main:var(--jfever-main);--jt-text:var(--jfever-text);--jt-fill:var(--jfever-fill);--jt-dark:var(--jfever-dark)}
+
+/* ===== 発熱外来の赤（全パターン共通・v0.16.0） =====
+   6月の #E60012 → #BF3F48、濃い赤 #B4000E → #903139（どちらも v0.5.0〜v0.7.0 の「落ち着いた赤」で使った色）。
+   発熱外来のページ全体（ヘッダーのグラデーション・ボタン・見出しなど）とトップの「発熱外来」の札に効く。
+   サイト側は --jfever-*（sample.css）と --jc-E60012・--jc-B4000E（発熱外来の style-fever.css）で赤を決めているので、その変数を置き換える */
+html.fvr{--jfever-main:#BF3F48;--jfever-text:#BF3F48;--jfever-fill:#BF3F48;--jfever-dark:#903139;--jc-E60012:#BF3F48;--jc-B4000E:#903139}
+/* 赤い面の予約ボタン（WEB予約・24時間いつでも など）：暗い赤の文字は 6月でも 2.8:1、落ち着いた赤では 2.4:1 になるので、白い文字に（5.2:1）。
+   v0.5.0〜v0.7.0 の「落ち着いた赤」と同じ扱い。白い面の予約ボタン（最初の画面の WEB予約）はそのまま */
+html.fvr:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action),
+html.fvr:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action) *{color:#fff!important}
+
+/* ===== ヘッダー（グロナビ）：左は6月の色そのまま → 右へ少し濃く。v0.16.0 で右端を「くすまない色」に =====
+   ご意見「各院グロナビのグラデーション、右側がくすんでて、もうすこし発色がいいくすまない色がいい」
+   v0.12.0〜v0.15.0 は右端を「黒を16%混ぜた色」にしていて、黒が混ざるぶん鮮やかさも落ちてくすんでいた。
+   v0.16.0 は右端を、同じ色相のまま「明るさ（OKLCH の L）を 0.10 下げ、鮮やかさ（C）を 1.2倍」にした色（sRGB に入る範囲で）。
+   発熱外来だけは「赤をおさえて」のご依頼どおり、鮮やかさは上げず明るさだけ下げた。古いブラウザでも同じに見えるよう、計算した色を書く。
+   --jt-fill は sample.css が body に科ごとに置いている左端の色。科ごとの値になるよう body に置く。
+   ヘッダーの色はサイト側の @layer clinicHeaderDesktop（!important）が決めるので、sample.css で先に宣言した jsample レイヤーの中で上書きする */
+html.fvp body{--fv-head-r:#E77984;--fv-head:linear-gradient(90deg,var(--jt-fill) 0%,var(--fv-head-r) 100%)}   /* トップ・消化器 #FFA0A7 → #E77984 */
+html.fvp body#general{--fv-head-r:#D49700}    /* #F8B62D → #D49700 */
+html.fvp body#ent{--fv-head-r:#649700}        /* #81B732 → #649700 */
+html.fvp body#mental{--fv-head-r:#004980}     /* #0A65AC → #004980 */
+html.fvp body#derm{--fv-head-r:#009CAC}       /* #4FBAC9 → #009CAC */
+html.fvp body#checkups{--fv-head-r:#DA764B}   /* #F29C78 → #DA764B */
+html.fvp body#fever{--fv-head-r:#9D1B2D}      /* 発熱（落ち着いた赤）#BF3F48 → #9D1B2D */
+@layer jsample{
+  html.fvp body #header:not(:has(.div-header-global)),html.fvp body #header .div-header-global{background:var(--fv-head)!important}
+}
+html.fvp:not(#_j):not(#_k) body header#header:not(:has(.div-header-global)),
+html.fvp:not(#_j):not(#_k) body #header .div-header-global{background:var(--fv-head)!important}
+
+/* ===== 最初の画面の背景を全科そろえる =====
+   各科（消化器・総合内科・耳鼻・心療・健診・発熱）＝ section#front-top、皮膚科 ＝ section.hb-hero、トップ ＝ #mainimage。
+   写真に重なる「色のぼかし」（::before / ::after）は科ごとに別の変数で書かれているので、その疑似要素の上でだけ変数を置き換える */
+html.fvp:not(#_j):not(#_k) body section#front-top,
+html.fvp:not(#_j):not(#_k) body section.hb-hero,
+html.fvp:not(#_j):not(#_k) body #home-firstview #mainimage,
+html.fvp:not(#_j):not(#_k) body #home-firstview #mainimage .hero-photo{background:var(--fv-bg)!important}
+html.fvp body section#front-top::before,html.fvp body section#front-top::after,
+html.fvp body section#front-top .gv-photo::after,html.fvp body section.hb-hero .hb-doctor-visual::after{
+  --jt-main:var(--fv-bg);--jt-fill:var(--fv-bg);
+  --jgastro-main:var(--fv-bg);--jgastro-fill:var(--fv-bg);--jgeneral-main:var(--fv-bg);--jgeneral-fill:var(--fv-bg);
+  --jent-main:var(--fv-bg);--jent-fill:var(--fv-bg);--jmental-main:var(--fv-bg);--jmental-fill:var(--fv-bg);
+  --jderm-main:var(--fv-bg);--jderm-fill:var(--fv-bg);--jcheckups-main:var(--fv-bg);--jcheckups-fill:var(--fv-bg);
+  --jfever-main:var(--fv-bg);--jfever-fill:var(--fv-bg);
+  --dp-deep:var(--fv-bg);--hu-deep:var(--fv-bg);--gd-wine:var(--fv-bg);--department-rollout:var(--fv-bg);--color-rose:var(--fv-bg);--hb-main:var(--fv-bg)}
+
+/* ===== 最初の画面を①（トップの症状別ガイドの帯）の作りそのものに（v0.19.0・パソコン幅だけ） =====
+   ご依頼（2026-11-26・2回目）：「グラデーションの割合変わってる？ たとえば、ネイビーだったら、トップページの
+     『その症状、どの専門医が診る？症状別ガイド』のうしろのドクター写真の背景をそのままトップの背景にしてほしい。
+     色もグラデーションの割合も同じものを再現して。他の科もグラデーションの割合 真ん中もっと白いはずだよね？」
+   ①の作り：うす灰の地 #F7F7F7 の上に写真（写真の左側 0〜58% はほぼ白い壁）、その上に紺 rgba(15,38,52) の
+     linear-gradient(90deg, .92 0%, .80 34%, .20 62%, 0 78%)。見た目は「紺 → 真ん中で白 → 右にドクター」
+     （画素で測ると 0% #223744 → 34% #435560 → 50% #8D989F → 55% #A5AEB3 → 60% 以降は壁とドクター）。
+   v0.18.0 は紺のぼかしだけを写真の上に重ねていたので、真ん中に写真の中身（看護師の紺の服など）が出て、白くならなかった。
+   v0.19.0（1 ブルーグレー・2 ベージュ・3 白・5 ネイビー）、v0.20.0 で 4 グレーも同じに：
+   ・各科：①と同じ「背景色のぼかし（.92/.80/.20/0）」の下に「白い地 #F7F7F7」を敷く。白い地は 0〜50% は写真を隠し、
+     50%→64% で消えて写真が出てくる（①で白い壁が 58% あたりまで続き、そこからドクターが立っているのと同じ見え方）。
+     1枚目の写真が右半分だけの科（総合内科・発熱＝47%から等）は、写真の左端が白い地の下に入るので、写真の端を消す処理（v0.18.0）は外した
+   ・美容皮膚科：写真（.hb-doctor-visual）が全体の 38%〜100% だけ → 写真の外（左）は地に①と同じぼかし＋白い地、
+     写真の上は同じ位置になるよう写真の中の位置に直した（紺 71.4% → 38.7% で 20% → 64.5% で 0%／白い地 19.3% まで → 41.9% で消える）
+   ・トップ：①と同じ「白い地＋背景色のぼかし（.92/.80/.20/0）」を最初の画面ぜんたいに。写真（右 55%〜）の下も白い地にし、
+     写真の上にも同じ位置のぼかしを重ねる（写真の左端 35.2% → 15.7% で 20% → 51.2% で 0%）。写真の左端はもとからふんわり消える作り
+   ・グレー（4）：v0.19.0 までは v0.18.0 の形（白い地なし）だったが、v0.20.0 でネイビーと同じ作りに
+     （ご依頼「グレーだけは前回のまま、とのことだけどネイビーにあわせていいです」）。写真の色味をおさえるフィルターはそのまま
+   ・心療：写真の上のもう1枚のぼかし（.gv-photo::after）は外したまま（v0.17.0 から）
+   ・スマホ・タブレット（1023px 以下）：写真が上・文字が下の縦並びなので、今のまま
+   v0.18.0 の形は color-sample-v0.18.0/、v0.17.0 の形は color-sample-v0.17.0/ に凍結 */
+html.fvp{--fv-white:#F7F7F7}   /* ①の帯の地の色（写真の白い壁もほぼこの色） */
+@media screen and (min-width:1024px){
+  /* 各科：①のぼかし ＋ その下に白い地（0〜50% は写真を隠し、64% で消える） */
+  html.fvp:not(#_j):not(#_k):not(#_l) body section#front-top::before{width:100%!important;background:
+    linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 92%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 80%,transparent) 34%,
+      color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%),
+    linear-gradient(90deg,var(--fv-white) 0%,var(--fv-white) 50%,color-mix(in srgb,var(--fv-white) 0%,transparent) 64%)!important}
+  html.fvp:not(#_j):not(#_k):not(#_l) body section#front-top .gv-photo::after{background:none!important}
+  /* 美容皮膚科：写真の外は地に、写真の上は写真の中の位置で */
+  html.fvp:not(#_j):not(#_k):not(#_l) body section.hb-hero{background:
+    linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 92%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 80%,transparent) 34%,
+      color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%),var(--fv-white)!important}
+  html.fvp:not(#_j):not(#_k):not(#_l) body section.hb-hero .hb-doctor-visual::after{background:
+    linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 71.4%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 20%,transparent) 38.7%,
+      color-mix(in srgb,var(--fv-bg) 0%,transparent) 64.5%),
+    linear-gradient(90deg,var(--fv-white) 0%,var(--fv-white) 19.3%,color-mix(in srgb,var(--fv-white) 0%,transparent) 41.9%)!important}
+  /* トップ：最初の画面ぜんたいを①と同じに（白い地＋ぼかし）。写真の下も白い地、写真の上にも同じ位置のぼかし */
+  html.fvp:not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage{background:
+    linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 92%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 80%,transparent) 34%,
+      color-mix(in srgb,var(--fv-bg) 20%,transparent) 62%,color-mix(in srgb,var(--fv-bg) 0%,transparent) 78%),var(--fv-white)!important}
+  html.fvp:not(#_j):not(#_k):not(#_l):not(#_m) body #home-firstview #mainimage .hero-photo{background:var(--fv-white)!important}
+  html.fvp body #home-firstview #mainimage .hero-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+    linear-gradient(90deg,color-mix(in srgb,var(--fv-bg) 35.2%,transparent) 0%,color-mix(in srgb,var(--fv-bg) 20%,transparent) 15.7%,
+      color-mix(in srgb,var(--fv-bg) 0%,transparent) 51.2%)}
+}
+
+/* ===== トップ：グロナビの下の白い線を消す（v0.21.0・パソコン幅だけ・全パターン共通） =====
+   ご依頼（2026-11-26）：「グロナビの下に白い線があるのだけどそれ消して。背景がグレー、ネイビーのときに白が目立つ」
+   原因：トップはパソコン幅（1024px〜）でヘッダー（画面に固定）の高さが 48px なのに、本文（#main-content）が 50px 下から始まる。
+   その 2px のすき間にページの地の色 #F6F6F6 が見えて、白い線になっていた（スマホ・タブレット幅はヘッダー 50px ですき間なし）。
+   最初の画面（#home-firstview）を 2px 上に詰めて、ヘッダーのすぐ下から始める（その下の部分もいっしょに 2px 上がる）。
+   各科のページはヘッダーの下に白い段（診療科名とメニュー）があり、すき間は無い */
+@media screen and (min-width:1024px){
+  html.fvp body #main-content > #home-firstview{margin-top:-2px}
+}
+
+/* ===== 各科：グロナビの下の白い段（診療科名とメニュー）を背景色に（v0.22.0・パソコン幅だけ・全パターン共通） =====
+   ご依頼（2026-11-26）：グロナビの下の白い段も「背景色に合わせる」（背景がグレー、ネイビーのときに白が目立つ）
+   段（#header .div-header-local、高さ 48px）の地を、最初の画面の左端と同じ色（背景色 92%＋白い地 #F7F7F7）に。
+   段の中の白い地（.div-header-local-body・小さなメニュー .nav-header-local とその項目）は透明にして段の色を見せる。
+   ネイビー・グレー（暗い背景＝fvD）では、段の中の文字（診療科名・小さなメニュー）を白に（6月の最初の画面の文字と同じ白）。
+   「診療メニュー」ボタン（科の色の面）と診療科名の枠の線（科の色）はそのまま。
+   総合内科・消化器の小さなメニューは段に並ばず「診療メニュー」を押すと重なって開く四角なので、触らない（透明にすると崩れる）。
+   サイト側は段の白を !important で決めているので、それより強い書き方にしている */
+@media screen and (min-width:1024px){
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local{
+    background:color-mix(in srgb,var(--fv-bg) 92%,var(--fv-white))!important}
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local .div-header-local-body,
+  html.fvp:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body:not(#general):not(#gastroenterology-endoscopy) #header .div-header-local :is(.nav-header-local,.nav-header-local li){
+    background:transparent!important}
+  html.fvD:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body #header .div-header-local :is(.h-title,.h-title *),
+  html.fvD:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e) body:not(#general):not(#gastroenterology-endoscopy) #header .div-header-local :is(.nav-header-local li,.nav-header-local li > a){
+    color:#fff!important}
+}
+
+/* ===== 文字の読みやすさの補い（v0.18.0〜v0.19.0 にあったもの）は外した（v0.20.0） =====
+   ご依頼（2026-11-26）：「ネイビーの文字のまわりのにじみ、これいらない。読みづらくてもかまわない。グレーも同様です」
+   外したもの：ネイビー（5）・グレー（4）の文字のまわりのにじみ（text-shadow）、グレーの小さな札・電話番号・心療の「よくある質問」の塗り。
+   ネイビーの文字の影は6月どおり（サイトのもとの指定）に戻る。v0.19.0 の形は color-sample-v0.19.0/ に凍結 */
+
+/* ===== 明るい背景（1〜3）：白い文字・白い線を濃い色に（④グレーは文字だけ、うすい白を白に＝「タップして発信」など） =====
+   ボタン（WEB予約＝白地に科の色の文字、LINE予約＝緑、心療の「グループ院の受診案内」、皮膚の「WEBで予約する」）・電話の案内の白い箱・写真の上の名札は6月のまま */
+html:is(.fvL,.fv4):not(#_j):not(#_k) body section#front-top .div-section-container :is(h1,h2,h3,p,li,strong,span,small,b,em,a):not(.hero-booking-action,.hero-booking-action *,.mental-guide-button.is-primary,.mental-guide-button.is-primary *,.patient-contact-help,.patient-contact-help *),
+html:is(.fvL,.fv4):not(#_j):not(#_k) body section.hb-hero .hb-hero__copy :is(h1,h2,p,li,strong,span,small,b,em,a):not(.hb-button:not(.hb-button--white),.hb-button:not(.hb-button--white) *,.patient-contact-help,.patient-contact-help *){color:var(--fv-ink)!important;text-shadow:none!important}
+html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container :is(ul li,.ul-cta-catchline,.fv-hours,.div-cta-button,.mental-hero-schedule,.mental-guide-button.is-secondary,a[href^="tel:"]),
+html.fvL:not(#_j):not(#_k) body section.hb-hero .hb-hero__copy :is(.hb-opening,.hb-feature-pair,.hb-button--white){border-color:var(--fv-line)!important}
+html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container :is(.mental-guide-button.is-secondary,a[href^="tel:"]){background-color:transparent!important}
+/* WEB予約の白いボタンの枠：もとは科の色または透明。明るい背景では白いボタンが沈むので、科の色の枠を必ず付ける（6月の色） */
+html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container a.hero-booking-action--web,
+html.fvL:not(#_j):not(#_k) body section#front-top .div-section-container a.mental-guide-button.is-primary,
+html.fvL:not(#_j):not(#_k) body section.hb-hero .hb-hero__copy a.hb-button:not(.hb-button--white){border:2px solid var(--jt-main)!important}
+/* トップの科の札（白いカード）：明るい背景では縁が消えるので、細い線で囲む */
+html.fvL:not(#_j):not(#_k) body #home-firstview .department{box-shadow:0 0 0 1px var(--fv-line)!important}
+/* トップ：②（v0.3.0）と同じ場所の文字を濃い色に。科の札（白いカード）と、その下の白い帯（健康診断・ワクチン・美容皮膚）は6月のまま */
+html.fvL:not(#_j):not(#_k) body #mainimage :is(#clinic-title,.hero-heading .corporation,.hero-heading .location,.hero-heading .location span,.hero-heading .hours,.department-heading h2,.department-heading span){color:var(--fv-ink)!important;text-shadow:none!important}
+
+/* ===== 暗い背景（4・5）：文字は6月どおり白。トップのうすいピンクの小さな文字だけ白に寄せる ===== */
+html.fvD:not(#_j):not(#_k) body #mainimage :is(.hero-heading .corporation,.department-heading span){color:#fff!important}
+/* ④グレー：電話番号のうすい白の丸枠の中は白い文字が 4.5:1 を割るので、枠の中の塗りを外す（5.2:1） */
+html.fv4:not(#_j):not(#_k) body section#front-top .div-section-container a[href^="tel:"]{background-color:transparent!important}
+
+/* ===== ④ 写真の上からグレーのフィルター：写真の色味をおさえる（白黒にはしない） ===== */
+html.fv4 body :is(#front-top,section.hb-hero,#mainimage) :is(.gv-photo,.fv-photo,.ent-gv-photo,.cv-photo,.hb-doctor-visual,.hero-photo) img,
+html.fv4 body section#front-top .ul-cta-catchline img,
+html.fv4 body #mainimage .hero-photo .mv-slide,
+html.fv4 body section#front-top .gv-photo .gv-slide:not(:has(img)){filter:grayscale(.6) brightness(.96) contrast(.94)}
+
+/* ===== 見本用パネル（サイトの部品ではない） ===== */
+#jsample .js-pat{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:8px 0 6px}
+#jsample .js-pat button{display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid #4a4540;border-radius:7px;background:#2b2825;color:#d9d3cb;padding:5px 2px 4px;cursor:pointer;font-size:11px;line-height:1.2}
+#jsample .js-pat button i{display:block;width:22px;height:14px;border-radius:3px;border:1px solid rgba(255,255,255,.35)}
+#jsample .js-pat button[aria-pressed="true"]{background:#f4f1ec;color:#1f1d1b;font-weight:700;border-color:#f4f1ec}
+#jsample .js-pat button[aria-pressed="true"] i{border-color:#1f1d1b}
+#jsample .js-name{font-size:12px;color:#e9e4dc;margin:0 0 2px}

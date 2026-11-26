@@ -1,0 +1,145 @@
+/* 配色見本（2026-06-23〜29 の色）v0.7.0 — 色の変数と、見本用の切り替えパネル
+   main=帯・ボタン・アイコンなど面の色 / text=見出しや強調の文字 / fill=濃い面（ヘッダーなど） / dark=ほぼ黒の文字
+   「当時どおり」は当時のCSSのまま（文字にも明るい色）。「文字を読みやすく」は文字と濃い面だけ各科の濃い色にする */
+:root{
+  --jtop-main:#FFA0A7;--jtop-text:#F89098;--jtop-fill:#FFA0A7;--jtop-dark:#B82834;
+  --jgastro-main:#FFA0A7;--jgastro-text:#F89098;--jgastro-fill:#FFA0A7;--jgastro-dark:#B82834;
+  --jgeneral-main:#F8B62D;--jgeneral-text:#FFAC00;--jgeneral-fill:#F8B62D;--jgeneral-dark:#9E6240;
+  --jent-main:#81B732;--jent-text:#81B732;--jent-fill:#81B732;--jent-dark:#0B6E4F;
+  --jmental-main:#0A65AC;--jmental-text:#0A65AC;--jmental-fill:#0A65AC;--jmental-dark:#04052E;
+  --jderm-main:#4FBAC9;--jderm-text:#4FBAC9;--jderm-fill:#4FBAC9;--jderm-dark:#166088;
+  --jcheckups-main:#F29C78;--jcheckups-text:#F29C78;--jcheckups-fill:#F29C78;--jcheckups-dark:#BA4D20;
+  --jfever-main:#E60012;--jfever-text:#E60012;--jfever-fill:#E60012;--jfever-dark:#B4000E;
+  --jt-main:var(--jtop-main);--jt-text:var(--jtop-text);--jt-fill:var(--jtop-fill);--jt-dark:var(--jtop-dark);
+}
+html.jr{
+  --jtop-text:#B82834;--jtop-fill:#B82834;
+  --jgastro-text:#B82834;--jgastro-fill:#B82834;
+  --jgeneral-text:#9E6240;--jgeneral-fill:#9E6240;
+  --jent-text:#0B6E4F;--jent-fill:#0B6E4F;
+  --jmental-text:#0A65AC;--jmental-fill:#0A65AC;
+  --jderm-text:#166088;--jderm-fill:#166088;
+  --jcheckups-text:#BA4D20;--jcheckups-fill:#BA4D20;
+  --jfever-text:#B4000E;--jfever-fill:#B4000E;
+}
+body#gastroenterology-endoscopy{--jt-main:var(--jgastro-main);--jt-text:var(--jgastro-text);--jt-fill:var(--jgastro-fill);--jt-dark:var(--jgastro-dark)}
+body#general{--jt-main:var(--jgeneral-main);--jt-text:var(--jgeneral-text);--jt-fill:var(--jgeneral-fill);--jt-dark:var(--jgeneral-dark)}
+body#ent{--jt-main:var(--jent-main);--jt-text:var(--jent-text);--jt-fill:var(--jent-fill);--jt-dark:var(--jent-dark)}
+body#mental{--jt-main:var(--jmental-main);--jt-text:var(--jmental-text);--jt-fill:var(--jmental-fill);--jt-dark:var(--jmental-dark)}
+body#derm{--jt-main:var(--jderm-main);--jt-text:var(--jderm-text);--jt-fill:var(--jderm-fill);--jt-dark:var(--jderm-dark)}
+body#checkups{--jt-main:var(--jcheckups-main);--jt-text:var(--jcheckups-text);--jt-fill:var(--jcheckups-fill);--jt-dark:var(--jcheckups-dark)}
+body#fever{--jt-main:var(--jfever-main);--jt-text:var(--jfever-text);--jt-fill:var(--jfever-fill);--jt-dark:var(--jfever-dark)}
+
+/* ===== v0.6.0 新しい配色案 ＝ html.jb =====
+   ご意見の流れ（2026-11-25）：②v0.3.0（ネイビー基調）→ ③v0.4.0（もとのピンクが主役）→ v0.5.0（ネイビー基調＋ピンクのボタン）→
+   「最初のネイビー版（②）のほうがよかった。戻して（直結0分がえんじっぽい色のもの。ボタンもネイビーに白）。
+     ヘッダーの上の細いピンクの線のように、差し色として全体にアクセントでピンクを入れていく感じに」
+   ・トップ（body に id が無いのはトップだけ）：②v0.3.0 のトップと同じ色。ローズ #A94A5C＝見出し・強調・「直結0分」・WEB予約／
+     ブルーグレー #41607F＋白い文字＝ボタン・番号／ネイビー #253F5C＝ヘッダー・フッター／うすいブルーグレー #F3F5F8＝最初の画面など。
+     そこに、ヘッダーの上の線（②からある）と同じ「もとのピンク #FFA0A7 の細い線」を、お知らせの見出し・症状別ガイドの帯・
+     フッターの上端、見出しの下、「選ばれる理由」「法人紹介」のカードの上端に足した
+   ・各科ページ：③v0.4.0 のまま（6月の色。発熱外来だけ #E60012 → #BF3F48）
+   v0.3.0〜v0.5.0 は color-sample-v0.3.0/〜color-sample-v0.5.0/ に凍結 */
+html.jb{
+  --b-rose:#A94A5C;--b-rose-deep:#8E3B4D;--b-pink:#FFA0A7;
+  --b-navy:#253F5C;--b-bluegray:#41607F;--b-bg:#F3F5F8;--b-ink:#33393F;
+  --b-fever:#BF3F48;--b-fever-deep:#903139;
+  --jfever-main:var(--b-fever);--jfever-text:var(--b-fever);--jfever-fill:var(--b-fever);--jfever-dark:var(--b-fever-deep);
+  --jc-E60012:var(--b-fever);--jc-B4000E:var(--b-fever-deep);
+}
+/* トップの色の割り当て（②v0.3.0 と同じ）：面＝ブルーグレー／文字＝ローズ／濃い面・ほぼ黒の文字＝ネイビー／うすい背景＝ブルーグレー系。
+   サイト側で :root に置いた変数がこれらを参照している箇所（予約ボタンのアイコンなど）にも効くよう、html に置く（:has でトップだけ） */
+html.jb:has(>body:not([id])),html.jb body:not([id]){
+  --jt-main:var(--b-bluegray);--jt-text:var(--b-rose);--jt-fill:var(--b-navy);--jt-dark:var(--b-navy);--jt-tint:#869DB6;
+  --jc-FFA0A7:var(--b-rose);--jc-F89098:var(--b-rose);--jc-B82834:var(--b-rose-deep);--jc-F02840:var(--b-rose);
+  --jc-DE2038:var(--b-rose);--jc-E81820:var(--b-rose);--jc-E04020:var(--b-rose);
+  --reservation-primary:var(--b-rose)!important;--reservation-primary-hover:var(--b-rose-deep)!important;--reservation-on-primary:#fff!important;
+  --reservation-sticky-primary:var(--b-rose)!important;--reservation-sticky-text:#fff!important;
+  --hiyoshi-global-header-bg:var(--b-navy)!important;
+}
+/* トップに並ぶ各科の名前（最初の画面の科の札・グループ院の科の札）：各科は6月の色なので、トップの中だけ6月の濃い色（読める濃さ）に。
+   消化器内科はトップと同じ扱いでネイビー */
+html.jb body:not([id]){
+  --jgastro-text:var(--b-navy);--jgastro-fill:var(--b-navy);
+  --jgeneral-text:#9E6240;--jgeneral-fill:#9E6240;--jent-text:#0B6E4F;--jent-fill:#0B6E4F;
+  --jderm-text:#166088;--jderm-fill:#166088;--jcheckups-text:#BA4D20;--jcheckups-fill:#BA4D20;
+}
+html.jb:not(#_j) body:not([id]) #home-firstview .department.general{--soft:color-mix(in srgb,var(--jgeneral-main) 9%,#fff)!important}
+/* ヘッダー：ネイビー＋上にもとのピンクの細い線（②から）。
+   ヘッダーの色はサイト側の @layer clinicHeaderDesktop（!important）が決めている。!important どうしは
+   「先に宣言したレイヤー」が勝つので、最初に読み込まれるこのファイルで jsample レイヤーを作って上書きする */
+@layer jsample{
+  html.jb body:not([id]) #header:not(:has(.div-header-global)),html.jb body:not([id]) #header .div-header-global{
+    background:var(--b-navy)!important;color:#fff!important;box-shadow:inset 0 3px 0 var(--b-pink)!important}
+  html.jb body:not([id]) #header .nav-header-global{background:var(--b-navy)!important;color:#fff!important}
+}
+html.jb:not(#_j) body:not([id]) header#header{background-color:var(--b-navy)!important}
+html.jb:not(#_j):not(#_k) body:not([id]) #header :is(.div-header-global,.nav-header-global){background-color:var(--b-navy)!important;color:#fff!important}
+/* 最初の画面：うすいブルーグレー＋ネイビーの文字。「直結0分」だけローズ */
+html.jb:not(#_j) body:not([id]) #home-firstview #mainimage,html.jb:not(#_j) body:not([id]) #home-firstview #mainimage .hero-photo{background:var(--b-bg)!important}
+html.jb:not(#_j) body:not([id]) #mainimage :is(.hero-heading .corporation,.department-heading span){color:#5B6673!important}
+html.jb:not(#_j) body:not([id]) #mainimage :is(#clinic-title,.hero-heading .location,.department-heading h2){color:var(--b-navy)!important}
+html.jb:not(#_j) body:not([id]) #mainimage .hero-heading .location span{color:var(--b-rose)!important}
+html.jb:not(#_j) body:not([id]) #mainimage .hero-heading .hours{color:var(--b-ink)!important}
+/* お問い合わせ：うすいブルーグレー＋ネイビーの見出し。予約ボタンはローズに白い文字 */
+html.jb:not(#_j) body:not([id]) section.contact{background-color:var(--b-bg)!important}
+html.jb:not(#_j) body:not([id]) section.contact .title :is(h2,p){color:var(--b-navy)!important}
+html.jb:not(#_j):not(#_k) body:not([id]) section.contact .btn>a[href^="https://wakumy.lyd.inc/"],
+html.jb:not(#_j):not(#_k) body:not([id]) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"]{background-color:var(--b-rose)!important;border-color:var(--b-rose)!important;color:#fff!important}
+html.jb:not(#_j):not(#_k) body:not([id]) a.a-button-cta-web[href^="https://wakumy.lyd.inc/"] *{color:#fff!important}
+html.jb:not(#_j) body:not([id]) .top-faq{background:var(--b-bg)!important}
+/* フッター：ネイビー */
+html.jb:not(#_j) body:not([id]) :is(footer,#footer){background-color:var(--b-navy)!important}
+/* ===== v0.7.0「各科の色が映える案」＝ html.jb.jb2（トップだけ。各科ページは「ネイビー案」と同じ＝6月の色・発熱外来は #BF3F48） =====
+   ご意見：「内科・耳鼻科の色は発色がよくてきれい。トップのネイビーと合わない？ 内科・耳鼻科の色が生かせるトップの色合いに調整できる？」
+   考え方：紺は黄・黄緑と相性のよい色。②のトップが合わなく見えるのは色の種類ではなく「トーン」の差（②はローズ・ブルーグレー・
+   グレーがかった紺のくすんだ色、内科・耳鼻科は澄んだ鮮やかな色）。さらにトップの科の札は、読みやすさのため文字を濃い茶・深緑にしていて、
+   鮮やかな色がトップに出ていなかった。
+   ・紺を少し澄んだ紺 #1E3A66 に（ヘッダー・フッター・お知らせ・文字）。ボタン・番号も同じ紺に白い文字（ブルーグレーをやめる）
+   ・見出し・強調の文字は紺。ローズは「直結0分」と WEB予約だけ（色の数を減らして、各科の色を目立たせる）
+   ・最初の画面の科の札を、各科の色の塗り＋紺の文字（発熱外来は白）に
+   ・症状別ガイドのカードの上に、その科の色の帯（各科のページがある科。ほかの専門外来は紺） */
+html.jb.jb2{--b-navy:#1E3A66;--b-bluegray:#1E3A66}
+html.jb.jb2:has(>body:not([id])),html.jb.jb2 body:not([id]){--jt-text:var(--b-navy)}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.gastro{--soft:#FFA0A7!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.general{--soft:#F8B62D!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.ent{--soft:#81B732!important;--dept-ink:var(--b-navy)!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department.fever{--soft:#BF3F48!important;--dept-ink:#fff!important;--accent:var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) #home-firstview .department .arrow{color:var(--b-navy)!important}
+html.jb.jb2:not(#_j) body:not([id]) .box--value{border-top:4px solid var(--b-navy)!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../general/"]){border-top-color:#F8B62D!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../ent/"]){border-top-color:#81B732!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../gastro/"]){border-top-color:#FFA0A7!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../derm/"]){border-top-color:#4FBAC9!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../checkups/"]){border-top-color:#F29C78!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../fever/"]){border-top-color:#BF3F48!important}
+html.jb.jb2:not(#_j):not(#_k) body:not([id]) .box--value:has(a[href^="../mental/"]){border-top-color:#0A65AC!important}
+
+/* 発熱外来：赤い予約ボタンの文字は、6月の色でも暗い赤の文字（2.9:1）で読みにくかった。落ち着いた赤では白い文字が読める（5.2:1）ので白に。
+   最初の画面の電話番号の帯は、少し暗くして白い文字を 4.5:1 以上に */
+html.jb:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action),
+html.jb:not(#_j):not(#_k):not(#_l) body#fever .div-cta a.a-button-cta-web:not(.hero-booking-action) *{color:#fff!important}
+html.jb:not(#_j):not(#_k) body#fever .fv-tel>a{background-color:rgba(0,0,0,.12)!important}
+
+/* 個別の補正：今のトップでは「総合内科」の枠が共通色（オレンジ）を使っているので、当時の総合内科の黄色に戻す */
+#home-firstview .department.general{--accent:var(--jgeneral-fill)!important;--soft:color-mix(in srgb,var(--jgeneral-main) 18%,#fff)!important;--dept-ink:var(--jgeneral-fill)!important}
+
+/* 見本用パネル（サイトの部品ではない） */
+#jsample{position:fixed;left:max(10px,env(safe-area-inset-left,0px));bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:2147483000;
+  width:min(300px,calc(100vw - 20px));background:#1f1d1b;color:#f4f1ec;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.35);
+  font:13px/1.55 system-ui,"Hiragino Sans","Yu Gothic UI",Meiryo,sans-serif;padding:12px 12px 10px;letter-spacing:0}
+#jsample *{box-sizing:border-box;font:inherit;letter-spacing:0}
+#jsample .js-h{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+#jsample .js-t{font-weight:700;font-size:13.5px}
+#jsample .js-t small{display:block;font-weight:400;font-size:11.5px;color:#c9c2b9}
+#jsample .js-x{background:none;border:0;color:#c9c2b9;cursor:pointer;font-size:18px;line-height:1;padding:0 2px}
+#jsample .js-seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0;background:#34302c;border-radius:8px;padding:3px}
+#jsample .js-seg button{flex:1;border:0;border-radius:6px;background:transparent;color:#d9d3cb;padding:5px 4px;cursor:pointer;font-size:12px}
+#jsample .js-seg button[aria-pressed="true"]{background:#f4f1ec;color:#1f1d1b;font-weight:700}
+#jsample select{width:100%;padding:5px 6px;border-radius:6px;border:1px solid #4a4540;background:#2b2825;color:#f4f1ec;font-size:12.5px}
+#jsample .js-f{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:11.5px;color:#c9c2b9}
+#jsample a{color:#f4f1ec;text-decoration:underline}
+#jsample .js-sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#jsample button:focus-visible,#jsample select:focus-visible,#jsample a:focus-visible{outline:2px solid #9cc0ff;outline-offset:2px}
+#jsample.min{width:auto;padding:7px 12px;cursor:pointer}
+#jsample.min .js-body,#jsample.min .js-x{display:none}
