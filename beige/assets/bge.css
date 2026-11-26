@@ -11,3 +11,38 @@ html.bge{
   --jtop-main:var(--jgeneral-main);--jtop-text:var(--jgeneral-text);--jtop-fill:var(--jgeneral-fill);--jtop-dark:var(--jgeneral-dark);
 }
 html.bge body:not([id]){--fv-head-r:#D49700}   /* トップのヘッダー右端：総合内科と同じ #F8B62D → #D49700（fvp.css はトップ・消化器 #E77984） */
+
+/* ===== グロナビのロゴの後ろに白い丸（v0.24.0・全8ページ） =====
+   ご依頼（2026-11-26）：「グロナビのロゴの色、背景にまざってみえない。背景を薄くするなどして、アイコンの色がわかるようにして」
+   ロゴは4枚の花びら（黄 #F9BE00・緑 #8DC21F・青 #00AEEB ＋ そのページの色の1枚）。ヘッダーがそのページの色のグラデーションなので、
+   同じ色の花びら（トップ・総合内科のオレンジ、消化器のピンク、耳鼻の緑…）と黄色がヘッダーに溶けていた。
+   ヘッダー全体を薄くすると白い文字（クリニック名・メニュー）が読めなくなるので、ロゴの後ろだけ白い丸を敷く。
+   丸は box-shadow で広げるので、ロゴの位置・クリニック名の位置は動かない。
+   トップのロゴの花びらは総合内科と同じオレンジの版（bge-logo-top.svg）に差し替え（ページの色＝ロゴの花びらの色、という各科と同じ作り） */
+html.bge #header a.hd-home > img,
+html.bge #header img[src*="logo-cocoromi"]{background:#fff!important;border-radius:50%!important;box-shadow:0 0 0 4px #fff!important}
+/* トップは幅 1100px 以上でロゴの枠が 32×28 の横長になり、丸が楕円になる（1024〜1099px は 32×32、〜1023px は 26 以下の正方形）
+   → 枠を 28×28 にして左右 2px ずつ空ける（クリニック名の位置は同じ）。サイト側の指定（width:32px!important・flex:0 0 32px!important）より強く書く */
+@media (min-width:1100px){
+  html.bge:not(#_a):not(#_b) body:not([id]) #header a.hd-home > img{width:28px!important;flex:0 0 28px!important}
+  /* 余白（margin:0!important）はサイト側の @layer の中で決まっているので、先に宣言された jsample レイヤーの中で上書きする */
+  @layer jsample{
+    html.bge body:not([id]) #header a.hd-home > img{margin-inline:2px!important}
+  }
+}
+@media (max-width:1023px){
+  html.bge #header a.hd-home > img,
+  html.bge #header img[src*="logo-cocoromi"]{box-shadow:0 0 0 3px #fff!important}
+}
+
+/* ===== 消化器内科のページの薄いピンクの地をベージュに（v0.24.0） =====
+   ご依頼（2026-11-26）：「消化器内科の診療時間・こんなお悩み・症状はありませんか? の背景がピンクだといやらしいので、ベージュにするとか。かわいらしすぎないように」
+   この2つの帯の地は、消化器のページだけの「紙の色」--gd-paper（ピンク 18%）。同じ --gd-paper を「検査の流れ」「よくある質問」も使っているので、4つの帯をいっしょにベージュにする
+   （2つだけ変えると、ベージュとピンクの帯が交互に並ぶため）。
+   変えるのは面（地）だけ。文字・見出しの下線・チェックの印・表の見出し行・枠の線は消化器のピンクのまま（ページの色が分かるように）。
+   ベージュは最初の画面と同じ #F6F2F0。「お悩み」の大きな囲み（ピンク 49%）は、案1 の線の色 #BFAFAE を 28% 混ぜた少し濃いベージュ。新しい色相は作っていない */
+html.bge body#gastroenterology-endoscopy :is(#department-visit-info,#front-probrems,#front-flow,#front-faq){--gd-paper:#F6F2F0}
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #department-visit-info{--visit-tint:#F6F2F0}   /* 診療時間：表の曜日の欄・注意書き・専門外来の印などの薄い地 */
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-section-content > .div-probrems{background:color-mix(in srgb,#BFAFAE 28%,#F6F2F0)!important}
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .div-probrems-section dl.dl-probrems > dt,
+html.bge:not(#_a):not(#_b) body#gastroenterology-endoscopy #front-probrems .p-solution-catchline{background:#F6F2F0!important}
